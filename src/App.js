@@ -44,6 +44,9 @@ function App() {
           <div className="column-padding-4-percent padding-header-button">
             <button className="header-button">Sign out</button>
           </div>
+          <div className="column-padding-4-percent">
+              <p className="white-text">Teacher Dashboard</p>
+          </div>
         </div>
       </div>
 

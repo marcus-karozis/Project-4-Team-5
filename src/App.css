@@ -132,3 +132,30 @@
   background-color: rgba(154, 179, 222, 0.5);
   border-bottom: rgb(41, 92, 182) solid 3px;
 }
+
+/* for subject pages */
+
+.dashboard-subject-header {
+  background-color: rgb(35, 181, 186);
+  /* background-image: linear-gradient(to right, rgb(9, 20, 105) , rgb(181, 203, 226)); */
+  text-align: center;
+  padding: 0.5%;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.back-button {
+  border-color: rgb(35, 57, 129);
+  background-color: rgb(89, 110, 176);
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+.code-box {
+  background-color: rgb(250, 194, 194);
+  font-size: 22px;
+  padding: 20px;
+  border-radius: 2px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
