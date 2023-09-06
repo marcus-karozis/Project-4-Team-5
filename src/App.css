@@ -36,3 +36,133 @@
     transform: rotate(360deg);
   }
 }
+
+/* dashboard things */
+
+.dashboard-header {
+  background-color: darkblue;
+  background-image: linear-gradient(to right, rgb(9, 20, 105) , rgb(181, 203, 226));
+  text-align: center;
+  padding: 0.5%;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.dashboard-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.dashboard-main-content {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.white-text {
+  color: white;
+}
+
+.white-circle {
+  border-color: white;
+  border-radius: 25px;
+  border-style: solid;
+  background-color: white;
+}
+
+.white-box {
+  border-color: white;
+  border-style: solid;
+  background-color: white;
+  border-radius: 2px;
+}
+
+.light-blue-box {
+  border-color: darkturquoise;
+  border-style: solid;
+  background-color: darkturquoise;
+  text-align: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 2px;
+}
+
+.column-padding-2-percent {
+  padding-left: 2%;
+}
+
+.column-padding-4-percent {
+  padding-left: 4%;
+}
+
+.column-padding-20-percent {
+  padding-left: 20%;
+}
+
+.column-padding-25-percent {
+  padding-left: 25%;
+}
+
+.padding-header-button {
+  padding-top: 20px;
+}
+
+.nice-button {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  border-color: cornflowerblue;
+  font-size: 16px;
+}
+
+/* for subject card(s) */
+
+.subject-card {
+  margin: 10px;
+  /* border-style: solid; */
+  /* border-color: black; */
+  box-shadow: 0px 0px 12px 3px grey;
+}
+
+.small-image-sizer {
+  height:300px;
+  width:400px;
+  object-fit: fill;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.center-objects {
+  /* display: flex; */
+  /* align-items: center; */
+  /* margin: auto;
+  padding: 10px;
+  width: 100%; */
+  /* border: 3px solid green; */
+  justify-content: center;
+}
+
+.subject-button {
+  font-size: 16px;
+  /* margin: 5px; */
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  border-bottom: rgba(255, 255, 255, 0) solid 3px;
+  transition-duration: 0.3s;
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.subject-button:hover {
+  /* background-color: rgba(154, 179, 222, 0.466); */
+  border-bottom: rgb(41, 92, 182) solid 3px;
+  /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); */
+}
+
+.subject-button:active {
+  background-color: rgba(154, 179, 222, 0.5);
+  border-bottom: rgb(41, 92, 182) solid 3px;
+}
