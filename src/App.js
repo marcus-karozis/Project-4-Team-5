@@ -2,14 +2,31 @@ import './App.css';
 
 import subjectImage from './white_paper.jpg'
 
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import SubjectPage from './SubjectPage';
+
+const subjectPage = ReactDOM.createRoot(document.getElementById('root'));
+
+
 function SubjectCard() {
+  function handleSubjectClick() {
+    subjectPage.render(
+      <React.StrictMode>
+        <SubjectPage />
+      </React.StrictMode>
+    )
+  }
+
   return (
     <div className="subject-card">
       <div>
         <img src={subjectImage} className="small-image-sizer" alt="subject" />
       </div>
       <div className="center-text">
-        <button className="subject-button">Subject Name</button>
+        <button className="subject-button" onClick={handleSubjectClick}>
+          Subject Name
+        </button>
       </div>
     </div>
     
