@@ -63,30 +63,6 @@
   color: white;
 }
 
-.white-circle {
-  border-color: white;
-  border-radius: 25px;
-  border-style: solid;
-  background-color: white;
-}
-
-.white-box {
-  border-color: white;
-  border-style: solid;
-  background-color: white;
-  border-radius: 2px;
-}
-
-.light-blue-box {
-  border-color: darkturquoise;
-  border-style: solid;
-  background-color: darkturquoise;
-  text-align: center;
-  padding-left: 15px;
-  padding-right: 15px;
-  border-radius: 2px;
-}
-
 .column-padding-2-percent {
   padding-left: 2%;
 }
@@ -107,7 +83,7 @@
   padding-top: 20px;
 }
 
-.nice-button {
+.header-button {
   padding-top: 5px;
   padding-bottom: 5px;
   border-radius: 5px;
@@ -119,8 +95,6 @@
 
 .subject-card {
   margin: 10px;
-  /* border-style: solid; */
-  /* border-color: black; */
   box-shadow: 0px 0px 12px 3px grey;
 }
 
@@ -135,12 +109,6 @@
 }
 
 .center-objects {
-  /* display: flex; */
-  /* align-items: center; */
-  /* margin: auto;
-  padding: 10px;
-  width: 100%; */
-  /* border: 3px solid green; */
   justify-content: center;
 }
 
@@ -157,9 +125,7 @@
 }
 
 .subject-button:hover {
-  /* background-color: rgba(154, 179, 222, 0.466); */
   border-bottom: rgb(41, 92, 182) solid 3px;
-  /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); */
 }
 
 .subject-button:active {
