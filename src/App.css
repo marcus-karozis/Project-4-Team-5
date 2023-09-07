@@ -13,6 +13,40 @@
   }
 }
 
+.link-box {
+  display: inline-block;
+  width: 150px; /* Adjust the width as needed */
+  height: 100px; /* Adjust the height as needed */
+  background-color: #3498db; /* Background color */
+  margin-right: 10px; /* Adjust the spacing between boxes */
+  text-align: center;
+  line-height: 100px; /* Vertical centering */
+}
+
+.link-box:last-child {
+  margin-right: 0; /* Remove margin from the last box */
+}
+
+.link-box a {
+  text-decoration: none;
+  color: #fff; /* Link text color */
+  display: block; /* Make the link fill the entire box */
+}
+
+/* styles.css */
+.banner {
+  background-color: #3498db; /* Blue background color */
+  color: #fff; /* Text color */
+  padding: 10px 0; /* Adjust the padding as needed */
+  text-align: center;
+}
+
+.banner h1 {
+  margin: 0; /* Remove any default margin */
+  font-size: 24px; /* Adjust the font size as needed */
+}
+
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
