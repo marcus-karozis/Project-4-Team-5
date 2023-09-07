@@ -1,6 +1,6 @@
 import React from 'react';
 import '/Users/MaxK-W/Project-4-Team-5/Project-4-Team-5/src/App.css';
-
+import ConfirmLink from '/Users/MaxK-W/Project-4-Team-5/Project-4-Team-5/src/Components/confirmlink.js';
 function Dashboard() {
   return (
     <div>
@@ -8,16 +8,16 @@ function Dashboard() {
       <div class = "banner"><h1>Welcome to the Student Dashboard</h1></div>
       <ul>
         
-         <div class = "link-box"><a href="/course1">Course 1</a></div> 
+         <div class = "link-box"><ConfirmLink to ="/course1" message = "VERIFICATION">Course 1</ConfirmLink></div> 
      
      
-         <div class = "link-box"><a href="/course2">Course 2</a></div> 
+         <div class = "link-box"><ConfirmLink to = "/course2" message = "VERIFICATION">Course 2</ConfirmLink></div> 
        
         
-         <div class = "link-box"><a href="/course3">Course 3</a></div> 
+         <div class = "link-box"><ConfirmLink to = "/course3" message = "VERIFICATION">Course 3</ConfirmLink></div> 
         
        
-         <div class = "link-box"><a href="/course4">Course 4</a></div> 
+         <div class = "link-box"><ConfirmLink to ="/course4" message = "VERIFICATION">Course 4</ConfirmLink></div> 
        
       
       </ul>

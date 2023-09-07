@@ -7,6 +7,7 @@ import Course1 from './pages/course1';
 import Course2 from './pages/course2';
 import Course3 from './pages/course3';
 import Course4 from './pages/course4';
+
 function App() {
   return (
     <Router>
