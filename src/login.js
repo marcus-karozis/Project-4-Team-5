@@ -21,9 +21,10 @@ function Login() {
   
 
   return (
-    <div className="login-container">
+    <div className="login-container light-blue-background">
+      
       <div className="login-form">
-        <h2>Replace with Logo!</h2>
+        <h2>Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Email:</label>
