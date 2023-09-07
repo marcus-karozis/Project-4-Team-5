@@ -7,11 +7,6 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .App-header {
   background-color: #282c34;
@@ -28,11 +23,40 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+/* Added */
+
+.box-list {
+  display: flex; 
+  flex-wrap: wrap;
+  justify-content: center;
+  /* justify-content: space-evenly;  */
+  
 }
+
+.box {
+  width: 150px; /* Set the width of the boxes */
+  height: 100px; /* Set the height of the boxes */
+  border: 1px solid #000; /* Add a border to the boxes */
+  padding: 10px; /* Add padding inside the boxes */
+  margin: 10px; /* Add margin around the boxes */
+  text-align: center; /* Center text within the boxes */
+  background-color: #f0f0f0; /* Set a background color for the boxes */
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a shadow to the boxes */
+}
+
+a {
+  text-decoration: none;
+}
+
+.dashboard {
+  background-color: lightgray;
+  height: 80vh;
+  margin: 50px 200px 0px ; 
+}
+
+
+nav.bg-body-tertiary { 
+  background-color:#282c34 !important; 
+} 
+
