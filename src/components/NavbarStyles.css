@@ -3,8 +3,10 @@ nav{
     align-items: center;
     justify-content:  space-between;
     background:  #1b2430;
-    padding: 20px 80px;
+    padding: 5px 80px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+    background-color: darkblue;
+    background-image: linear-gradient(to right, rgb(9, 20, 105) , rgb(181, 203, 226));
 }
 
 #navbar{
