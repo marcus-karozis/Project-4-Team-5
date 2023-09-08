@@ -1,0 +1,10 @@
+.subjectList{
+    position: relative;
+    background-color: rgba(128, 128, 128, 0.504);
+    margin: 1rem;
+    flex: 1 0 25rem;
+    max-width: 30rem;
+    max-height: 50rem;
+    transition: 0.2s;
+}
+
