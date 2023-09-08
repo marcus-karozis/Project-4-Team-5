@@ -1,10 +1,19 @@
 .subjectList{
-    position: relative;
-    background-color: rgba(128, 128, 128, 0.504);
-    margin: 1rem;
-    flex: 1 0 25rem;
-    max-width: 30rem;
-    max-height: 50rem;
+    display: inline-block;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    text-align: left;
+    background-color: rgb(221, 221, 221);
+}
+
+.subjectCard:hover{
+    transform: translateY(-0.3rem);
+    box-shadow: 0.2rem 0.2rem 1.5rem #bbb;
     transition: 0.2s;
 }
 
+.subjectCard__content{
+    font-size: 1.5rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

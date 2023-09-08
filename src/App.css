@@ -38,7 +38,7 @@
 }
 
 .subjectCard{
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 5rem;
+  display: inline-block;
+  grid-template-columns: 300px 300px 300px;
+  justify-content: center;
 }
