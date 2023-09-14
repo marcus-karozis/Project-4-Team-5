@@ -33,11 +33,11 @@ function SubjectPage() {
         <div>
             <Navbar></Navbar>
         </div>
-        <div>
-            <ul className="code">
+        <div className="">
+            <ul className="code dashboard-row">
                 <li><h className='codeText'>{codeGen}</h></li>
-                <li><button onClick={generateCode}>Regenerate code</button></li>
-                <li><button onClick={disableCode}>Disable code</button></li>
+                <li><button className="" onClick={generateCode}>Regenerate code</button></li>
+                <li><button className="" onClick={disableCode}>Disable code</button></li>
             </ul>
         </div>
         <div>

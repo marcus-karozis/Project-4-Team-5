@@ -17,10 +17,16 @@
 
 .codeText {
   font-size: 50px;
-  width: 20%;
+  width: auto;
   height: 20;
   padding: 50px 80px;
   background-color: rgb(255, 251, 4);
   text-align: center;
   grid-area: code;
+}
+
+.dashboard-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
