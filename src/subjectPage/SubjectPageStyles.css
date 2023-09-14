@@ -1,0 +1,26 @@
+.code li{
+  padding: 5px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+}
+
+.code button {
+  width: 30%;
+  border: none;
+  font-size: 16px;
+  padding: 8px 12px;
+  grid-area: regen;
+  background-color: lightblue;
+}
+
+.codeText {
+  font-size: 50px;
+  width: 20%;
+  height: 20;
+  padding: 50px 80px;
+  background-color: rgb(255, 251, 4);
+  text-align: center;
+  grid-area: code;
+}

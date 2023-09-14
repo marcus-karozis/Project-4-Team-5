@@ -9,4 +9,4 @@ const subjectData = [
     }
     ];
     
-    export default subjectData;
+export default subjectData;

@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import SubjectPage from './subjectPage';
+import SubjectPage from './subjectPage/SubjectPage';
 
 const router = createBrowserRouter([
   {
@@ -12,17 +12,13 @@ const router = createBrowserRouter([
     element: <App/>
   },
   {
-    path: "subjectPage",
+    path: "subjectPage/SubjectPage",
     element: <SubjectPage/>
   }
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <React.StrictMode>
-  //   <App />
-  // </React.StrictMode>
-
   <RouterProvider router={router} />
 
 );
