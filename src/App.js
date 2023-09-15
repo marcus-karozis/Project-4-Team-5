@@ -1,4 +1,7 @@
 import './App.css';
+import Navbar from './components/Navbar';
+import subjectData from './data/data';
+import { Subjects } from './menu/Menu';
 
 import subjectImage from './white_paper.jpg'
 
@@ -35,31 +38,19 @@ function SubjectCard() {
 
 function App() {
   return (
-    <div className="dashboard-layout">
-      <div className="dashboard-header">
-        <div className="dashboard-row">
-          <div className="column-padding-4-percent">
-            <p className="white-text">Hi, Account Name</p>
-          </div>
-          <div className="column-padding-4-percent padding-header-button">
-            <button className="header-button">Sign out</button>
-          </div>
-          <div className="column-padding-4-percent">
-              <p className="white-text">Teacher Dashboard</p>
-          </div>
-        </div>
+    <>
+      <div className="App">
+        <Navbar/>
       </div>
-
-      <div className="dashboard-main-content">
-        <div className="dashboard-row center-objects">
-          < SubjectCard />
-          < SubjectCard />
-          < SubjectCard />
-          {/* < SubjectCard /> */}
-        </div>
+      <div className="SubjectCard">
+        {subjectData.map(subjectData => (
+          <Subjects
+          key={subjectData.id}
+          subjectName={subjectData.subjectName}
+        />
+        ))}
       </div>
-
-    </div>
+    </>
     
   );
 }
