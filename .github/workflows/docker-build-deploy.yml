@@ -1,0 +1,22 @@
+name: docker-build-deploy
+
+on:
+  push:
+    branches: main
+
+  pull_request:
+    branches: main
+
+  workflow_dispatch:
+
+jobs:
+
+  build-container:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker Image
+      #working-directory: 
+      run: docker build . -t marcuskarozis/sds-project-4-team-5:$(date +%s)
