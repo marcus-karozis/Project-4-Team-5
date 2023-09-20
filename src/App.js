@@ -1,4 +1,5 @@
 import './App.css';
+import LoginPage from './login';
 import Navbar from './components/Navbar';
 import subjectData from './data/data';
 import { Subjects } from './menu/Menu';
@@ -38,9 +39,9 @@ function SubjectCard() {
 
 function App() {
   return (
-    <>
-      <div className="App">
-        <Navbar/>
+<>
+    <div className="App">
+      <Navbar/>
       </div>
       <div className="SubjectCard">
         {subjectData.map(subjectData => (
@@ -48,9 +49,9 @@ function App() {
           key={subjectData.id}
           subjectName={subjectData.subjectName}
         />
-        ))}
-      </div>
-    </>
+))}
+    </div>
+</>
     
   );
 }
