@@ -17,16 +17,15 @@ class Navbar extends Component{
 
             <div>
                 <ul id="navbar" className={this.state.clicked ? "#navbar active" : "#navbar"}>
-                    {/* {console.log(window.location.pathname)} */}
                     {/* className={window.location.pathname == "techSupportPage" ? "#navbar active" : "#navbar"} */}
                     <li>
-                        <Link to="/" className={window.location.pathname == "/" ? "navBarSelectedPage" : ""} style={{ textAlign: 'center'}}>
+                        <Link to="/" style={{ textAlign: 'center'}}>
                             Home
                         </Link>
                     </li>
                     <li><a href="index.html">Account</a></li>
                     <li>
-                        <Link to="/techSupportPage" className={window.location.pathname == "techSupportPage" ? "navBarSelectedPage" : ""} style={{ textAlign: 'center'}}>
+                        <Link to="/techSupportPage" style={{ textAlign: 'center'}}>
                             Support
                         </Link>
                     </li>
