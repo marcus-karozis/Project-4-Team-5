@@ -11,7 +11,7 @@ import SubjectPage from './SubjectPage';
 
 const subjectPage = ReactDOM.createRoot(document.getElementById('root'));
 
-
+// as far as i know, this function SubjectCard() isn't being used anymore
 function SubjectCard() {
   function handleSubjectClick() {
     subjectPage.render(

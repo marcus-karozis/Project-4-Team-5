@@ -1,5 +1,6 @@
 import { Component } from "react";
 import "./NavbarStyles.css";
+import { BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
 
 class Navbar extends Component{
     state={clicked: false};
@@ -16,8 +17,19 @@ class Navbar extends Component{
 
             <div>
                 <ul id="navbar" className={this.state.clicked ? "#navbar active" : "#navbar"}>
-                    <li><a className="active" href="index.html">Home</a></li>
+                    {/* {console.log(window.location.pathname)} */}
+                    {/* className={window.location.pathname == "techSupportPage" ? "#navbar active" : "#navbar"} */}
+                    <li>
+                        <Link to="/" className={window.location.pathname == "/" ? "navBarSelectedPage" : ""} style={{ textAlign: 'center'}}>
+                            Home
+                        </Link>
+                    </li>
                     <li><a href="index.html">Account</a></li>
+                    <li>
+                        <Link to="/techSupportPage" className={window.location.pathname == "techSupportPage" ? "navBarSelectedPage" : ""} style={{ textAlign: 'center'}}>
+                            Support
+                        </Link>
+                    </li>
                 </ul>
             </div>
 

@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import SubjectPage from './subjectPage/SubjectPage';
+import TechSupportPage from './techSupportPage/TechSupportPage';
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: "subjectPage/SubjectPage",
     element: <SubjectPage/>
+  },
+  {
+    path: "techSupportPage",
+    element: <TechSupportPage/>
   }
 ])
 
