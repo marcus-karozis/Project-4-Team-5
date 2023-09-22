@@ -2,3 +2,64 @@
 .page_padding {
     padding: 10px;
 }
+
+/* form components */
+.label_div {
+    width: 70%;
+}
+
+input {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    /* box-sizing: border-box; */
+    border: none;
+    border: 3px solid #ccc;
+    border-radius: 3px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+input:focus {
+    border: 3px solid #8184da;
+    border-radius: 3px;
+}
+
+textarea {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    /* box-sizing: border-box; */
+    border: none;
+    border: 3px solid #ccc;
+    border-radius: 3px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    resize: none;
+}
+
+textarea:focus {
+    border: 3px solid #8184da;
+    border-radius: 3px;
+}
+
+button {
+    background-color: #8184da;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #676ac2;
+}
+
+button:active {
+    background-color: #4d50ad;
+}

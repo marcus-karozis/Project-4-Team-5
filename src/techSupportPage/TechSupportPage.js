@@ -18,7 +18,7 @@ function TechSupportPage() {
                 <h1>Tech Support Page</h1>
                 <form method="post" onSubmit={handleSubmitSupportForm}>
                     <div id="name_box">
-                        <div style={{paddingRight: '120px'}}>
+                        <div className="label_div" style={{}}>
                             <label > Name </label>
                         </div>
                         <div>
@@ -27,7 +27,7 @@ function TechSupportPage() {
                     </div>
 
                     <div id="email_box">
-                        <div style={{paddingRight: '120px'}}>
+                        <div className="label_div" style={{}}>
                             <label > Email </label>
                         </div>
                         <div>
@@ -36,12 +36,16 @@ function TechSupportPage() {
                     </div>
 
                     <div id="issue_box">
-                        <div style={{paddingRight: '120px'}}>
+                        <div className="label_div" style={{}}>
                             <label > Issue </label>
                         </div>
                         <div>
-                            <textarea name="postContent" rows={4} cols={40} />
+                            <textarea name="postContent" rows={8} cols={40} />
                         </div>
+                    </div>
+
+                    <div id="submit_button_box">
+                        <button>Send To Support</button>
                     </div>
 
                 </form>
