@@ -26,11 +26,12 @@ function TechSupportPage() {
             
             also the details to access where the email is sent will be adding the details into the 
             jira ticket for the tech support page :)
-            
+
             ~ Chantel
         */
 
         // // comment below back in if you want to send a test email for support page
+
         // emailjs.sendForm('service_gs0av92', 'template_2y5bxxs', formThing.current, 'KNHae1w2H-IMWhEI7')
         //     .then((result) => {
         //         console.log(result.text);
@@ -41,6 +42,7 @@ function TechSupportPage() {
         //         var responseBox = document.getElementById("tech_support_form_failed_response");
         //         responseBox.style.display='block';
         //     });
+        
         // // comment above back in if you want to send a test email for support page
 
     }
