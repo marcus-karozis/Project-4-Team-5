@@ -4,46 +4,53 @@ import Navbar from '../components/Navbar';
 import emailjs from '@emailjs/browser';
 
 function TechSupportPage() {
-
-    // const fullNameInputField = useRef();
-    // const emailInputField = useRef();
-    // const issueInputField = useRef();
-
     const formThing = useRef();
 
     function handleSubmitSupportForm(e) {
         // Prevent the browser from reloading the page
         e.preventDefault();
 
-        // send email to admin user
+        // confirm is user wants to submit the form
+        if (window.confirm("Are you ready to submit this issue/enquiry to the sytsem admin?")) {
+            // do this if ok pressed
+            console.log("Ok was pressed. Sending to admin user...");
 
-        /*
-            note: the service to send emails has a limit each month so the code to send
-            the email is commented out so it doesn't eat up the limit too quick (although
-                there is 200 emails/month that can be sent but still just incase).
+            // send email to admin user
+
+            /*
+                note: the service to send emails has a limit each month so the code to send
+                the email is commented out so it doesn't eat up the limit too quick (although
+                    there is 200 emails/month that can be sent but still just incase).
+                
+                --
+                
+                also the details to access where the email is sent will be adding the details into the 
+                jira ticket for the tech support page :)
+
+                ~ Chantel
+            */
+
+            // // comment below back in if you want to send a test email for support page
+
+            // emailjs.sendForm('service_gs0av92', 'template_2y5bxxs', formThing.current, 'KNHae1w2H-IMWhEI7')
+            //     .then((result) => {
+            //         console.log(result.text + " | Email Sent to Admin!");
+            //         var responseBox = document.getElementById("tech_support_form_successful_response");
+            //         responseBox.style.display='block';
+            //     }, (error) => {
+            //         console.log(error.text + " | Could Not Send Email To Admin");
+            //         var responseBox = document.getElementById("tech_support_form_failed_response");
+            //         responseBox.style.display='block';
+            //     });
             
-            --
-            
-            also the details to access where the email is sent will be adding the details into the 
-            jira ticket for the tech support page :)
+            // // comment above back in if you want to send a test email for support page
 
-            ~ Chantel
-        */
-
-        // // comment below back in if you want to send a test email for support page
-
-        // emailjs.sendForm('service_gs0av92', 'template_2y5bxxs', formThing.current, 'KNHae1w2H-IMWhEI7')
-        //     .then((result) => {
-        //         console.log(result.text);
-        //         var responseBox = document.getElementById("tech_support_form_successful_response");
-        //         responseBox.style.display='block';
-        //     }, (error) => {
-        //         console.log(error.text);
-        //         var responseBox = document.getElementById("tech_support_form_failed_response");
-        //         responseBox.style.display='block';
-        //     });
-        
-        // // comment above back in if you want to send a test email for support page
+        }
+        else {
+            // do this if cancel pressed
+            console.log("cancelled form submit...");
+            // nothing happens here
+        }
 
     }
 
