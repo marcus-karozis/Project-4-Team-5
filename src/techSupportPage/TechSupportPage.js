@@ -15,42 +15,34 @@ function TechSupportPage() {
         // Prevent the browser from reloading the page
         e.preventDefault();
 
-        // Read the form data
-        const form = e.target;
+        // send email to admin user
 
-        // console.log("------");
-        // console.log(form);
-        // console.log(form.current);
-
-        const formData = new FormData(form);
-
-        // console.log(formData);
-        // console.log(formData.current);
-
-        // obtain all the data on the form & store in object
-        const formJson = Object.fromEntries(formData.entries());
-        // console.log(formJson);
-
-        // console.log("..");
-        // console.log(formThings.current)
-
-        // // send email to admin user
-        // // note: I have this commented out because there's a limit to how many emails 
-        // // can be sent per month
-        // // also the details to access where the email is sent will be adding the details into the 
-        // // jira ticket for the tech support page :) -C
+        /*
+            note: the service to send emails has a limit each month so the code to send
+            the email is commented out so it doesn't eat up the limit too quick (although
+                there is 200 emails/month that can be sent but still just incase).
+            
+            --
+            
+            also the details to access where the email is sent will be adding the details into the 
+            jira ticket for the tech support page :)
+            
+            ~ Chantel
+        */
 
         // // comment below back in if you want to send a test email for support page
         // emailjs.sendForm('service_gs0av92', 'template_2y5bxxs', formThing.current, 'KNHae1w2H-IMWhEI7')
         //     .then((result) => {
         //         console.log(result.text);
+        //         var responseBox = document.getElementById("tech_support_form_successful_response");
+        //         responseBox.style.display='block';
         //     }, (error) => {
         //         console.log(error.text);
+        //         var responseBox = document.getElementById("tech_support_form_failed_response");
+        //         responseBox.style.display='block';
         //     });
         // // comment above back in if you want to send a test email for support page
 
-        var responseBox = document.getElementById("tech_support_form_response");
-        responseBox.style.display='block';
     }
 
     return (
@@ -67,7 +59,7 @@ function TechSupportPage() {
                             <label > Name </label>
                         </div> */}
                         <div>
-                            <input name="name_input" className="" required placeholder='Name' />
+                            <input name="name_input" className="" required placeholder='Full Name' />
                         </div>
                     </div>
 
@@ -96,9 +88,14 @@ function TechSupportPage() {
                 </form>
 
                 <div style={{textAlign: 'center'}}>
-                    <div id="tech_support_form_response" style={{display: 'none'}}>
+                    <div id="tech_support_form_successful_response" style={{display: 'none'}}>
                         <div className='successful_submission'>
                             Your Issue Ticket has been received. Please keep an eye on your emails for a reply.
+                        </div>
+                    </div>
+                    <div id="tech_support_form_failed_response" style={{display: 'none'}}>
+                        <div className='invalid_submission'>
+                            There was an issue submitting your issue or enquiry. Please reload the page and try again.
                         </div>
                     </div>
                 </div>
