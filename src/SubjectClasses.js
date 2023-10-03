@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import subjectImage from './white_paper.jpg';
+import './Subjects.css'
 
 
 function SubjectClasses({ subjects }) {
@@ -17,18 +18,18 @@ function SubjectClasses({ subjects }) {
     const { subject, classes } = selectedSubjectObj;
 
     return (
-        <div className="subjectList">
+        <div className="subject-list">
             {classes.map((classType) => (
-                <div key={classType.id} className='subjectCard'>
-                    <div className="subjectCard_content">
-                        <Link to={`/subject/${subject}/${classType}`} style={{ textDecoration: 'none', color: 'black', textAlign: 'center' }}>
+                <div key={classType} className='card-box'>
+                    <Link to={`/subject/${subject}/${classType}`} className='card-item' >
                         <div>
-                                <img src={subjectImage} className="small-image-sizer" alt={`${subject} icon`} />
-                            </div>
-                            <h3 className="subjectName"> {classType} </h3>
-                            <p> class starts at : 16:00</p>   
-                        </Link>
-                    </div>
+                            <img src={subjectImage} className="card-image"  alt={`${subject} icon`} />
+                        </div>
+                        <div className='card-text'>
+                            <h3 className="card-name"> {classType} </h3>
+                            <p className="card-time"> Class starts at : 16:00</p>
+                        </div>
+                    </Link>
                 </div>
             ))}
         </div>

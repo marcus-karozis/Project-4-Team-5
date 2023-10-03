@@ -1,0 +1,67 @@
+.card-image {
+    height: 150px;
+    width: 250px;
+    object-fit: cover;
+}
+
+.card-box {
+    height: auto;
+    width: auto;
+    margin: 20px;
+    background-color: #f0f0f0;
+    /* Set a background color for the boxes */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
+    /* Add a shadow to the boxes */
+    border-radius: 4px;
+    box-sizing: border-box;
+    overflow: hidden;
+    background: #fff;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.card-box:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .35);
+    text-decoration: underline;
+}
+
+.card-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-name {
+    text-align: left;
+    text-decoration: none;
+    margin: 0 5px 5px 10px;
+}
+
+
+.card-text {
+    padding: 10px;
+    color: black;
+    position: relative;
+}
+
+.card-date {
+    text-align: left;
+    text-decoration: none;
+    margin: 0 5px 5px 10px;
+    font-size: 15px;
+}
+
+.card-time {
+    text-align: left;
+    text-decoration: none;
+    margin: 0 5px 5px 10px;
+    font-size: 15px;
+}
+
+.dashboard {
+    padding: 30px;
+    position: absolute;
+}
+
+.card-item {
+    text-decoration: none;
+}
