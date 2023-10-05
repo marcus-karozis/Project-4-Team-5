@@ -1,70 +1,69 @@
-import React, { useState } from 'react';
-import { FaceClient } from '@azure/cognitiveservices-face';
-
-// Initialize the Azure Face API client
-const faceClient = new FaceClient('<Your-API-KEY>', '<Your-API-ENDPOINT>');
+import React, { useRef, useState, useEffect } from 'react';
+import Webcam from 'react-webcam';
 
 const AuthenticationPage = () => {
-  const [showLoginForm, setShowLoginForm] = useState(false);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const webcamRef = useRef(null);
+  const [authStatus, setAuthStatus] = useState(null);
+  const [username, setUsername] = useState(null);
 
   const handleFaceRecognition = async () => {
-    // Assume faceImageData contains the face image data
-    const faceImageData = ''; // Fetch this data from your UI
+    const imageSrc = webcamRef.current.getScreenshot();
+
     try {
-      const result = await faceClient.face.detectWithStream(faceImageData);
-      if (result.length > 0) {
-        // Face detected successfully, proceed with your logic
+      const formData = new FormData();
+      formData.append('image', imageSrc);
+
+      const response = await fetch('http://localhost:5000/login_with_face', {
+        method: 'POST',
+        body: formData
+      });
+
+      const result = await response.json();
+
+      if (result.status === "success") {
+        setAuthStatus("success");
+        setUsername(result.username);
       } else {
-        // No face detected or some error occurred
-        setShowLoginForm(true);
+        setAuthStatus("fail");
+        setUsername(null);
       }
     } catch (error) {
-      console.error("Azure Face API Error:", error);
-      setShowLoginForm(true);
+      setAuthStatus("error");
+      setUsername(null);
+      console.error("Error during face recognition:", error);
     }
   };
 
-  const handleLogin = () => {
-    // Your login logic here
-  };
+  useEffect(() => {
+    // Setting a delay to ensure the webcam is ready
+    const timeoutId = setTimeout(handleFaceRecognition, 3000);
+    return () => clearTimeout(timeoutId); // Cleanup to avoid memory leaks
+  }, []);
 
   return (
     <div className="authentication-container">
-      {!showLoginForm ? (
-        <>
-          <h2>Facial Recognition</h2>
-          {/* Your Facial Recognition UI here */}
-          <button onClick={handleFaceRecognition}>Verify Face</button>
-        </>
+      <h2>Facial Recognition</h2>
+      <Webcam
+        audio={false}
+        ref={webcamRef}
+        screenshotFormat="image/jpeg"
+      />
+      {authStatus === "success" ? (
+        <p>Login Successful as {username}</p>
       ) : (
-        <>
-          <h2>Login</h2>
-          <form onSubmit={handleLogin}>
-            <div className="form-group">
-              <label>Email:</label>
-              <input
-                type="email"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label>Password:</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            <button type="submit" className="login-button">
-              Login
-            </button>
-          </form>
-        </>
+        <p>Authenticating...</p>
+      )}
+      {authStatus === "fail" && (
+        <div>
+          <p>Face not recognized or authentication failed.</p>
+          <button onClick={handleFaceRecognition}>Try Again</button>
+        </div>
+      )}
+      {authStatus === "error" && (
+        <div>
+          <p>An error occurred. Please try again.</p>
+          <button onClick={handleFaceRecognition}>Try Again</button>
+        </div>
       )}
     </div>
   );

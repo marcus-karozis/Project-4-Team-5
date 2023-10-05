@@ -1,5 +1,6 @@
 import './App.css';
-import LoginPage from './login';
+import AuthenticationPage from './login.js';
+
 import Navbar from './components/Navbar';
 import subjectData from './data/data';
 import { Subjects } from './menu/Menu';
