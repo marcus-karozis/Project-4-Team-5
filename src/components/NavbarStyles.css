@@ -9,6 +9,10 @@ nav{
     background-image: linear-gradient(to right, rgb(9, 20, 105) , rgb(181, 203, 226));
 }
 
+#logomob{
+    display:none;
+}
+
 #navbar{
     display: flex;
     align-items: center;
@@ -46,45 +50,46 @@ nav{
 
 }
 
-#mobile {
-    display: none;
-}
-
-#mobile i{
-    color: #fff;
-}
-
 @media screen and (max-width:769px){
+    nav{
+        /* display: flex; */
+        /* align-items: center; */
+        /* justify-content: space-between; */
+        background:  #1b2430;
+        padding: 0px 0px;
+        width: 0%;
+    }
+
+    #logopc{
+        display:none;
+    }
+
+    #logomob{
+        display:flex;
+        padding-right: 13rem;
+    }
+
     #navbar{
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: flex-start;
         justify-content: flex-start;
         position: fixed;
-        top: 90px;
-        right: 0px;
-        width: 300px;
+        top: 90%;
+        right: 0px;  /* edit this for length */
+        width: 100%;
         height: 100vh;
         background:  #2a3239;
-        box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
-        padding: 40px 0 0 10px;
+        /* box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1); */
+        padding: 0 0 0 10px;
         transition: 0.3s ease-in-out;
     }
 
-    #navbar.active{
-        right: 0px;
-    }
-
     #navbar li{
-        margin-bottom: 25px;
+        list-style: none;
+        padding: 10 10px;
+        position:relative;
+        padding-top: 13px;
     }
-
-    #mobile{
-        display: block;
-    }
-
-    #mobile i{
-        font-size: 24px;
-        cursor: pointer;
-    }
+    
 }

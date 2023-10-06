@@ -22,7 +22,6 @@ function SubjectPage() {
     }
 
     function disableCode() {
-
         let code = "";
         setCode(code);
     }
@@ -41,12 +40,7 @@ function SubjectPage() {
             </ul>
         </div>
         <div>
-            <BasicTable id="attended"/>
-            <BasicTable id="absent"/>
-        </div>
-        <div>
-            <button> move to attended </button>
-            <button> move to absent </button>
+            <BasicTable/>
         </div>
         </>
     );

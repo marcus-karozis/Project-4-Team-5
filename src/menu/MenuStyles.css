@@ -1,31 +1,27 @@
-.subjectList{
-  display: inline-block;
-  justify-content: space-evenly;
-  margin-top: 1rem;
-  margin-left: 1rem;
-  text-align: left;
-  background-color: rgb(221, 221, 221);
-}
-
 .subjectCard:hover{
   transform: translateY(-0.3rem);
   box-shadow: 0.2rem 0.2rem 1.5rem #bbb;
   transition: 0.2s;
 }
 
-.subjectCard__content{
+.subjectCard{
   font-size: 1.5rem;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-.subject-card {
-  margin: 10px;
-box-shadow: 0px 0px 12px 3px grey;
+  display: inline-block;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  /* text-align: left; */
+  background-image: url(../white_paper.jpg);
+  width: 300px;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
 }
   
 .small-image-sizer {
   height:300px;
-  width:400px;
+  width:100%;
   object-fit: fill;
 }
 
@@ -37,7 +33,7 @@ box-shadow: 0px 0px 12px 3px grey;
   justify-content: center;
 }
 
-.subject-button {
+/* .subject-button {
   font-size: 16px;
   border: none;
   background-color: rgba(255, 255, 255, 0);
@@ -50,9 +46,48 @@ box-shadow: 0px 0px 12px 3px grey;
 
 .subject-button:hover {
   border-bottom: rgb(41, 92, 182) solid 3px;
-}
+} */
 
 .subject-button:active {
   background-color: rgba(154, 179, 222, 0.5);
   border-bottom: rgb(41, 92, 182) solid 3px;
+}
+
+@media screen and (max-width:769px){
+  /* .subjectList{
+    display:flex;
+    flex-direction:row;
+    display: inline-block;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    text-align: left;
+    border-radius: 1.5rem;
+    background-color: white;
+    width: 40%;
+  } */
+
+  .subjectCard:hover{
+    transform:none;
+    box-shadow: none;
+  }
+
+  /* .small-image-sizer {
+    position: absolute;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    height:100px;
+    width:150px;
+    object-fit: fill;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  .subjectCard{
+    font-size: 1rem;
+    position: absolute
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  } */
+
+  
 }

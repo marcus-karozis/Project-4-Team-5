@@ -42,7 +42,7 @@ function App() {
       <div className="App">
         <Navbar/>
       </div>
-      <div className="SubjectCard">
+      <div className="SubjectList">
         {subjectData.map(subjectData => (
           <Subjects
           key={subjectData.id}

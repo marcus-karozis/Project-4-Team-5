@@ -7,7 +7,7 @@ import './table.css'
 const BasicTable = () => {
 
     const columns = useMemo(() => COLUMNS, [])
-    const data = useMemo(() => STUDENTDATA, [])
+    const data = useMemo(() => STUDENTDATA, []) 
 
     const tableInstance = useTable({
         columns,
@@ -42,9 +42,11 @@ const BasicTable = () => {
                 <tbody {...getTableBodyProps()}>
                     {
                         rows.map(row => {
-                            prepareRow(row)
+                            prepareRow(row);
+                            // Determine the CSS class based on the "grade" property
+                            const isPresent = `row-isPresent-${row.original.isPresent}`;
                             return (
-                                <tr {...row.getRowProps()}>
+                                <tr {...row.getRowProps()} className={isPresent}>
                                     {
                                         row.cells.map((cell) => {
                                             return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
