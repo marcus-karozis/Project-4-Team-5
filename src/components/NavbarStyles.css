@@ -31,7 +31,8 @@ nav{
 
 #navbar li a:hover,
 #navbar li a.active:hover{
-    color: #17cf97;
+    /* color: #17cf97; */
+    color: #29127d;
 }
 
 #navbar li a:hover::after,
@@ -39,11 +40,15 @@ nav{
     content: "";
     width: 30%;
     height: 2px;
-    background: #17cf97;
+    background: #29127d;
     position: absolute;
     bottom: -4px;
     left: 20px;
 
+}
+
+.navBarSelectedPage {
+    color: #29127d;
 }
 
 #mobile {

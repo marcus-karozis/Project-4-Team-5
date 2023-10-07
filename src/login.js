@@ -1,140 +1,72 @@
-import React, { useState } from 'react';
-import './login.css';
+import React, { useRef, useState, useEffect } from 'react';
+import Webcam from 'react-webcam';
 
-function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const AuthenticationPage = () => {
+  const webcamRef = useRef(null);
+  const [authStatus, setAuthStatus] = useState(null);
+  const [username, setUsername] = useState(null);
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
+  const handleFaceRecognition = async () => {
+    const imageSrc = webcamRef.current.getScreenshot();
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+    try {
+      const formData = new FormData();
+      formData.append('image', imageSrc);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Email:', email);
-    console.log('Password:', password);
-  };
-  
+      const response = await fetch('http://localhost:5000/login_with_face', {
+        method: 'POST',
+        body: formData
+      });
 
-  return (
-    <div className="login-container light-blue-background">
-      
-      <div className="login-form">
-        <h2>Login</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Email:</label>
-            <input type="email" value={email} onChange={handleEmailChange} required />
-          </div>
-          <div className="form-group">
-            <label>Password:</label>
-            <input type="password" value={password} onChange={handlePasswordChange} required />
-          </div>
-          <button type="submit" className="login-button">Login</button>
-        </form>
-      </div>
-    </div>
-  );
-}
+      const result = await response.json();
 
-export default Login;
-
-
-
-
-
-// Amana Code 
-
-import React from 'react';
-import './App.css';
-import LoginPage from './LoginPage';
-
-function App() {
-  return (
-    <div className="App">
-      <LoginPage />
-    </div>
-  );
-}
-
-export default App;
-
-
-
-
-//amana additional code 
-import React, { useState } from 'react';
-
-function LoginPage() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [canSubmit, setCanSubmit] = useState(false);
-
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
-    checkCanSubmit(e.target.value, password);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-    checkCanSubmit(username, e.target.value);
-  };
-
-  const checkCanSubmit = (uname, pword) => {
-    if (uname && pword) {
-      setCanSubmit(true);
-    } else {
-      setCanSubmit(false);
+      if (result.status === "success") {
+        setAuthStatus("success");
+        setUsername(result.username);
+      } else {
+        setAuthStatus("fail");
+        setUsername(null);
+      }
+    } catch (error) {
+      setAuthStatus("error");
+      setUsername(null);
+      console.error("Error during face recognition:", error);
     }
   };
 
-  const handleLogin = () => {
-    // Here you would make the API call to your backend to validate the login
-    console.log('Logging in with', username, password);
-  };
+  useEffect(() => {
+    // Setting a delay to ensure the webcam is ready
+    const timeoutId = setTimeout(handleFaceRecognition, 3000);
+    return () => clearTimeout(timeoutId); // Cleanup to avoid memory leaks
+  }, []);
 
   return (
-    <div className="login-container">
-      <h2>Login</h2>
-      <div>
-        <label>
-          Username:
-          <input
-            type="text"
-            value={username}
-            onChange={handleUsernameChange}
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          Password:
-          <input
-            type="password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-        </label>
-      </div>
-      <div>
-        <button onClick={handleLogin} disabled={!canSubmit}>
-          Log-in
-        </button>
-      </div>
-      <div>
-        <a href="/forgot-password">Forgotten Password?</a>
-      </div>
+    <div className="authentication-container">
+      <h2>Facial Recognition</h2>
+      <Webcam
+        audio={false}
+        ref={webcamRef}
+        screenshotFormat="image/jpeg"
+      />
+      {authStatus === "success" ? (
+        <p>Login Successful as {username}</p>
+      ) : (
+        <p>Authenticating...</p>
+      )}
+      {authStatus === "fail" && (
+        <div>
+          <p>Face not recognized or authentication failed.</p>
+          <button onClick={handleFaceRecognition}>Try Again</button>
+        </div>
+      )}
+      {authStatus === "error" && (
+        <div>
+          <p>An error occurred. Please try again.</p>
+          <button onClick={handleFaceRecognition}>Try Again</button>
+        </div>
+      )}
     </div>
   );
-}
+};
 
-export default LoginPage;
-
-
-
-Note: The above code is a basic representation of the requirements you provided. In a real-world application, you'd also consider things like validation, error handling, state management, security concerns like hashing the password before sending it to the server, etc.
-
+export default AuthenticationPage;
