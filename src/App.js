@@ -47,6 +47,7 @@ function App() {
           <Subjects
           key={subjectData.id}
           subjectName={subjectData.subjectName}
+          time={subjectData.time}
         />
         ))}
       </div>

@@ -6,7 +6,7 @@
 
 .subjectCard{
   font-size: 1.5rem;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family:Arial, Helvetica, sans-serif;
   display: inline-block;
   justify-content: space-evenly;
   margin-top: 1rem;
@@ -34,7 +34,7 @@
   justify-content: center;
 }
 
-/* .subject-button {
+.subject-button {
   font-size: 16px;
   border: none;
   background-color: rgba(255, 255, 255, 0);
@@ -47,14 +47,14 @@
 
 .subject-button:hover {
   border-bottom: rgb(41, 92, 182) solid 3px;
-} */
+}
 
 .subject-button:active {
   background-color: rgba(154, 179, 222, 0.5);
   border-bottom: rgb(41, 92, 182) solid 3px;
 }
 
-@media screen and (max-width:850px){
+@media screen and (max-width:1000px){
 
   .subjectCard:hover{
     transform:none;
@@ -76,6 +76,12 @@
     object-fit: fill;
     padding-left: 100px;
     padding-right: 100px;
-  }*/
-  
+  }*/  
+
+  .subjectTime{
+    position: relative;
+    bottom: 10px;
+    left: 10px;
+    text-align: left;
+  }
 }

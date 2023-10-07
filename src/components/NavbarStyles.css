@@ -87,7 +87,7 @@ nav{
     display: none;
 }
 
-@media screen and (max-width:850px){
+@media screen and (max-width:1000px){
     nav{
         width: 80%;
         border-radius: 1rem;
