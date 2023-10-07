@@ -1,12 +1,20 @@
+require('dotenv').config();
 
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
 // Connect to MongoDB server using environment variables
-mongoose.connect(process.env.MONGODB_URI, {
+const mogoURI = "mongodb://"+
+                process.env.MONGODB_USER+":"+
+                process.env.MONGODB_PASS+"@"+
+                process.env.MONGODB_HOST+":"+
+                process.env.MONGODB_PORT;
+console.log(mogoURI);
+mongoose.connect(mogoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    dbName: process.env.MONGODB_DB,
 });
 
 // Check if MongoDB connection is successful
@@ -28,8 +36,8 @@ const subjectSchema = new mongoose.Schema({
                 {
                     value: String,
                     expiry: Date,
-                    users_selected:[String],
-                    users_passed:[String]
+                    users_selected:[String],    // user_name stored here
+                    users_passed:[String]       // user_name stored here
                 }
             ]
         }
@@ -41,7 +49,7 @@ const userSchema = new mongoose.Schema({
     user_name: String,
     enrolment: [
         {
-            class: Number,
+            class: Number,              //classes object index stored here
             checkin_timestamps:[Date]
         }
     ]
@@ -51,7 +59,7 @@ const userSchema = new mongoose.Schema({
 const Subject = mongoose.model('Subject', subjectSchema);
 const User = mongoose.model('User', userSchema);
 
-// Get Requests
+// GET Requests
 
 // Define the GET request for the subjects collection
 router.get('/subjects', async (req, res) => {
@@ -75,7 +83,7 @@ router.get('/users', async (req, res) => {
     }
 });
 
-// Post Requests
+// POST Requests
 
 // Define the POST request for the subjects collection
 router.post('/subjects', async (req, res) => {
