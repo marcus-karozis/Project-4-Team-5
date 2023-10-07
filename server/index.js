@@ -9,6 +9,9 @@ const mongoRouter = require('./routes/mongoRoute');
 app.use(express.static(path.join(__dirname, "..", "build")));
 app.use(express.static("public"));
 
+app.use(express.json()); // For JSON request bodies
+app.use(express.urlencoded({ extended: true })); // For URL-encoded request bodies
+
 
 
 // app.get("/", (req, res) => {

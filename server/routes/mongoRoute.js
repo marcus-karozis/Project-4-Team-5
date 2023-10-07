@@ -10,7 +10,7 @@ const mogoURI = "mongodb://"+
                 process.env.MONGODB_PASS+"@"+
                 process.env.MONGODB_HOST+":"+
                 process.env.MONGODB_PORT;
-console.log(mogoURI);
+//console.log(mogoURI);
 mongoose.connect(mogoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -65,7 +65,7 @@ const User = mongoose.model('User', userSchema);
 router.get('/subjects', async (req, res) => {
     try {
         const subjects = await Subject.find();
-        res.send(subjects);
+        res.json(subjects);
     } catch (err) {
         console.error(err);
         res.status(500).send('Server Error');
@@ -76,7 +76,7 @@ router.get('/subjects', async (req, res) => {
 router.get('/users', async (req, res) => {
     try {
         const users = await User.find();
-        res.send(users);
+        res.json(users);
     } catch (err) {
         console.error(err);
         res.status(500).send('Server Error');
@@ -91,7 +91,7 @@ router.post('/subjects', async (req, res) => {
         const { subject_name, classes } = req.body;
         const subject = new Subject({ subject_name, classes });
         await subject.save();
-        res.send(subject);
+        res.json(subject);
     } catch (err) {
         console.error(err);
         res.status(500).send('Server Error');
@@ -103,7 +103,7 @@ router.post('/users', async (req, res) => {
         const { user_type, user_name, enrolment } = req.body;
         const user = new User({ user_type, user_name, enrolment });
         await user.save();
-        res.send(user);
+        res.json(user);
     } catch (err) {
         console.error(err);
         res.status(500).send('Server Error');
