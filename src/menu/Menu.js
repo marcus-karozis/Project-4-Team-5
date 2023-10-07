@@ -9,7 +9,7 @@ export function Subjects(subjects) {
             <Link to="/subjectPage/SubjectPage" style={{ textDecoration: 'none', color: 'black', textAlign: 'center'}}>
                 <div>
                     <h3 className="subjectName"> {subjects.subjectName} </h3>
-                    <p> class starts at : 16:00</p>
+                    <p> 16:00</p>
                 </div>
             </Link>
         </div>

@@ -29,19 +29,18 @@ function SubjectPage() {
 
     return(
         <>
-        <div>
             <Navbar></Navbar>
-        </div>
-        <div className="">
-            <ul className="code dashboard-row">
-                <li><h className='codeText'>{codeGen}</h></li>
-                <li><button className="" onClick={generateCode}>Regenerate code</button></li>
-                <li><button className="" onClick={disableCode}>Disable code</button></li>
-            </ul>
-        </div>
-        <div>
-            <BasicTable/>
-        </div>
+            <h className='codeText'>{codeGen}</h>
+            {/* <h>Hello</h> */}
+            <div className="code dashboard-row">
+                    {/* <h className='codeText'>{codeGen}</h> */}
+                    <button className="" onClick={generateCode}>Regenerate code</button>
+                    <button className="" onClick={disableCode}>Disable code</button>
+            </div>
+            <div className='table'>
+                <BasicTable />
+            </div>
+            <div className="whitespace"/>
         </>
     );
 }
