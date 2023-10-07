@@ -2,44 +2,67 @@ nav{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background:  #1b2430;
-    padding: 5px 80px;
+    background:  #222;
+    padding: 0 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
-    background-color: darkblue;
-    background-image: linear-gradient(to right, rgb(9, 20, 105) , rgb(181, 203, 226));
+    /* background-color: darkblue; */
+    /* background-image: linear-gradient(to right, rgb(9, 20, 105) , rgb(181, 203, 226)); */
+    font-size: 1.2rem;
+    width: 100%;
+    height: 80px;
+    border-radius: 13px;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%);
 }
 
-#logomob{
-    display:none;
+.fa-react{
+    font-size: 2rem;
+    color: #fff;
+    justify-self: start;
+    cursor: pointer;
+    padding: 0 20px;
 }
 
-#navbar{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#navbar li{
+.navbar{
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 10px;
     list-style: none;
+    align-items: center;
+    text-align: center;
+    justify-content: end;
+}
+
+.navbar li{
+    list-style-type: none;
     padding: 0 20px;
     position: relative;
 }
 
-#navbar li a{
+.navbar li a{
     text-decoration: none;
     font-size: 1.3rem;
     font-weight: 600;
     color: #fff;
+    /* padding: 0.7rem 1rem;
+    white-space: nowrap; */
     transition: 0.3s ease-in-out;
 }
 
-#navbar li a:hover,
-#navbar li a.active:hover{
+/* #navbar:hover{
+    background: rgb(80, 80, 238 );
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+} */
+
+.navbar li a:hover,
+.navbar li a.active:hover{
     color: #17cf97;
 }
 
-#navbar li a:hover::after,
-#navbar li a.active::after {
+.navbar li a:hover::after,
+.navbar li a.active::after {
     content: "";
     width: 30%;
     height: 2px;
@@ -50,46 +73,57 @@ nav{
 
 }
 
-@media screen and (max-width:769px){
+.fa-bars,
+.fa-times {
+    color: #fff;
+}
+
+.menu-icons{
+    display: none;
+}
+
+@media screen and (max-width:850px){
     nav{
-        /* display: flex; */
-        /* align-items: center; */
-        /* justify-content: space-between; */
-        background:  #1b2430;
-        padding: 0px 0px;
-        width: 0%;
+        width: 80%;
     }
 
-    #logopc{
-        display:none;
-    }
-
-    #logomob{
-        display:flex;
-        padding-right: 13rem;
-    }
-
-    #navbar{
+    .navbar{
         display: flex;
-        flex-direction: row;
-        align-items: flex-start;
+        flex-direction: column;
+        align-items: stretch;
         justify-content: flex-start;
-        position: fixed;
-        top: 90%;
-        right: 0px;  /* edit this for length */
+        position: absolute;
+        top: 0;
+        left: -110%;
         width: 100%;
-        height: 100vh;
-        background:  #2a3239;
-        /* box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1); */
-        padding: 0 0 0 10px;
-        transition: 0.3s ease-in-out;
+        height: auto;
+        background:  rgba(255, 255, 255, 0.25);
+        box-shadow: 0 8px 32px rgba(31, 38, 135, .37);
+        backdrop-filter: blur(4px);
+        border-radius: 13px;
+        padding: 80px 0 30px 0;
+        margin: 0;
+        z-index: -1;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .navbar.active{
+        left: 0%;
     }
 
     #navbar li{
-        list-style: none;
-        padding: 10 10px;
-        position:relative;
-        padding-top: 13px;
+        display: block;
+        widows: 100%;
+        padding: 2rem 0;
+        color: #222;
+    }
+
+    #navbar li:hover{
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(20px);
     }
     
+    .menu-icons{
+        display: block;
+    }
 }

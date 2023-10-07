@@ -43,7 +43,7 @@ const BasicTable = () => {
                     {
                         rows.map(row => {
                             prepareRow(row);
-                            // Determine the CSS class based on the "grade" property
+                            // Determine the CSS class based on the "isPresent" property / If isPresent = true , green, if false, red
                             const isPresent = `row-isPresent-${row.original.isPresent}`;
                             return (
                                 <tr {...row.getRowProps()} className={isPresent}>
