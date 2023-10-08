@@ -1,5 +1,6 @@
 import { Component, useState } from "react";
 import "./NavbarStyles.css";
+import { BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
 
 function Navbar() {
     const [clicked, setClicked] = useState(false);
@@ -30,13 +31,24 @@ function Navbar() {
                 </div>
 
                 <ul className={clicked ? "navbar active" : "navbar"}>
-                    <li><a className="active" href="index.html">
+                    <li>
+                        {/* <a className="active" href="index.html">
                         <i className="fa-solid fa-house-user"></i>
                         Home
-                    </a></li>
+                    </a> */}
+                        <Link to="/" style={{ textAlign: 'center'}}>
+                        <i className="fa-solid fa-house-user"></i> Home
+                        </Link>
+                    </li>
                     <li><a href="index.html">
                         <i className="fa-solid fa-gear"></i>
                         Account</a></li>
+
+                    <li>
+                        <Link to="/techSupportPage" style={{ textAlign: 'center'}}>
+                            <i className="fa-solid fa-envelope"></i> Support
+                        </Link>
+                    </li>
                 </ul>
             </nav>
         </>

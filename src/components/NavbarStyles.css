@@ -139,7 +139,8 @@ nav{
 
     .navbar li a:hover,
     .navbar li a.active:hover {
-        display: none;
+        /* display: none; */
+        color:#17cf97;
     }
 
     .navbar li a:hover::after,
