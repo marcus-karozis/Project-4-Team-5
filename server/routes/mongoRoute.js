@@ -50,7 +50,8 @@ const userSchema = new mongoose.Schema({
     enrolment: [
         {
             class: Number,              //classes object index stored here
-            checkin_timestamps:[Date]
+            checkin_timestamps:[Date],
+            subject_id: mongoose.Schema.ObjectId
         }
     ]
 });

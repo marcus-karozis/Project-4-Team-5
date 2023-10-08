@@ -3,7 +3,17 @@ import { BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
 
 import subjectImage from '../white_paper.jpg'
 
-export function Subjects(subjects) {
+export function Subject(subjects) {
+    return(
+        <div key={"subject.id"} className="subjectCard">
+            <Link to="/subjectPage/SubjectPage">
+                <h3 className="subjectName"> {subjects.subjectName} </h3>
+            </Link>
+        </div>
+    )
+}
+
+export function Class(subjects) {
     return(
         <div key={"subject.id"} className="subjectCard">
             <Link to="/subjectPage/SubjectPage">
