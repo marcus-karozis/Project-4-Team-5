@@ -1,3 +1,5 @@
+/* ***************************************** */
+/* base react */
 .App {
   text-align: center;
 }
@@ -36,8 +38,8 @@
     transform: rotate(360deg);
   }
 }
-
-/* dashboard things */
+/* *************************************** */
+/* student dashboard things */
 
 .dashboard-header {
   background-color: darkblue;
@@ -91,6 +93,8 @@
   font-size: 16px;
 }
 
+/* ************************************* */
+/* teacher dashboard */
 .SubjectList {
   display: flex;
   flex-wrap: wrap;
@@ -113,6 +117,7 @@
   object-fit: fill;
 }
 
+/* ******************************************* */
 .center-text {
   text-align: center;
 }
@@ -169,6 +174,8 @@
   padding-right: 40px;
 }
 
+/* *************************************************************** */
+/* Teacher dashboard */
 @media screen and (max-width:1000px){
   .SubjectList{
     justify-content: center;

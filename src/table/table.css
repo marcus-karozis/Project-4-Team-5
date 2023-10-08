@@ -1,3 +1,4 @@
+/* table */
 table {
   font-family: arial, sans-serif;
   border-collapse: separate;
@@ -49,10 +50,18 @@ table tr:last-child td:last-child {
   border-bottom-right-radius: 6px;
 }
 
+
+/* ************************************************* */
+/* The only important thing here */
+/* if isPresent = true */
 .row-isPresent-true {
   background-color: rgb(72, 219, 59);
 }
 
+
+/* if isPresent = false */
 .row-isPresent-false{
   background-color: rgb(219, 48, 48);
 }
+
+/* ******************************************* */

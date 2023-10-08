@@ -1,3 +1,5 @@
+//accessor takes data from json, Header gives it another name
+
 export const COLUMNS = [
 {
     Header: 'First name',

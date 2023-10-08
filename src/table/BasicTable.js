@@ -5,6 +5,8 @@ import { COLUMNS } from '../data/columns'
 import './table.css'
 
 //refer to studentData.json and columns.js
+//I dont know what every thing does, I just follow https://www.youtube.com/watch?v=YwP4NAZGskg&list=PLC3y8-rFHvwgWTSrDiwmUsl4ZvipOw9Cz
+//I did not implement all of them, just from tutorial 1 - 3
 
 const BasicTable = () => {
 

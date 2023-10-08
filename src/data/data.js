@@ -1,3 +1,5 @@
+//same thing with studentdata, just syntaxed differently
+
 const subjectData = [
     {
         id: 1000,

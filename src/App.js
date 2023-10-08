@@ -36,6 +36,7 @@ function SubjectCard() {
   )
 }
 
+//main function
 function App() {
   return (
     <>
