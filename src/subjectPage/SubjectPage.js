@@ -22,7 +22,6 @@ function SubjectPage() {
     }
 
     function disableCode() {
-
         let code = "";
         setCode(code);
     }
@@ -30,24 +29,16 @@ function SubjectPage() {
 
     return(
         <>
-        <div>
             <Navbar></Navbar>
-        </div>
-        <div className="">
-            <ul className="code dashboard-row">
-                <li><h className='codeText'>{codeGen}</h></li>
-                <li><button className="" onClick={generateCode}>Regenerate code</button></li>
-                <li><button className="" onClick={disableCode}>Disable code</button></li>
-            </ul>
-        </div>
-        <div>
-            <BasicTable id="attended"/>
-            <BasicTable id="absent"/>
-        </div>
-        <div>
-            <button> move to attended </button>
-            <button> move to absent </button>
-        </div>
+            <h className='codeText'>{codeGen}</h>
+            <div className="code dashboard-row">
+                <button onClick={generateCode}><i className='fa fa-refresh'></i> Regenerate code</button>
+                <button onClick={disableCode}><i className='fa fa-remove'></i> Disable code</button>
+            </div>
+            <div className='table'>
+                <BasicTable />
+            </div>
+            <div className="whitespace"/>
         </>
     );
 }

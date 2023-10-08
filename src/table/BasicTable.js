@@ -4,10 +4,14 @@ import STUDENTDATA from '../data/studentData.json'
 import { COLUMNS } from '../data/columns'
 import './table.css'
 
+//refer to studentData.json and columns.js
+//I dont know what every thing does, I just follow https://www.youtube.com/watch?v=YwP4NAZGskg&list=PLC3y8-rFHvwgWTSrDiwmUsl4ZvipOw9Cz
+//I did not implement all of them, just from tutorial 1 - 3
+
 const BasicTable = () => {
 
     const columns = useMemo(() => COLUMNS, [])
-    const data = useMemo(() => STUDENTDATA, [])
+    const data = useMemo(() => STUDENTDATA, []) 
 
     const tableInstance = useTable({
         columns,
@@ -25,10 +29,12 @@ const BasicTable = () => {
     return (
         <div>
             <table {...getTableProps()}>
+                {/* header */}
                 <thead>
                     {
                         headerGroups.map((headerGroup) => (
                             <tr {...headerGroup.getHeaderGroupProps()}>
+                                {/* in COLUMNS, for every header, show */}
                                 {
                                     headerGroup.headers.map(column => (
                                         <th { ...column.getHeaderProps()}>
@@ -39,12 +45,16 @@ const BasicTable = () => {
                             </tr>
                     ))}
                 </thead>
+                {/* body */}
                 <tbody {...getTableBodyProps()}>
+                    {/* in COLUMNS, for every accessor, refer to studentData, take values from there */}
                     {
                         rows.map(row => {
-                            prepareRow(row)
+                            prepareRow(row);
+                            //If isPresent = true , green, if false, red
+                            const isPresent = `row-isPresent-${row.original.isPresent}`;
                             return (
-                                <tr {...row.getRowProps()}>
+                                <tr {...row.getRowProps()} className={isPresent}>
                                     {
                                         row.cells.map((cell) => {
                                             return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>

@@ -1,8 +1,6 @@
+//accessor takes data from json, Header gives it another name
+
 export const COLUMNS = [
-{
-    Header: 'Student ID',
-    accessor: 'student_id'
-},
 {
     Header: 'First name',
     accessor: 'first_name'

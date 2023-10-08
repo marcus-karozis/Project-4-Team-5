@@ -1,31 +1,31 @@
-.subjectList{
-  display: inline-block;
-  justify-content: space-evenly;
-  margin-top: 1rem;
-  margin-left: 1rem;
-  text-align: left;
-  background-color: rgb(221, 221, 221);
-}
-
+/* when component is hovered (not clicked) */
 .subjectCard:hover{
   transform: translateY(-0.3rem);
   box-shadow: 0.2rem 0.2rem 1.5rem #bbb;
   transition: 0.2s;
 }
 
-.subjectCard__content{
+/* main component */
+.subjectCard{
   font-size: 1.5rem;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-.subject-card {
-  margin: 10px;
-box-shadow: 0px 0px 12px 3px grey;
+  font-family:Arial, Helvetica, sans-serif;
+  display: inline-block;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  /* text-align: left; */
+  background-image: url(../white_paper.jpg);
+  width: 300px;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  border-radius: 0.5rem;
 }
   
+/* picture */
 .small-image-sizer {
   height:300px;
-  width:400px;
+  width:100%;
   object-fit: fill;
 }
 
@@ -55,4 +55,36 @@ box-shadow: 0px 0px 12px 3px grey;
 .subject-button:active {
   background-color: rgba(154, 179, 222, 0.5);
   border-bottom: rgb(41, 92, 182) solid 3px;
+}
+
+@media screen and (max-width:1000px){
+
+  .subjectCard:hover{
+    transform:none;
+    box-shadow: none;
+  }
+
+  .subjectCard{
+    height: 70px;
+    font-size: 20px;
+    text-align: right;
+  }
+
+  /* .small-image-sizer {
+    position: absolute;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    height:100px;
+    width:150px;
+    object-fit: fill;
+    padding-left: 100px;
+    padding-right: 100px;
+  }*/  
+
+  .subjectTime{
+    position: relative;
+    bottom: 10px;
+    left: 10px;
+    text-align: left;
+  }
 }

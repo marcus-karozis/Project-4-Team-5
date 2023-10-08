@@ -38,17 +38,19 @@ function SubjectCard() {
   )
 }
 
+//main function
 function App() {
   return (
 <>
     <div className="App">
       <Navbar/>
       </div>
-      <div className="SubjectCard">
+      <div className="SubjectList">
         {subjectData.map(subjectData => (
           <Subjects
           key={subjectData.id}
           subjectName={subjectData.subjectName}
+          time={subjectData.time}
         />
 ))}
     </div>

@@ -1,3 +1,5 @@
+/* ***************************************** */
+/* base react */
 .App {
   text-align: center;
 }
@@ -36,8 +38,8 @@
     transform: rotate(360deg);
   }
 }
-
-/* dashboard things */
+/* *************************************** */
+/* student dashboard things */
 
 .dashboard-header {
   background-color: darkblue;
@@ -91,11 +93,22 @@
   font-size: 16px;
 }
 
-/* for subject card(s) */
+/* ************************************* */
+/* teacher dashboard */
+.SubjectList {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  top: 5rem;
+  justify-content: center;
+  margin-right: 2rem;
+}
 
-.subject-card {
-  margin: 10px;
-  box-shadow: 0px 0px 12px 3px grey;
+.SubjectList a{
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  position: relative;
 }
 
 .small-image-sizer {
@@ -104,6 +117,7 @@
   object-fit: fill;
 }
 
+/* ******************************************* */
 .center-text {
   text-align: center;
 }
@@ -158,4 +172,19 @@
   border-radius: 2px;
   padding-left: 40px;
   padding-right: 40px;
+}
+
+/* *************************************************************** */
+/* Teacher dashboard */
+@media screen and (max-width:1000px){
+  .SubjectList{
+    justify-content: center;
+    margin-right: 2rem;
+  }
+
+  .SubjectList a{
+    text-align: center;
+    font-size: 20px;
+    bottom: 22px;
+  }
 }
