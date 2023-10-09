@@ -10,7 +10,7 @@ function SubjectPage() {
     
     let [classData, setClasses] = useState([]);
     let location = useLocation();
-    let { subject_id } = location.state
+    let { subject_id } = location.state;
     useEffect(() => {
         const fetchClass = async () => {
             try {
@@ -35,7 +35,9 @@ function SubjectPage() {
                     <Class
                         key={_class._id}
                         className={_class.class_name}
-                        time={_class.class_start_timestamps[0] ?? ""}
+                        subject_id={subject_id}
+                        class_id={classData.indexOf(_class)}
+                        time={new Date(_class.class_start_timestamps[0]).toDateString() ?? ""}
                     />))
                 }
             </div>

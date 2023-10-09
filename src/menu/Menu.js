@@ -16,7 +16,7 @@ export function Subject(subjects) {
 export function Class(_class) {
     return(
         <div key={"subject.id"} className="subjectCard">
-            <Link to="/subjectPage/ClassPage">
+            <Link to="/subjectPage/ClassPage" state={{subject_id: _class.subject_id, class_id: _class.class_id}}>
                 <h3 className="subjectName"> {_class.className} </h3>
                 <h3 className="subjectTime"> {_class.time} </h3>
             </Link>

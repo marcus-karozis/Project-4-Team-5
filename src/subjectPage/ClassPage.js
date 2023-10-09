@@ -4,9 +4,13 @@ import Navbar from '../components/Navbar';
 import BasicTable from '../table/BasicTable'
 import axios from 'axios';
 import { Class } from '../menu/Menu';
+import { useLocation } from 'react-router-dom'
 
 
 function ClassPage() {
+
+    let location = useLocation();
+    let { class_id, subject_id } = location.state
 
     const [codeGen, setCode] = useState('');
 
@@ -38,7 +42,7 @@ function ClassPage() {
                 <button onClick={disableCode}><i className='fa fa-remove'></i> Disable code</button>
             </div>
             <div className='table'>
-                <BasicTable />
+                <BasicTable class_id={class_id} subject_id={subject_id}/>
             </div>
             <div className="whitespace"/>
         </>
