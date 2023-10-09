@@ -6,16 +6,11 @@ import axios from 'axios';
 //I dont know what every thing does, I just follow https://www.youtube.com/watch?v=YwP4NAZGskg&list=PLC3y8-rFHvwgWTSrDiwmUsl4ZvipOw9Cz
 //I did not implement all of them, just from tutorial 1 - 3
 
-const checkIfPresent = (user) => {
-
-    // Add functionality in here to detirmine if user has signed in
-
-    return false;
-}
 
 const BasicTable = (obj) => {
     let subject_id = obj.subject_id;
     let class_id = obj.class_id;
+    let startTime = obj.startTime;
     console.log(subject_id, class_id);
     let [userData, setUsers] = useState([]);
     useEffect(() => {
@@ -29,9 +24,15 @@ const BasicTable = (obj) => {
                 console.error(error);
             }
         };
-
+        
         fetchUsers();
     }, [class_id, subject_id]);
+    
+    const checkIfPresent = (user) => {
+        let checkins = user.enrolment.find(_class => _class.class === class_id)?.checkin_timestamps;
+        if (new Date(checkins[0]) >= new Date(startTime)) return true;
+        return false;
+    }
 
     return (
         <div>
@@ -50,12 +51,12 @@ const BasicTable = (obj) => {
                     {
                         userData.map(user => {
                             //If isPresent = true , green, if false, red
-                            const isPresent = `row-isPresent-${checkIfPresent(user)}`;
+                            const isPresent = checkIfPresent(user);
                             return (
-                                <tr className={isPresent}>
+                                <tr className={`row-isPresent-${isPresent}`}>
                                     <td>{user.first_name}</td>
                                     <td>{user.last_name}</td>
-                                    <td>{isPresent ? user.enrolment.find(_class => _class._id === class_id)?.checkin_timestamps[0] : ""}</td>
+                                    <td>{isPresent ? new Date(user.enrolment.find(_class => _class.class === class_id)?.checkin_timestamps[0]).toLocaleTimeString() : ""}</td>
                                 </tr>
                             )
                         })
