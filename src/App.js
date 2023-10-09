@@ -11,16 +11,6 @@ import axios from 'axios';
 
 const subjectPage = ReactDOM.createRoot(document.getElementById('root'));
 
-// const fetchSubjects = async () => {
-//   try {
-//     const response = await axios.get('/db/subjects');
-//     const subjects = response.data;
-//     return subjects;
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
-
 //main function
 function App() {
   const [subjectData, setSubjects] = useState([]);
@@ -48,6 +38,7 @@ function App() {
         {subjectData.map(subject => (
           <Subject
             key={subject._id}
+            id={subject._id}
             subjectName={subject.subject_name}
           />))
         }

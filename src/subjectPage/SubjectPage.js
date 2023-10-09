@@ -1,44 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './SubjectPageStyles.css';
 import Navbar from '../components/Navbar';
 import BasicTable from '../table/BasicTable'
-
+import { Class } from '../menu/Menu';
+import axios from 'axios'; 
+import { useLocation } from 'react-router-dom'
 
 function SubjectPage() {
-
-    const [codeGen, setCode] = useState('');
-
-    function generateCode() {
     
-        let charset = "";
-        charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        charset += "0123456789";
-    
-        let code = "";
-        for (let i = 0; i < 7; i++) {
-            code += charset.charAt(Math.floor(Math.random() * charset.length));
-        }
-        setCode(code);
-    }
+    let [classData, setClasses] = useState([]);
+    let location = useLocation();
+    let { subject_id } = location.state
+    useEffect(() => {
+        const fetchClass = async () => {
+            try {
+                let response = await axios.get('/db/subjects');
+                let classes = response.data.find(s => s._id === subject_id).classes;
+                setClasses(classes);
+            } catch (error) {
+                console.error(error);
+            }
+        };
 
-    function disableCode() {
-        let code = "";
-        setCode(code);
-    }
-    
+        fetchClass();
+    }, [subject_id]);
 
-    return(
+    return (
         <>
-            <Navbar></Navbar>
-            <h className='codeText'>{codeGen}</h>
-            <div className="code dashboard-row">
-                <button onClick={generateCode}><i className='fa fa-refresh'></i> Regenerate code</button>
-                <button onClick={disableCode}><i className='fa fa-remove'></i> Disable code</button>
+            <div className="App">
+                <Navbar/>
             </div>
-            <div className='table'>
-                <BasicTable />
+            <div className="ClassList"> 
+                {classData.map(_class => (
+                    <Class
+                        key={_class._id}
+                        className={_class.class_name}
+                        time={_class.class_start_timestamps[0] ?? ""}
+                    />))
+                }
             </div>
-            <div className="whitespace"/>
         </>
     );
 }
