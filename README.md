@@ -14,6 +14,14 @@ the following evironment variables need to be set in /server/.env
 
 - SERVER_PORT=3000
 
+
+## How to start localhost
+
+If you want to just view changes in the client (front end) without the backend, run this in the terminal: ```npm run start-client```
+
+If you want the server (backend) running at the same time, run this in the terminal: ```npm start```
+
+
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
