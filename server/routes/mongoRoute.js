@@ -47,10 +47,13 @@ const subjectSchema = new mongoose.Schema({
 const userSchema = new mongoose.Schema({
     user_type: Number,
     user_name: String,
+    first_name: String,
+    last_name: String,
     enrolment: [
         {
             class: Number,              //classes object index stored here
-            checkin_timestamps:[Date]
+            checkin_timestamps:[Date],
+            subject_id: mongoose.Schema.ObjectId
         }
     ]
 });
