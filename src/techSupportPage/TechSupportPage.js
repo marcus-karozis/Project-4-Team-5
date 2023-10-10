@@ -32,16 +32,16 @@ function TechSupportPage() {
 
             // // comment below back in if you want to send a test email for support page
 
-            // emailjs.sendForm('service_gs0av92', 'template_2y5bxxs', formThing.current, 'KNHae1w2H-IMWhEI7')
-            //     .then((result) => {
-            //         console.log(result.text + " | Email Sent to Admin!");
-            //         var responseBox = document.getElementById("tech_support_form_successful_response");
-            //         responseBox.style.display='block';
-            //     }, (error) => {
-            //         console.log(error.text + " | Could Not Send Email To Admin");
-            //         var responseBox = document.getElementById("tech_support_form_failed_response");
-            //         responseBox.style.display='block';
-            //     });
+            emailjs.sendForm('service_gs0av92', 'template_2y5bxxs', formThing.current, 'KNHae1w2H-IMWhEI7')
+                .then((result) => {
+                    console.log(result.text + " | Email Sent to Admin!");
+                    var responseBox = document.getElementById("tech_support_form_successful_response");
+                    responseBox.style.display='block';
+                }, (error) => {
+                    console.log(error.text + " | Could Not Send Email To Admin");
+                    var responseBox = document.getElementById("tech_support_form_failed_response");
+                    responseBox.style.display='block';
+                });
             
             // // comment above back in if you want to send a test email for support page
 
