@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Webcam from 'react-webcam';
 
-const AuthenticationPage = () => {
+const AuthenticationPage = ({ onFail }) => {
   const webcamRef = useRef(null);
   const [authStatus, setAuthStatus] = useState(null);
   const [username, setUsername] = useState(null);
@@ -26,18 +26,19 @@ const AuthenticationPage = () => {
       } else {
         setAuthStatus("fail");
         setUsername(null);
+        onFail();  // This will trigger the redirection to the Login page
       }
     } catch (error) {
       setAuthStatus("error");
       setUsername(null);
+      onFail();  // This will also trigger the redirection in case of an error
       console.error("Error during face recognition:", error);
     }
   };
 
   useEffect(() => {
-    // Setting a delay to ensure the webcam is ready
     const timeoutId = setTimeout(handleFaceRecognition, 3000);
-    return () => clearTimeout(timeoutId); // Cleanup to avoid memory leaks
+    return () => clearTimeout(timeoutId);
   }, []);
 
   return (
@@ -48,23 +49,8 @@ const AuthenticationPage = () => {
         ref={webcamRef}
         screenshotFormat="image/jpeg"
       />
-      {authStatus === "success" ? (
-        <p>Login Successful as {username}</p>
-      ) : (
-        <p>Authenticating...</p>
-      )}
-      {authStatus === "fail" && (
-        <div>
-          <p>Face not recognized or authentication failed.</p>
-          <button onClick={handleFaceRecognition}>Try Again</button>
-        </div>
-      )}
-      {authStatus === "error" && (
-        <div>
-          <p>An error occurred. Please try again.</p>
-          <button onClick={handleFaceRecognition}>Try Again</button>
-        </div>
-      )}
+      {authStatus === "success" && <p>Login Successful as {username}</p>}
+      {!authStatus && <p>Authenticating...</p>}
     </div>
   );
 };
