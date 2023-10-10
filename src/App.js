@@ -1,5 +1,6 @@
 import './App.css';
-import AuthenticationPage from './login.js';
+import AuthenticationPage from './faceA.js';
+import Login from './login'; 
 
 import Navbar from './components/Navbar';
 import subjectData from './data/data';
@@ -7,7 +8,7 @@ import { Subjects } from './menu/Menu';
 
 import subjectImage from './white_paper.jpg'
 
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import SubjectPage from './SubjectPage';
 
@@ -39,21 +40,16 @@ function SubjectCard() {
 }
 
 function App() {
+  const [showLogin, setShowLogin] = useState(false);
+
+  const handleFail = () => {
+    setShowLogin(true);
+  }
+
   return (
-<>
     <div className="App">
-      <Navbar/>
-      </div>
-      <div className="SubjectCard">
-        {subjectData.map(subjectData => (
-          <Subjects
-          key={subjectData.id}
-          subjectName={subjectData.subjectName}
-        />
-))}
+      {showLogin ? <Login /> : <AuthenticationPage onFail={handleFail} />}
     </div>
-</>
-    
   );
 }
 
