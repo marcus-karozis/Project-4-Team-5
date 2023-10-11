@@ -49,6 +49,7 @@ const userSchema = new mongoose.Schema({
     user_name: String,
     first_name: String,
     last_name: String,
+    embedding: [String],
     enrolment: [
         {
             class: Number,              //classes object index stored here
