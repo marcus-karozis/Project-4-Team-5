@@ -48,4 +48,18 @@ function App() {
   );
 }
 
+function App() { // Call login Page
+  const [showLogin, setShowLogin] = useState(false);
+
+  const handleFail = () => {
+    setShowLogin(true);
+  }
+
+  return (
+    <div className="App">
+      {showLogin ? <Login /> : <AuthenticationPage onFail={handleFail} />}
+    </div>
+  );
+}
+
 export default App;
