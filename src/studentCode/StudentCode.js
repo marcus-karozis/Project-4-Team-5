@@ -24,9 +24,9 @@ function StudentCode() {
         <>
             <Navbar></Navbar>
             <div class="enterCode">
-                <h1>Enter Subject Code</h1>
-                <form type="text" onSubmit={verifyCode}>
-                    <input name="inputCode" placeholder="Subject Code" class="codeInput"></input>
+                <h1>Enter Class Code</h1>
+                <form className="form-container" type="text" onSubmit={verifyCode}>
+                    <input name="inputCode" placeholder="Class CODE" class="codeInput"></input>
                     <button type="submit" class="codeButton">Enter</button>
                 </form>
             </div>
