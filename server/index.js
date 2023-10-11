@@ -12,7 +12,19 @@ app.use(express.static("public"));
 app.use(express.json()); // For JSON request bodies
 app.use(express.urlencoded({ extended: true })); // For URL-encoded request bodies
 
-
+// Define a route to execute the Python script
+app.post('/run-python-script', (req, res) => {
+    // Run the Python script as a subprocess
+    const pythonProcess = exec('python auther.py', (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error executing auther.py: ${error}`);
+            res.status(500).send('Error executing Python script');
+            return;
+        }
+        console.log(`Python script output: ${stdout}`);
+        res.send('Python script executed successfully');
+    });
+});
 
 // app.get("/", (req, res) => {
 //   res.send("This is from express.js");
