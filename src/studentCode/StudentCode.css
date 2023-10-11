@@ -1,16 +1,9 @@
 .enterCode {
-    background-color: rgb(191, 233, 255);
-    /* padding: 160px;
-    border-radius: 4px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px;
-    max-width: 320px;
-    margin: 0px 24px 1.25rem;
-    color: rgb(51, 51, 51); */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; 
+    height: 100%;
 }
 
 
@@ -22,8 +15,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* height: 100vh; */
- 
 }
 
 
@@ -65,4 +56,19 @@
     box-shadow: none;
     background-color:  rgb(51, 51, 51);
     transform: translateY(2px);
+}
+
+
+.errorBox { 
+    background-color: red;
+    color: white;
+    position:fixed; 
+    bottom: 0;
+    width:100%;
+    padding: 10px;
+}
+
+.code-container { 
+    background-color: rgb(191, 233, 255);
+    height: 100vh;
 }
