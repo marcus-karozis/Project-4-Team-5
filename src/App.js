@@ -1,57 +1,50 @@
 import './App.css';
+import AuthenticationPage from './login.js';
+
 import Navbar from './components/Navbar';
-import subjectData from './data/data';
-import { Subjects } from './menu/Menu';
+import { Subject } from './menu/Menu';
 
-import subjectImage from './white_paper.jpg'
-
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom/client';
-import SubjectPage from './SubjectPage';
+
+import axios from 'axios';
 
 const subjectPage = ReactDOM.createRoot(document.getElementById('root'));
 
-
-function SubjectCard() {
-  function handleSubjectClick() {
-    subjectPage.render(
-      <React.StrictMode>
-        <SubjectPage />
-      </React.StrictMode>
-    )
-  }
-
-  return (
-    <div className="subject-card">
-      <div>
-        <img src={subjectImage} className="small-image-sizer" alt="subject" />
-      </div>
-      <div className="center-text">
-        <button className="subject-button" onClick={handleSubjectClick}>
-          Subject Name
-        </button>
-      </div>
-    </div>
-    
-  )
-}
-
+//main function
 function App() {
+  const [subjectData, setSubjects] = useState([]);
+
+  useEffect(() => {
+    const fetchSubjects = async () => {
+      try {
+        const response = await axios.get('/db/subjects');
+        const subjects = response.data;
+        setSubjects(subjects);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchSubjects();
+  }, []);
+
   return (
     <>
       <div className="App">
         <Navbar/>
       </div>
-      <div className="SubjectCard">
-        {subjectData.map(subjectData => (
-          <Subjects
-          key={subjectData.id}
-          subjectName={subjectData.subjectName}
-        />
-        ))}
+      <div className="SubjectList">
+        {subjectData.map(subject => (
+          <Subject
+            key={subject._id}
+            id={subject._id}
+            subjectName={subject.subject_name}
+          />))
+        }
       </div>
     </>
-    
+
   );
 }
 

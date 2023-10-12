@@ -3,22 +3,23 @@ import { BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
 
 import subjectImage from '../white_paper.jpg'
 
-export function Subjects(subjects) {
+export function Subject(subjects) {
     return(
-        <div>
-            <div className="subjectList">
-                <div key={"subject.id"} className="subjectCard">
-                    <div className="subjectCard__content">
-                        <Link to="/subjectPage/SubjectPage" style={{ textDecoration: 'none', color: 'black', textAlign: 'center'}}>
-                            <div>
-                                <img src={subjectImage} className="small-image-sizer" alt="subject" />
-                            </div>
-                            <h3 className="subjectName"> {subjects.subjectName} </h3>
-                            <p> class starts at : 16:00</p>
-                        </Link>
-                    </div>
-                </div>
-            </div>
+        <div key={"subject.id"} className="subjectCard">
+            <Link to="/subjectPage/SubjectPage" state={{subject_id: subjects.id}}>
+                <h3 className="subjectName"> {subjects.subjectName} </h3>
+            </Link>
+        </div>
+    )
+}
+
+export function Class(_class) {
+    return(
+        <div key={"subject.id"} className="subjectCard">
+            <Link to="/subjectPage/ClassPage" state={{subject_id: _class.subject_id, class_id: _class.class_id, time: _class.time}}>
+                <h3 className="subjectName"> {_class.className} </h3>
+                <h3 className="subjectTime"> {_class.time} </h3>
+            </Link>
         </div>
     )
 }

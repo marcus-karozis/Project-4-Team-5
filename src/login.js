@@ -1,140 +1,111 @@
-import React, { useState } from 'react';
-import './login.css';
+import React, { useRef, useState, useEffect } from 'react';
+import Webcam from 'react-webcam';
+import { useNavigate } from 'react-router-dom'
 
-function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const AuthenticationPage = ({ onFail }) => {
+  const webcamRef = useRef(null);
+  const [authStatus, setAuthStatus] = useState(null);
+  const [enteredUsername, setEnteredUsername] = useState('');
+  const [enteredPassword, setEnteredPassword] = useState('');
+  const navigate = useNavigate();
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.key === 'y') {
+        setAuthStatus("success");
+        setEnteredUsername("Max");
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 2000); 
+      } else if (e.key === 'n') {
+        setAuthStatus("fail");
+        setTimeout(() => {
+          setAuthStatus("showLoginForm");
+        }, 2000); // wait for 2 seconds before showing the login form
+      }
+    };
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
+    // Add the event listener
+    window.addEventListener('keydown', handleKeyPress);
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Email:', email);
-    console.log('Password:', password);
-  };
-  
+    // Cleanup the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  }, []);
 
   return (
-    <div className="login-container light-blue-background">
-      
-      <div className="login-form">
-        <h2>Login</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Email:</label>
-            <input type="email" value={email} onChange={handleEmailChange} required />
+    <div className="authentication-container" style={containerStyle}>
+      <h2>Login Page</h2>
+      {authStatus === "showLoginForm" ? (
+        <div style={loginFormStyle}>
+          <div className="input-group" style={inputGroupStyle}>
+            <label>Username:</label>
+            <input 
+              type="text" 
+              placeholder="Enter username" 
+              value={enteredUsername} 
+              onChange={e => setEnteredUsername(e.target.value)} 
+            />
           </div>
-          <div className="form-group">
+          <div className="input-group" style={inputGroupStyle}>
             <label>Password:</label>
-            <input type="password" value={password} onChange={handlePasswordChange} required />
+            <input 
+              type="password" 
+              placeholder="Enter password" 
+              value={enteredPassword} 
+              onChange={e => setEnteredPassword(e.target.value)} 
+            />
           </div>
-          <button type="submit" className="login-button">Login</button>
-        </form>
-      </div>
+          <button onClick={() => {}}>Login</button>
+        </div>
+      ) : (
+        <Webcam
+          audio={false}
+          ref={webcamRef}
+          screenshotFormat="image/jpeg"
+          style={webcamStyle}
+        />
+      )}
+      {authStatus === "success" && <p style={messageStyle}>Login Successful as {enteredUsername}</p>}
+      {authStatus === "fail" && <p style={messageStyle}>Authentication Unsuccessful</p>}
     </div>
   );
-}
+};
 
-export default Login;
+const containerStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: '100vh', // Fill the viewport vertically
+  textAlign: 'center',
+  backgroundColor: 'lightblue' // Setting background to light blue
+};
 
+const loginFormStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: '10px', // Decreased spacing for a tighter look
+  width: '300px'
+};
 
+const inputGroupStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  width: '100%',
+  marginBottom: '5px' // Reduced space between the username and password
+};
 
+const webcamStyle = {
+  boxShadow: '0px 0px 10px 3px rgba(0,0,0,0.2)' // Adding a soft shadow for some depth
+};
 
+const messageStyle = {
+  marginTop: '20px',
+  fontSize: '18px',
+  fontWeight: 'bold'
+};
 
-// Amana Code 
-
-import React from 'react';
-import './App.css';
-import LoginPage from './LoginPage';
-
-function App() {
-  return (
-    <div className="App">
-      <LoginPage />
-    </div>
-  );
-}
-
-export default App;
-
-
-
-
-//amana additional code 
-import React, { useState } from 'react';
-
-function LoginPage() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [canSubmit, setCanSubmit] = useState(false);
-
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
-    checkCanSubmit(e.target.value, password);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-    checkCanSubmit(username, e.target.value);
-  };
-
-  const checkCanSubmit = (uname, pword) => {
-    if (uname && pword) {
-      setCanSubmit(true);
-    } else {
-      setCanSubmit(false);
-    }
-  };
-
-  const handleLogin = () => {
-    // Here you would make the API call to your backend to validate the login
-    console.log('Logging in with', username, password);
-  };
-
-  return (
-    <div className="login-container">
-      <h2>Login</h2>
-      <div>
-        <label>
-          Username:
-          <input
-            type="text"
-            value={username}
-            onChange={handleUsernameChange}
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          Password:
-          <input
-            type="password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-        </label>
-      </div>
-      <div>
-        <button onClick={handleLogin} disabled={!canSubmit}>
-          Log-in
-        </button>
-      </div>
-      <div>
-        <a href="/forgot-password">Forgotten Password?</a>
-      </div>
-    </div>
-  );
-}
-
-export default LoginPage;
-
-
-
-Note: The above code is a basic representation of the requirements you provided. In a real-world application, you'd also consider things like validation, error handling, state management, security concerns like hashing the password before sending it to the server, etc.
-
+export default AuthenticationPage;

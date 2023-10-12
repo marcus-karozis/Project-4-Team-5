@@ -5,15 +5,35 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import SubjectPage from './subjectPage/SubjectPage';
+import TechSupportPage from './techSupportPage/TechSupportPage';
+import ClassPage from './subjectPage/ClassPage';
+import StudentCode from './studentCode/StudentCode';
+import LoginPage from './login.js';
 
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <LoginPage/>
+  },
+  {
+    path: "/dashboard",
     element: <App/>
   },
   {
     path: "subjectPage/SubjectPage",
     element: <SubjectPage/>
+  },
+  {
+    path: "subjectPage/ClassPage",
+    element: <ClassPage/>
+  },
+  {
+    path: "techSupportPage",
+    element: <TechSupportPage/>
+  }, 
+  {
+    path: "studentCode",
+    element: <StudentCode/>
   }
 ])
 

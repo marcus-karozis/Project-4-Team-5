@@ -1,53 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './SubjectPageStyles.css';
 import Navbar from '../components/Navbar';
 import BasicTable from '../table/BasicTable'
-
+import { Class } from '../menu/Menu';
+import axios from 'axios'; 
+import { useLocation } from 'react-router-dom'
 
 function SubjectPage() {
-
-    const [codeGen, setCode] = useState('');
-
-    function generateCode() {
     
-        let charset = "";
-        charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        charset += "0123456789";
-    
-        let code = "";
-        for (let i = 0; i < 7; i++) {
-            code += charset.charAt(Math.floor(Math.random() * charset.length));
-        }
-        setCode(code);
-    }
+    let [classData, setClasses] = useState([]);
+    let location = useLocation();
+    let { subject_id } = location.state;
+    useEffect(() => {
+        const fetchClass = async () => {
+            try {
+                let response = await axios.get('/db/subjects');
+                let classes = response.data.find(s => s._id === subject_id).classes;
+                setClasses(classes);
+            } catch (error) {
+                console.error(error);
+            }
+        };
 
-    function disableCode() {
+        fetchClass();
+    }, [subject_id]);
 
-        let code = "";
-        setCode(code);
-    }
-    
-
-    return(
+    return (
         <>
-        <div>
-            <Navbar></Navbar>
-        </div>
-        <div className="">
-            <ul className="code dashboard-row">
-                <li><h className='codeText'>{codeGen}</h></li>
-                <li><button className="" onClick={generateCode}>Regenerate code</button></li>
-                <li><button className="" onClick={disableCode}>Disable code</button></li>
-            </ul>
-        </div>
-        <div>
-            <BasicTable id="attended"/>
-            <BasicTable id="absent"/>
-        </div>
-        <div>
-            <button> move to attended </button>
-            <button> move to absent </button>
-        </div>
+            <div className="App">
+                <Navbar/>
+            </div>
+            <div className="ClassList"> 
+                {classData.map(_class => (
+                    <Class
+                        key={_class._id}
+                        className={_class.class_name}
+                        subject_id={subject_id}
+                        class_id={classData.indexOf(_class)}
+                        time={new Date(_class.class_start_timestamps[0]).toDateString() ?? ""}
+                    />))
+                }
+            </div>
         </>
     );
 }

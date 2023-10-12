@@ -1,0 +1,74 @@
+.enterCode {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+
+.form-container {
+    background-color: white;
+    border-radius: 4px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.codeInput {
+    font-weight: 700;
+    padding: 12px 0px; 
+    width: 350px; 
+    text-align: center;
+    font-family: Arial, sans-serif;
+    border: 0.125rem solid rgb(204, 204, 204);
+    background-color: rgb(255, 255, 255);
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+}
+
+.codeInput:focus{ 
+    border-color:rgb(51, 51, 51);
+}
+
+.codeInput::placeholder {
+    color: #999; /* You can specify any color code or color name here */
+}
+
+.codeButton {
+    width: 100%;  
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px -4px inset;
+    background: rgb(51, 51, 51);
+    color: rgb(255, 255, 255);
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.codeButton:hover { 
+    box-shadow: none;
+    background-color:  rgb(51, 51, 51);
+    transform: translateY(2px);
+}
+
+
+.errorBox { 
+    background-color: red;
+    color: white;
+    position:fixed; 
+    bottom: 0;
+    width:100%;
+    padding: 10px;
+}
+
+.code-container { 
+    background-color: rgb(191, 233, 255);
+    height: 100vh;
+}
