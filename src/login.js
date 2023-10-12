@@ -1,17 +1,21 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Webcam from 'react-webcam';
+import { useNavigate } from 'react-router-dom'
 
 const AuthenticationPage = ({ onFail }) => {
   const webcamRef = useRef(null);
   const [authStatus, setAuthStatus] = useState(null);
   const [enteredUsername, setEnteredUsername] = useState('');
   const [enteredPassword, setEnteredPassword] = useState('');
-
+  const navigate = useNavigate();
   useEffect(() => {
     const handleKeyPress = (e) => {
       if (e.key === 'y') {
         setAuthStatus("success");
         setEnteredUsername("Max");
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 2000); 
       } else if (e.key === 'n') {
         setAuthStatus("fail");
         setTimeout(() => {
