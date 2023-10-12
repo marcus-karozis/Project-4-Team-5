@@ -46,11 +46,11 @@ const subjectSchema = new mongoose.Schema({
 });
 
 const userSchema = new mongoose.Schema({
-    user_type: Number,
-    user_name: String,
+    user_type: Number,              // 0: student, 1: lecturer
+    user_name: String,              //first_name.last_name
     first_name: String,
     last_name: String,
-    photo_string: String,
+    photo_string: String,           // encoded string of the user's photo for facial recognition
     enrolment: [
         {
             class: Number,              //classes object index stored here
