@@ -12,12 +12,12 @@ function StudentCode() {
     //need to get the subject code from database
     const verifyCode = (event) => {
         event.preventDefault();
-        const testCode = "testcode"
+        const testCode = "Tutorial"
         var inputCode = event.target[0].value
         if (testCode === inputCode) {
             navigate('/?success=true');
             alert("You have successfully joined " + testCode)
-
+            
         }
         else {
             setShowErrorMessage(true);
