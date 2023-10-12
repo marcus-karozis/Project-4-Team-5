@@ -27,6 +27,7 @@ db.once('open', () => {
 // Define the schemas for the collections
 const subjectSchema = new mongoose.Schema({
     subject_name: String,
+    subject_code: String,
     classes: [
         {
             class_name: String,
@@ -49,6 +50,7 @@ const userSchema = new mongoose.Schema({
     user_name: String,
     first_name: String,
     last_name: String,
+    photo_string: String,
     enrolment: [
         {
             class: Number,              //classes object index stored here
