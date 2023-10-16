@@ -115,6 +115,36 @@ router.post('/users', async (req, res) => {
     }
 });
 
+router.get('/getUserById', async (req, res) => {
+    try {
+        let user = await User.findById(req.query.id);
+        res.json(user);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
+});
 
+router.get('/getSubjectById', async (req, res) => {
+    try {
+        let subject = await Subject.findById(req.query.id);
+        res.json(subject);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
+});
+
+router.get('/getSubjectsByUserId', async (req, res) => {
+    try {
+        let user = await User.findById(req.query.id);
+        let subjectIds = user.enrolment.map(_class => _class.subject_id.toString());
+        let subjects = await Subject.find().where('_id').in(subjectIds).exec();
+        res.json(subjects);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
+});
 
 module.exports = router;
