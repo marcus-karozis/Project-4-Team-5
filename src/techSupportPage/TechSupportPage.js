@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import './TechSupportPageStyles.css';
+import supportStyles from './TechSupportPageStyles.css';
 import Navbar from '../components/Navbar';
 import emailjs from '@emailjs/browser';
 
