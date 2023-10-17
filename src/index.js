@@ -9,6 +9,7 @@ import TechSupportPage from './techSupportPage/TechSupportPage';
 import ClassPage from './subjectPage/ClassPage';
 import StudentCode from './studentCode/StudentCode';
 import LoginPage from './login.js';
+import AdminTicketsPage from './adminTicketsPage/AdminTicketsPage'
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
   {
     path: "studentCode",
     element: <StudentCode/>
+  },
+  {
+    path: "adminTickets",
+    element: <AdminTicketsPage/>
   }
 ])
 
