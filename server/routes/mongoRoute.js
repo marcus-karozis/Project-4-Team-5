@@ -105,8 +105,8 @@ router.post('/subjects', async (req, res) => {
 // Define the POST request for the users collection
 router.post('/users', async (req, res) => {
     try {
-        const { user_type, user_name, enrolment } = req.body;
-        const user = new User({ user_type, user_name, enrolment });
+        const { user_type, user_name, enrolment, photo_string, first_name, last_name } = req.body; // Destructure photo_string, first_name, and last_name from req.body
+        const user = new User({ user_type, user_name, enrolment, photo_string, first_name, last_name }); // Pass photo_string to the User constructor
         await user.save();
         res.json(user);
     } catch (err) {
@@ -114,6 +114,7 @@ router.post('/users', async (req, res) => {
         res.status(500).send('Server Error');
     }
 });
+
 
 
 
