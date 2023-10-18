@@ -100,7 +100,6 @@
   flex-wrap: wrap;
   position: relative;
   top: 5rem;
-  justify-content: center;
   margin-right: 2rem;
   height: 100px;
   width: 300px;
@@ -111,6 +110,8 @@
   color: black;
   text-align: center;
   position: relative;
+  justify-content: space-evenly;
+  display: flex;
 }
 
 .small-image-sizer {

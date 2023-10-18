@@ -17,7 +17,7 @@ h {
   height: 100px;
   width: 30%;
   text-align: center;
-  background: yellow;
+  background: rgb(245, 245, 232);
   align-items: center;
   justify-content: center;
   color: black;
@@ -50,24 +50,31 @@ h {
 
 @media screen and (max-width:1000px){
   h{
-    width: 87%;
-    justify-content: left;
+    width: 60%;
+    /* justify-content: left; */
     padding-left: 10px;
-    left: 5%;
   }
 
   .code.dashboard-row{
     top: 25px;
-    left: 25%;
-    width: 70%;
+    /* left: 25%; */
+    /* width: 70%; */
+    right: 10%;
   }
 
   .code.dashboard-row button{
     font-size: 0rem;
-    margin-top: 2px;
+    margin-top: 1px;
+    width: 11%;
   }
 
   .code.dashboard-row i{
+    position: relative;
     font-size: 2rem;
+    bottom: 7px;
+  }
+
+  .fa.fa-refresh{
+    font-size: 1.9rem;
   }
 }
