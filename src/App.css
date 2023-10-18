@@ -38,6 +38,13 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* *********************************** */
+/* background color to light or dark */
+body{
+  background-color: #2B2A33;
+}
 /* *************************************** */
 /* student dashboard things */
 

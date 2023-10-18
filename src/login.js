@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Webcam from 'react-webcam';
 import { useNavigate } from 'react-router-dom'
+import './login.css'
 
 const AuthenticationPage = ({ onFail }) => {
   const webcamRef = useRef(null);
@@ -34,8 +35,8 @@ const AuthenticationPage = ({ onFail }) => {
   }, []);
 
   return (
-    <div className="authentication-container" style={containerStyle}>
-      <h2>Login Page</h2>
+    <div className="authentication-container">
+      <h2 className="text">Login Page</h2>
       {authStatus === "showLoginForm" ? (
         <div style={loginFormStyle}>
           <div className="input-group" style={inputGroupStyle}>
@@ -66,21 +67,21 @@ const AuthenticationPage = ({ onFail }) => {
           style={webcamStyle}
         />
       )}
-      {authStatus === "success" && <p style={messageStyle}>Login Successful as {enteredUsername}</p>}
-      {authStatus === "fail" && <p style={messageStyle}>Authentication Unsuccessful</p>}
+      {authStatus === "success" && <p className="text">Login Successful as {enteredUsername}</p>}
+      {authStatus === "fail" && <p className="text">Authentication Unsuccessful</p>}
     </div>
   );
 };
 
-const containerStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  height: '100vh', // Fill the viewport vertically
-  textAlign: 'center',
-  backgroundColor: 'lightblue' // Setting background to light blue
-};
+// const containerStyle = {
+//   display: 'flex',
+//   flexDirection: 'column',
+//   alignItems: 'center',
+//   justifyContent: 'center',
+//   height: '100vh', // Fill the viewport vertically
+//   textAlign: 'center',
+//   backgroundColor: cornflowerblue // Setting background to light blue
+// };
 
 const loginFormStyle = {
   display: 'flex',
@@ -102,10 +103,10 @@ const webcamStyle = {
   boxShadow: '0px 0px 10px 3px rgba(0,0,0,0.2)' // Adding a soft shadow for some depth
 };
 
-const messageStyle = {
-  marginTop: '20px',
-  fontSize: '18px',
-  fontWeight: 'bold'
-};
+// const messageStyle = {
+//   marginTop: '20px',
+//   fontSize: '18px',
+//   fontWeight: 'bold'
+// };
 
 export default AuthenticationPage;
