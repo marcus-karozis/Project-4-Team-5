@@ -102,6 +102,8 @@
   top: 5rem;
   justify-content: center;
   margin-right: 2rem;
+  height: 100px;
+  width: 300px;
 }
 
 .ClassList a{
