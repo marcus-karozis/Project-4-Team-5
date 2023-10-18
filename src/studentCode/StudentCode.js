@@ -4,12 +4,13 @@ import Navbar from '../components/Navbar';
 import BasicTable from '../table/BasicTable'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
-
+import Modal from './Modal';
 
 function StudentCode() {
 
     const navigate = useNavigate();
     const [showErrorMessage, setShowErrorMessage] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
 
     const fetchCode = async () => {
         try {
@@ -26,6 +27,7 @@ function StudentCode() {
         }
     }
 
+
     //need to get the subject code from database
     const verifyCode = async (event) => {
         event.preventDefault();
@@ -36,13 +38,19 @@ function StudentCode() {
             console.log(inputCode);
 
             if (testCode === inputCode) {
-                navigate('/dashboard?success=true');
-                alert("You have successfully joined " + testCode);
+                setOpenModal(true);
+                //navigate('/dashboard?success=true');
             } else {
                 // Handle incorrect code
-                alert("Incorrect code. Please try again.");
+                setShowErrorMessage(true);
+                setTimeout(() => {
+                    setShowErrorMessage(false);
+                }, 2000);
+
             }
         } catch (error) {
+
+            
             console.error(error);
             // Handle the error if fetchCode fails
             alert("Error occurred while verifying code. Please try again later.");
@@ -59,7 +67,7 @@ function StudentCode() {
                         <input name="inputCode" placeholder="Class CODE" class="codeInput"></input>
                         <button type="submit" class="codeButton">Enter</button>
                     </form>
-
+                   {/* { openModal && <Modal />} */}
                 </div>
                 {showErrorMessage && <div className="errorBox">Could not find related subject. Please enter code again.</div>}
             </div>
