@@ -28,8 +28,15 @@ class ClassCode {
   }
 
   generateCode() {
-    // Generate 4 random numbers between 0 and 9
-    return Array.from({ length: 4 }, () => Math.floor(Math.random() * 10)).join('');
+    let charset = "";
+    charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    charset += "0123456789";
+
+    let code = "";
+    for (let i = 0; i < 7; i++) {
+        code += charset.charAt(Math.floor(Math.random() * charset.length));
+    }
+    return code;
   }
 
 }
