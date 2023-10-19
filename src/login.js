@@ -43,7 +43,7 @@ const AuthenticationPage = ({ onFail }) => {
   return (
     <div className="authentication-container" style={containerStyle}>
       <div style={{ position: 'absolute', top: '10px', right: '10px' }}>
-        <LogoutButton onLogout={() => {
+        <LogoutButton onLogout={() => { // Remove, haven't logged in yet
           setAuthStatus(null);
           setUsername(null);
           // You might also want to add other logout-related actions here.
