@@ -27,7 +27,7 @@ function NotCompleteTicket() {
     return (
         <div className="ticket_card" style={{ display: 'flex' }}>
             <div style={{ flex: 1, marginRight: '20px', padding: '20px' }}>
-                <b>Ticket ID:</b> 1 <br></br>
+                <b>Ticket ID:</b> xx <br></br>
                 <b>User:</b> Name/Email <br></br>
                 <b>Issue:</b> Issue goes here...
             </div>
@@ -53,8 +53,15 @@ function NotCompleteTicket() {
 
 function CompletedTicket() {
     return (
-        <div>
-            <p>CompletedTicket!</p>
+        <div className="ticket_card" style={{ display: 'flex' }}>
+            <div style={{ flex: 1, marginRight: '20px', padding: '20px' }}>
+                <b>Ticket ID:</b> xx <br></br>
+                <b>User:</b> Name/Email <br></br>
+                <b>Issue:</b> Issue goes here...
+            </div>
+            <div style={{ flex: 1, border: '2px solid #c3d9e8', borderRadius: '3px', padding: '20px' }}>
+                <b>Date Complete: </b> dd/mm/YYYY
+            </div>
         </div>
     )
 }
@@ -73,7 +80,8 @@ function AdminTicketsPage() {
 
                 <div>
                     <NotCompleteTicket/>
-                    {/* <CompletedTicket/> */}
+                    <br></br>
+                    <CompletedTicket/>
                 </div>
             </div>
         </div>
