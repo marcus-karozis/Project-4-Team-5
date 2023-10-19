@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Webcam from 'react-webcam';
+import LogoutButton from './LogoutButton'; // Assuming LogoutButton is in the same directory
 
 const AuthenticationPage = ({ onFail }) => {
   const webcamRef = useRef(null);
@@ -41,6 +42,14 @@ const AuthenticationPage = ({ onFail }) => {
 
   return (
     <div className="authentication-container" style={containerStyle}>
+      <div style={{ position: 'absolute', top: '10px', right: '10px' }}>
+        <LogoutButton onLogout={() => {
+          setAuthStatus(null);
+          setUsername(null);
+          // You might also want to add other logout-related actions here.
+        }} />
+      </div>
+
       <h2>Login Page</h2>
       {authStatus === "success" && <p style={messageStyle}>Login Successful as {username}</p>}
       {authStatus === "showLoginForm" ? (
@@ -87,7 +96,8 @@ const containerStyle = {
   justifyContent: 'center',
   height: '100vh',
   textAlign: 'center',
-  backgroundColor: 'lightblue'
+  backgroundColor: 'lightblue',
+  position: 'relative' // This is to ensure the absolute positioning of the LogoutButton works correctly
 };
 
 const loginFormStyle = {
