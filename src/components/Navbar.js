@@ -36,7 +36,7 @@ function Navbar() {
                         <i className="fa-solid fa-house-user"></i>
                         Home
                     </a> */}
-                        <Link to="/" style={{ textAlign: 'center'}}>
+                        <Link to="/dashboard" style={{ textAlign: 'center'}}>
                         <i className="fa-solid fa-house-user"></i> Home
                         </Link>
                     </li>
