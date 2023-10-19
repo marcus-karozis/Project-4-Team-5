@@ -9,7 +9,7 @@ import TechSupportPage from './techSupportPage/TechSupportPage';
 import ClassPage from './subjectPage/ClassPage';
 import StudentCode from './studentCode/StudentCode';
 import LoginPage from './login.js';
-
+import HistoryPage from './components/HistoryPage';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -34,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: "studentCode",
     element: <StudentCode/>
+  },
+  {
+    path: "history",
+    element: <HistoryPage/>
   }
 ])
 
