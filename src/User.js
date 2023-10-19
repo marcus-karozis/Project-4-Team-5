@@ -1,9 +1,10 @@
 import axios from 'axios';
 
 class User {
-  constructor(user_type, first_name, last_name, photo_string, enrolment = []) {
+  constructor(user_type, password_cleartext, first_name, last_name, photo_string, enrolment = []) {
     this._id = this.generateID(user_type);
     this.user_type = user_type;
+    this.password_cleartext = password_cleartext;
     this.first_name = first_name;
     this.last_name = last_name;
     this.photo_string = photo_string;
@@ -30,6 +31,7 @@ class User {
     return {
       _id: this._id,
       user_type: this.user_type,
+      password_cleartext: this.password_cleartext,
       first_name: this.first_name,
       last_name: this.last_name,
       photo_string: this.photo_string,

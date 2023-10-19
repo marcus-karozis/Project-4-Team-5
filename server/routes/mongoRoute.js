@@ -50,14 +50,16 @@ const subjectSchema = new mongoose.Schema({
 const userSchema = new mongoose.Schema({
     _id: String,
     user_type: Number,              // 0: admin, 1: lecturer 2: student
+    password_cleartext: String,     // NEED TO HASH AT LATER DATE
     first_name: String,
     last_name: String,
     photo_string: String,           // encoded string of the user's photo for facial recognition
     enrolment: [
         {
-            _id: String,
+            subject_id: String,
             class: String,              //classes object index stored here
             checkin_timestamps:[Date]
+
         }
     ]
 });
