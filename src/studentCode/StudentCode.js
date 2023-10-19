@@ -5,12 +5,14 @@ import BasicTable from '../table/BasicTable'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import Modal from './Modal';
+import './Modal.css';
 
 function StudentCode() {
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [showErrorMessage, setShowErrorMessage] = useState(false);
     const [openModal, setOpenModal] = useState(false);
+
 
     const fetchCode = async () => {
         try {
@@ -49,8 +51,6 @@ function StudentCode() {
 
             }
         } catch (error) {
-
-            
             console.error(error);
             // Handle the error if fetchCode fails
             alert("Error occurred while verifying code. Please try again later.");
@@ -62,12 +62,14 @@ function StudentCode() {
             <Navbar></Navbar>
             <div className='code-container'>
                 <div className="enterCode">
-                    <h1>Enter Class Code</h1>
-                    <form className="form-container" type="text" onSubmit={verifyCode}>
+                    <div className="class-title">
+                        <h1>Enter Class Code</h1>
+                    </div>
+                    <form className="form-container" type="text" onSubmit={verifyCode} >
                         <input name="inputCode" placeholder="Class CODE" class="codeInput"></input>
                         <button type="submit" class="codeButton">Enter</button>
                     </form>
-                   {/* { openModal && <Modal />} */}
+                    {openModal && <Modal openModal={setOpenModal} />}
                 </div>
                 {showErrorMessage && <div className="errorBox">Could not find related subject. Please enter code again.</div>}
             </div>
