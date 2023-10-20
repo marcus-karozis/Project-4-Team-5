@@ -5,6 +5,29 @@
   transition: 0.2s;
 }
 
+/* picture */
+.subjectImage{
+  display:flex;
+  background-image: url(../white_paper.jpg);
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  object-fit: cover;
+  height: 130px;
+  width: 300px;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+/* name */
+.subjectName{
+  position: relative;
+  top: 120px;
+  width: 300px;
+  height: 36px;
+  left: 10px;
+  font-weight: normal;
+}
+
 /* main component */
 .subjectCard{
   font-size: 1rem;
@@ -13,23 +36,15 @@
   /* justify-content: space-evenly; */
   margin-top: 1rem;
   margin-left: 1rem;
-  /* text-align: left; */
-  background-image: url(../white_paper.jpg);
-  width: 300px;
-  height: 100px;
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  /* background-size: contain; */
   border-radius: 0.5rem;
   background-color: lightgrey;
 }
   
-/* picture */
-.small-image-sizer {
+/* .small-image-sizer {
   height: 50px;
   width: 100px;
   object-fit: fill;
-}
+} */
 
 .center-text {
   text-align: center;
@@ -57,13 +72,6 @@
 .subject-button:active {
   background-color: rgba(154, 179, 222, 0.5);
   border-bottom: rgb(41, 92, 182) solid 3px;
-}
-
-.subjectName{
-  position: relative;
-  top: 40px;
-  margin-left: 10px;
-
 }
 
 @media screen and (max-width:1000px){

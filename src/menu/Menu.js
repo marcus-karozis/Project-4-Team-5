@@ -6,6 +6,7 @@ import subjectImage from '../white_paper.jpg'
 export function Subject(subjects) {
     return(
         <div key={"subject.id"} className="subjectCard">
+            <img className="subjectImage"></img>
             <Link to="/subjectPage/SubjectPage" state={{subject_id: subjects.id}}>
                 <h3 className="subjectName"> {subjects.subjectName} </h3>
             </Link>
