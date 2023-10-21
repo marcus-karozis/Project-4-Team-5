@@ -64,9 +64,18 @@ const userSchema = new mongoose.Schema({
     ]
 });
 
+const ticketSchema = new mongoose.Schema({
+    _id: String,
+    name: String,
+    email: String,
+    message: String,
+    user_id: String, 
+});
+
 // Define the models for the collections
 const Subject = mongoose.model('Subject', subjectSchema);
 const User = mongoose.model('User', userSchema);
+const Ticket = mongoose.model('Ticket', ticketSchema);
 
 // GET Requests
 
@@ -86,6 +95,17 @@ router.get('/users', async (req, res) => {
     try {
         const users = await User.find();
         res.json(users);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
+});
+
+// Define the GET request for the tickets collection
+router.get('/tickets', async (req, res) => {
+    try {
+        const tickets = await Ticket.find();
+        res.json(tickets);
     } catch (err) {
         console.error(err);
         res.status(500).send('Server Error');
