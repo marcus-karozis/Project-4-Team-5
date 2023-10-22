@@ -1,41 +1,57 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Webcam from 'react-webcam';
-import { useNavigate } from 'react-router-dom'
+import LogoutButton from './LogoutButton'; // Assuming LogoutButton is in the same directory
 
 const AuthenticationPage = ({ onFail }) => {
   const webcamRef = useRef(null);
   const [authStatus, setAuthStatus] = useState(null);
+  const [username, setUsername] = useState(null);
   const [enteredUsername, setEnteredUsername] = useState('');
   const [enteredPassword, setEnteredPassword] = useState('');
-  const navigate = useNavigate();
-  useEffect(() => {
-    const handleKeyPress = (e) => {
-      if (e.key === 'y') {
+
+  const handleFaceRecognition = async () => {
+    const imageSrc = webcamRef.current.getScreenshot();
+
+    try {
+      const formData = new FormData();
+      formData.append('image', imageSrc);
+
+      const response = await fetch('http://localhost:5000/login_with_face', {
+        method: 'POST',
+        body: formData
+      });
+
+      const result = await response.json();
+
+      if (result.status === "success") {
         setAuthStatus("success");
-        setEnteredUsername("Max");
-      setTimeout(() => {
-        navigate("/dashboard");
-      }, 2000); 
-      } else if (e.key === 'n') {
-        setAuthStatus("fail");
-        setTimeout(() => {
-          setAuthStatus("showLoginForm");
-        }, 2000); // wait for 2 seconds before showing the login form
+        setUsername(result.username);
+      } else {
+        setAuthStatus("showLoginForm");
       }
-    };
+    } catch (error) {
+      setAuthStatus("showLoginForm");
+      console.error("Error during face recognition:", error);
+    }
+  };
 
-    // Add the event listener
-    window.addEventListener('keydown', handleKeyPress);
-
-    // Cleanup the event listener when the component is unmounted
-    return () => {
-      window.removeEventListener('keydown', handleKeyPress);
-    };
+  useEffect(() => {
+    const timeoutId = setTimeout(handleFaceRecognition, 3000);
+    return () => clearTimeout(timeoutId);
   }, []);
 
   return (
     <div className="authentication-container" style={containerStyle}>
+      <div style={{ position: 'absolute', top: '10px', right: '10px' }}>
+        <LogoutButton onLogout={() => {
+          setAuthStatus(null);
+          setUsername(null);
+          // You might also want to add other logout-related actions here.
+        }} />
+      </div>
+
       <h2>Login Page</h2>
+      {authStatus === "success" && <p style={messageStyle}>Login Successful as {username}</p>}
       {authStatus === "showLoginForm" ? (
         <div style={loginFormStyle}>
           <div className="input-group" style={inputGroupStyle}>
@@ -56,18 +72,19 @@ const AuthenticationPage = ({ onFail }) => {
               onChange={e => setEnteredPassword(e.target.value)} 
             />
           </div>
-          <button onClick={() => {}}>Login</button>
+          <button onClick={() => {/* Implement login logic here */}}>Login</button>
         </div>
       ) : (
-        <Webcam
-          audio={false}
-          ref={webcamRef}
-          screenshotFormat="image/jpeg"
-          style={webcamStyle}
-        />
+        <>
+          <Webcam
+            audio={false}
+            ref={webcamRef}
+            screenshotFormat="image/jpeg"
+            style={webcamStyle}
+          />
+          {!authStatus && <p style={messageStyle}>Authenticating...</p>}
+        </>
       )}
-      {authStatus === "success" && <p style={messageStyle}>Login Successful as {enteredUsername}</p>}
-      {authStatus === "fail" && <p style={messageStyle}>Authentication Unsuccessful</p>}
     </div>
   );
 };
@@ -77,16 +94,17 @@ const containerStyle = {
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  height: '100vh', // Fill the viewport vertically
+  height: '100vh',
   textAlign: 'center',
-  backgroundColor: 'lightblue' // Setting background to light blue
+  backgroundColor: 'lightblue',
+  position: 'relative' // This is to ensure the absolute positioning of the LogoutButton works correctly
 };
 
 const loginFormStyle = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  gap: '10px', // Decreased spacing for a tighter look
+  gap: '10px',
   width: '300px'
 };
 
@@ -95,11 +113,11 @@ const inputGroupStyle = {
   alignItems: 'center',
   justifyContent: 'space-between',
   width: '100%',
-  marginBottom: '5px' // Reduced space between the username and password
+  marginBottom: '5px'
 };
 
 const webcamStyle = {
-  boxShadow: '0px 0px 10px 3px rgba(0,0,0,0.2)' // Adding a soft shadow for some depth
+  boxShadow: '0px 0px 10px 3px rgba(0,0,0,0.2)'
 };
 
 const messageStyle = {
