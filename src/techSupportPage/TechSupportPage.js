@@ -86,6 +86,15 @@ function TechSupportPage() {
                         </div>
                     </div>
 
+                    <div id="userID_box">
+                        {/* <div className="label_div" style={{}}>
+                            <label > Email </label>
+                        </div> */}
+                        <div>
+                            <input type="" name="userID_input" className="" placeholder='User ID (optional)' />
+                        </div>
+                    </div>
+
                     <div id="issue_box">
                         {/* <div className="label_div" style={{}}>
                             <label > Issue </label>
