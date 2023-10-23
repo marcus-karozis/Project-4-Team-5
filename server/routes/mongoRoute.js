@@ -70,6 +70,7 @@ const ticketSchema = new mongoose.Schema({
     email: String,
     message: String,
     user_id: String, 
+    tick_complete: Boolean,
 });
 
 // Define the models for the collections
