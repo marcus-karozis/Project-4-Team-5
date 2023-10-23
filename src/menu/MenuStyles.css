@@ -21,7 +21,7 @@
 /* name */
 .subjectName{
   position: relative;
-  top: 120px;
+  /* top: 120px; */
   width: 300px;
   height: 36px;
   left: 10px;

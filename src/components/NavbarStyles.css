@@ -65,7 +65,7 @@ nav{
 .navbar li a:hover,
 .navbar li a.active:hover{
     /* color: #17cf97; */
-    color: cornflowerblue;
+    color: #8184da;
 }
 
 /* .navbar li a:hover::after,
@@ -141,7 +141,7 @@ nav{
     .navbar li a:hover,
     .navbar li a.active:hover {
         /* display: none; */
-        color:#17cf97;
+        color: #8184da;
     }
 
     .navbar li a:hover::after,
