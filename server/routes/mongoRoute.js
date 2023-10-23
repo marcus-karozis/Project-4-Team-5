@@ -145,6 +145,18 @@ router.get('/getSubjectsByUserId', async (req, res) => {
     }
 });
 
+// get tickets by user_id
+router.get('/getTicketsByUserId', async (req, res) => {
+    try {
+        let tickets = await Ticket.find({ user_id: req.query.user_id })
+        res.json(tickets);
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
+});
+
 // POST Requests
 
 // Define the POST request for the subjects collection
