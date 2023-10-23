@@ -2,12 +2,14 @@ import './App.css';
 import AuthenticationPage from './login.js';
 
 import Navbar from './components/Navbar';
-import { Subject } from './menu/Menu';
+// import { Subject } from './menu/Menu';
 
 import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom/client';
 
 import axios from 'axios';
+import { Subject }  from './Subject';// Import the Subject class
+
 
 const subjectPage = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -34,15 +36,16 @@ function App() {
       <div className="App">
         <Navbar/>
       </div>
-      <div className="SubjectList">
+      {/* <div className="SubjectList">
         {subjectData.map(subject => (
           <Subject
             key={subject._id}
-            id={subject._id}
-            subjectName={subject.subject_name}
-          />))
+            subject_name={subject.subject_name}
+            subject_classes={subject.classes}
+          />
+          ))
         }
-      </div>
+      </div> */}
     </>
 
   );

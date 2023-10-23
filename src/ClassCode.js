@@ -1,7 +1,7 @@
 import { Long } from 'bson';
 
 
-class ClassCode {
+export class ClassCode {
   constructor(expiry, users_selected = []) {
     this._id = this.generateRandomInt64();
     this.value = this.generateCode();

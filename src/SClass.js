@@ -1,7 +1,7 @@
-import ClassCode from './ClassCode';
+import { ClassCode } from './ClassCode';
 import { Long } from 'bson';
 
-class SClass {
+export class SClass {
   constructor(class_name, class_start_timestamps=[], class_end_timestamps=[], codes=[]) {
     this._id = this.generateRandomInt64();
     this.class_name = class_name;
