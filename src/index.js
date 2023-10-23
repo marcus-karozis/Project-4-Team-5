@@ -37,7 +37,7 @@ const router = createBrowserRouter([
     element: <StudentCode/>
   },
   {
-    path: "adminTickets",
+    path: "adminTickets", // this path will go once the combined all user ticket page is created
     element: <AdminTicketsPage/>
   }
 ])

@@ -1,6 +1,8 @@
 import React, { useState, useRef } from 'react';
 import supportStyles from './TechSupportPageStyles.css';
 import Navbar from '../components/Navbar';
+import Tooltip from "../components/Tooltip";
+
 import emailjs from '@emailjs/browser';
 
 function TechSupportPage() {
@@ -65,6 +67,10 @@ function TechSupportPage() {
                 <Navbar/>
             </div>
 
+            {/* <Tooltip text="This is a heading!">
+                <h1>Hello World</h1>
+            </Tooltip> */}
+
             <div className="page_padding" style={{textAlign: 'center'}}>
                 <h1>Tech Support Page</h1>
                 <form method="post" ref={formThing} onSubmit={handleSubmitSupportForm}>
@@ -77,21 +83,23 @@ function TechSupportPage() {
                         </div>
                     </div>
 
-                    <div id="email_box">
-                        {/* <div className="label_div" style={{}}>
-                            <label > Email </label>
-                        </div> */}
-                        <div>
-                            <input type="email" name="email_input" className="" required placeholder='Email' />
+                    <Tooltip text="Please use a valid email. A copy of your ticket submission as well as the response to your issue/enquiry will be sent to this email.">
+                        <div id="email_box">
+                            {/* <div className="label_div" style={{}}>
+                                <label > Email </label>
+                            </div> */}
+                            <div>
+                                <input type="email" name="email_input" className="" required placeholder='Email' />
+                            </div>
                         </div>
-                    </div>
+                    </Tooltip>
 
                     <div id="userID_box">
                         {/* <div className="label_div" style={{}}>
                             <label > Email </label>
                         </div> */}
                         <div>
-                            <input type="" name="userID_input" className="" placeholder='User ID (optional)' />
+                            <input type="" name="userID_input" className="" required placeholder='User ID' />
                         </div>
                     </div>
 
