@@ -148,7 +148,7 @@ router.get('/getSubjectsByUserId', async (req, res) => {
 // get tickets by user_id
 router.get('/getTicketsByUserId', async (req, res) => {
     try {
-        let tickets = await Ticket.find({ user_id: req.query.user_id })
+        let tickets = await Ticket.find({ user_id: req.query.userID });
         res.json(tickets);
     }
     catch (err) {
@@ -184,7 +184,7 @@ router.post('/users', async (req, res) => {
     }
 });
 
-// POST Request for tickets collection
+// POST Request for tickets collection // haven't tested post request but both get requests seem to work ~C
 router.post('/tickets', async (req, res) => {
     try {
         const ticketData = req.body;
