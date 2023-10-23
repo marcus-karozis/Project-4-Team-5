@@ -12,6 +12,8 @@ function TechSupportPage() {
         // Prevent the browser from reloading the page
         e.preventDefault();
 
+        console.log(formThing.current);
+
         // confirm is user wants to submit the form
         if (window.confirm("Are you ready to submit this issue/enquiry to the sytsem admin?")) {
             // do this if ok pressed
@@ -83,16 +85,16 @@ function TechSupportPage() {
                         </div>
                     </div>
 
-                    <Tooltip text="Please use a valid email. A copy of your ticket submission as well as the response to your issue/enquiry will be sent to this email.">
-                        <div id="email_box">
+                    <div id="email_box">
+                        <Tooltip text="Please use a valid email. A copy of your ticket submission as well as the response to your issue/enquiry will be sent to this email.">
                             {/* <div className="label_div" style={{}}>
                                 <label > Email </label>
                             </div> */}
                             <div>
                                 <input type="email" name="email_input" className="" required placeholder='Email' />
                             </div>
-                        </div>
-                    </Tooltip>
+                        </Tooltip>
+                    </div>
 
                     <div id="userID_box">
                         {/* <div className="label_div" style={{}}>
