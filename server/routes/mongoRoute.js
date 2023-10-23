@@ -172,4 +172,18 @@ router.post('/users', async (req, res) => {
     }
 });
 
+// POST Request for tickets collection
+router.post('/tickets', async (req, res) => {
+    try {
+        const ticketData = req.body;
+        const ticket = new Ticket(ticketData);
+        await ticket.save();
+        res.json(ticket);
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
+});
+
 module.exports = router;
