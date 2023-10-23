@@ -53,7 +53,7 @@ const userSchema = new mongoose.Schema({
     password_cleartext: String,     // NEED TO HASH AT LATER DATE
     first_name: String,
     last_name: String,
-    photo_string: String,           // encoded string of the user's photo for facial recognition
+    photo_string: [Number],  // encoded string of the user's photo for facial recognition
     enrolment: [
         {
             subject_id: String,
