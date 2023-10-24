@@ -148,3 +148,8 @@ nav{
         display: none;
     }
     }
+
+    .dropdown-btn, .dropdown-btn:hover { 
+        background-color: transparent;   
+    }
+
