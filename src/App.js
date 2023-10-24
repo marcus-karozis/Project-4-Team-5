@@ -40,10 +40,9 @@ function App() {
         {subjectData.map(subject => (
           <Subject
             key={subject._id}
-            subject_name={subject.subject_name}
-            subject_classes={subject.classes}
-          />
-          ))
+            id={subject._id}
+            subjectName={subject.subject_name}
+          />))
         }
       </div>
     </>
