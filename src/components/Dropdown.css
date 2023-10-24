@@ -1,23 +1,24 @@
 .dropdown {
-    display: none;
+    display:none;
     position: absolute;
     background-color: #222;
     border: white solid 1px;
-    border-radius: 0.375rem;
-    padding: 10px;
+    border-radius: 0.25rem;
+    padding-top: 10px;
     margin: 10px;
-}
+    box-shadow: 0  0 0.1rem 0.1rem #bbb;
+ }
 
 .dropdown.show {
     display: block;
 }
 
 .menu-items {
-    padding: 10px !important;
+    padding: 10px 20px !important;
     font-weight: 300 !important;
-    display: flex !important;
+    display:flex; 
     justify-content: left !important;
-    
+    white-space: nowrap;
 }
 
 .menu-items:hover { 
@@ -28,4 +29,11 @@
     font-weight: 100 !important;
     font-size: 1.1rem !important;
    
+}
+
+hr {
+    width: 100%;
+    overflow: hidden;
+    border-top:white; /* Set a thinner border */
+    height: 0;
 }
