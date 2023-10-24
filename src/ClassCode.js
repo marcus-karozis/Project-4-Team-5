@@ -41,4 +41,3 @@ export class ClassCode {
 
 }
 
-module.exports = ClassCode;
