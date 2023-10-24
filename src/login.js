@@ -30,8 +30,10 @@ const AuthenticationPage = ({ onFail }) => {
       if (result.status === "success") {
         setAuthStatus("success");
         setUsername(result.username);
-        navigate('/dashboard');
-      } else {
+        // Pass the result object to the /dashboard route
+        navigate('/dashboard', { state: { user: result } });
+    }
+     else {
         setAuthStatus("showLoginForm");
         // Optionally display an error message to the user here
       }
@@ -62,8 +64,10 @@ const AuthenticationPage = ({ onFail }) => {
       if (result.status === "success") {
         setAuthStatus("success");
         setUsername(result.username);
-        navigate('/dashboard');
-      } else {
+        // Pass the result object to the /dashboard route
+        navigate('/dashboard', { state: { user: result } });
+    }
+     else {
         setAuthStatus("showLoginForm");
       }
     } catch (error) {
