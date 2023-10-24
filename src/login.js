@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Webcam from 'react-webcam';
-import { useNavigate } from 'react-router-dom'; // Update this import path as necessary
+import { useNavigate } from 'react-router-dom'; 
 
 const AuthenticationPage = ({ onFail }) => {
   const webcamRef = useRef(null);
@@ -8,6 +8,7 @@ const AuthenticationPage = ({ onFail }) => {
   const [username, setUsername] = useState(null);
   const [enteredUsername, setEnteredUsername] = useState('');
   const [enteredPassword, setEnteredPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState(null);
 
   // Use the navigate method to perform redirection
   const navigate = useNavigate();
@@ -30,12 +31,10 @@ const AuthenticationPage = ({ onFail }) => {
       if (result.status === "success") {
         setAuthStatus("success");
         setUsername(result.username);
-        // Pass the result object to the /dashboard route
         navigate('/dashboard', { state: { user: result } });
-    }
-     else {
+      } else {
         setAuthStatus("showLoginForm");
-        // Optionally display an error message to the user here
+        setErrorMessage("Invalid username or password");
       }
     } catch (error) {
       setAuthStatus("showLoginForm");
@@ -47,7 +46,7 @@ const AuthenticationPage = ({ onFail }) => {
     if (!webcamRef.current) {
       console.warn('Webcam is not available yet.');
       return;
-  }
+    }
     const imageSrc = webcamRef.current.getScreenshot();
 
     try {
@@ -64,10 +63,8 @@ const AuthenticationPage = ({ onFail }) => {
       if (result.status === "success") {
         setAuthStatus("success");
         setUsername(result.username);
-        // Pass the result object to the /dashboard route
         navigate('/dashboard', { state: { user: result } });
-    }
-     else {
+      } else {
         setAuthStatus("showLoginForm");
       }
     } catch (error) {
@@ -75,7 +72,6 @@ const AuthenticationPage = ({ onFail }) => {
       console.error("Error during face recognition:", error);
     }
   };
-
 
   useEffect(() => {
     const timeoutId = setTimeout(handleFaceRecognition, 4000);
@@ -110,6 +106,7 @@ const AuthenticationPage = ({ onFail }) => {
               style={inputStyle}
             />
           </div>
+          {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
           <button onClick={handleLogin}>Login</button>
         </div>
       ) : (
@@ -159,9 +156,8 @@ const labelStyle = {
   marginRight: '20px',
 };
 
-
 const inputStyle = {
-  width: '80%', // increased width from the default
+  width: '80%',
   padding: '5px 10px'
 };
 
