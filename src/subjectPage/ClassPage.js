@@ -3,16 +3,17 @@ import './ClassPageStyles.css';
 import Navbar from '../components/Navbar';
 import BasicTable from '../table/BasicTable';
 import axios from 'axios';
-
-import { useLocation } from 'react-router-dom';
 import { SClass } from '../SClass';
+import { useLocation } from 'react-router-dom';
+
 
 function ClassPage() {
 
     let location = useLocation();
-    let { class_id, subject_id, time, end_time } = location.state
-    console.log("Class_id: " + class_id)
-    console.log("Subject_id: " + subject_id)
+    let { class_id, class_name, subject_id, time, end_time, codes } = location.state
+
+    const newClass = new SClass( class_id, class_name, time, end_time, codes);
+
     const [codeGen, setCode] = useState('');
 
     function generateCode() {
@@ -26,6 +27,8 @@ function ClassPage() {
             code += charset.charAt(Math.floor(Math.random() * charset.length));
         }
         setCode(code);
+        // newClass.addCode(codeGen, end_time) //adds newly generated code to
+
         
     }
 

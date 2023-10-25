@@ -20,13 +20,13 @@ export function SubjectCard(subject) {
 
 export function ClassCard(_class) {
     
-    const newClass = new SClass( _class._id, _class.class_name, _class.class_start_timestamps, _class.class_end_timestamps, _class.codes);
+    // const newClass = new SClass( _class._id, _class.class_name, _class.class_start_timestamps, _class.class_end_timestamps, _class.codes);
 
     return (
         <div key={"subject.subject_name"} className="subjectCard">
-            <Link to="/subjectPage/ClassPage" state={{ subject_id: _class.subject_id, class_id: _class.class_id, class_name: _class.class_name, time: _class.class_start_timestamps, end_time: _class.class_end_timestamps }}>
-                <h3 className="subjectName"> {newClass.class_name} </h3>
-                <h3 className="subjectTime"> {newClass.class_start_timestamps} </h3>
+            <Link to="/subjectPage/ClassPage" state={{ subject_id: _class.subject_id, class_id: _class.class_id, class_name: _class.class_name, time: _class.class_start_timestamps, end_time: _class.class_end_timestamps, codes:_class.codes }}>
+                <h3 className="subjectName"> {_class.class_name} </h3>
+                <h3 className="subjectTime"> {_class.class_start_timestamps} </h3>
             </Link>
         </div>
     )
