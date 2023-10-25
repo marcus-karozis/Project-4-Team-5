@@ -1,6 +1,11 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+
 import Navbar from '../components/Navbar';
 import adminStyles from './AdminTicketsPageStyles.css';
+
+import emailjs from '@emailjs/browser';
+import axios from 'axios';
+
 
 function NotCompleteTicket() {
 
@@ -11,10 +16,16 @@ function NotCompleteTicket() {
         e.preventDefault();
 
         // confirm is user wants to submit the form
-        if (window.confirm("Are you ready to submit this issue/enquiry to the sytsem admin?")) {
+        if (window.confirm("Are you sure you are ready to set this to complete?")) {
             // do this if ok pressed
             console.log("Ok was pressed...");
             // something will happen here
+
+            // get the ticket this is happening for
+            // update the tick_complete column to true
+
+            // get the email the ticket has stored
+            // send "Ticket Confirmation Email" to that email
         }
         else {
             // do this if cancel pressed
@@ -66,10 +77,45 @@ function CompletedTicket() {
     )
 }
 
+
 function AdminTicketsPage() {
+
+    // ticket query
+
+    const [ticketData, setTickets] = useState([]);
+
+    useEffect(() => {
+        // all tickets query
+        const fetchTickets = async () => {
+        try {
+            const response = await axios.get('/db/tickets');
+            const tickets = response.data;
+            setTickets(tickets);
+            console.log(tickets);
+        } catch (error) {
+            console.error(error);
+        }
+        };
+
+        // // test for tickets of specific ID (user_id: "1234567") - test ticket
+        // const fetchTickets = async () => {
+        //     try {
+        //         const response = await axios.get('/db/getTicketsByUserId', { params: { userID: "1234567" }});
+        //         const tickets = response.data;
+        //         setTickets(tickets);
+        //         console.log(tickets);
+        //     } catch (error) {
+        //         console.error(error);
+        //     }
+        // };
+
+        fetchTickets();
+
+    }, []);
+
     return (
         <div>
-            <div className="" style={{ marginBottom: '60px' }}>
+            <div className="" style={{ marginBottom: '80px' }}>
                 <Navbar/>
             </div>
 
@@ -79,9 +125,19 @@ function AdminTicketsPage() {
                 </div>
 
                 <div>
-                    <NotCompleteTicket/>
-                    <br></br>
-                    <CompletedTicket/>
+                    {/* <NotCompleteTicket/>
+                    <CompletedTicket/> */}
+
+                    {/* <div className="SubjectList">
+                        {subjectData.map(subject => (
+                        <Subject
+                            key={subject._id}
+                            id={subject._id}
+                            subjectName={subject.subject_name}
+                        />))
+                        }
+                    </div> */}
+
                 </div>
             </div>
         </div>

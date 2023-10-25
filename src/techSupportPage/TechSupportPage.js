@@ -18,7 +18,7 @@ function TechSupportPage() {
         e.preventDefault();
 
         // confirm is user wants to submit the form
-        if (window.confirm("Are you ready to submit this issue/enquiry to the sytsem admin?")) {
+        if (window.confirm("Are you ready to submit this issue/enquiry to the system admin?")) {
             // do this if ok pressed
             console.log("Ok was pressed. Sending to admin user...");
             setIsLoading(true); // show loading spinner
