@@ -4,7 +4,7 @@ import AuthenticationPage from './login.js';
 import Navbar from './components/Navbar';
 import { SubjectCard } from './menu/Menu';
 
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 
 import axios from 'axios';
@@ -21,8 +21,6 @@ function App() {
         const response = await axios.get('/db/subjects');
         const subjects = response.data;
         setSubjects(subjects);
-       
-        console.log(subjects.subject_name)
       } catch (error) {
         console.error(error);
       }
@@ -34,15 +32,16 @@ function App() {
   return (
     <>
       <div className="App">
-        <Navbar/>
+        <Navbar />
       </div>
       <div className="SubjectList">
         {subjectData.map(subject => (
           <SubjectCard
+            subject_id={subject._id}
             subject_name={subject.subject_name}
             subject_classes={subject.classes}
           />
-          ))
+        ))
         }
       </div>
     </>

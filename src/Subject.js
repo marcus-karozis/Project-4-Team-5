@@ -4,14 +4,15 @@ import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 
 
 export class Subject {
-  constructor(subject_name, subject_classes = []) {
-    this._id = this.generateID(subject_name);
+  constructor(subject_id, subject_name, subject_classes = []) {
+    // this._id = this.generateID(subject_name);
+    this._id = subject_id;
     this.subject_name = subject_name;
     this.classes = subject_classes;
   }
 
-  addClass(class_name, class_start_timestamps=[], class_end_timestamps=[], codes=[]) {
-    this.enrolment.push(new SClass(class_name, class_start_timestamps, class_end_timestamps, codes ));
+  addClass(_id, class_name, class_start_timestamps=[], class_end_timestamps=[], codes=[]) {
+    this.enrolment.push(new SClass(_id, class_name, class_start_timestamps, class_end_timestamps, codes ));
   }
 
   // Function to convert the Subject object to JSON and submit it to the server

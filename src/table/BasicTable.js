@@ -11,7 +11,7 @@ const BasicTable = (obj) => {
     let subject_id = obj.subject_id;
     let class_id = obj.class_id;
     let startTime = obj.startTime;
-    console.log(subject_id, class_id);
+
     let [userData, setUsers] = useState([]);
     useEffect(() => {
         const fetchUsers = async () => {
