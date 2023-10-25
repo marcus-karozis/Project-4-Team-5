@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { SClass }  from './SClass.js';
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+
 
 export class Subject {
   constructor(subject_name, subject_classes = []) {
@@ -34,7 +36,7 @@ export class Subject {
 
   generateID(subject_name) {
     // Check if the input is a string and at least 3 characters long
-    if (typeof input !== 'string' || subject_name.length < 3) {
+    if (typeof input !== 'string' && subject_name.length < 3) {
       return 'Invalid Input';
     }
 
