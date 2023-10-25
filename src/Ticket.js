@@ -12,9 +12,10 @@ export class Ticket {
     }
 
     generateRandomInt64() {
-        const lowBits = Math.floor(Math.random() * 0xFFFFFFFF);
-        const highBits = Math.floor(Math.random() * 0xFFFFFFFF);
-        return new Long(lowBits, highBits);
+        var crypto = require("crypto");
+        var generatedID = crypto.randomBytes(20).toString('hex');
+
+        return generatedID.toString();
     }
 
     // Function to convert the Ticket object to JSON and submit it to the server
