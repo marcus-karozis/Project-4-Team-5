@@ -6,6 +6,10 @@
     height: 100%;
 }
 
+.class-title { 
+    padding: 2rem; 
+}
+
 
 .form-container {
     background-color: white;
