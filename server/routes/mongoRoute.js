@@ -53,7 +53,7 @@ const userSchema = new mongoose.Schema({
     password_cleartext: String,     // NEED TO HASH AT LATER DATE
     first_name: String,
     last_name: String,
-    photo_string: String,           // encoded string of the user's photo for facial recognition
+    photo_string: [Number],  // encoded string of the user's photo for facial recognition
     enrolment: [
         {
             subject_id: String,
@@ -184,7 +184,7 @@ router.post('/users', async (req, res) => {
     }
 });
 
-// POST Request for tickets collection // haven't tested post request but both get requests seem to work ~C
+// POST Request for tickets collection
 router.post('/tickets', async (req, res) => {
     try {
         const ticketData = req.body;
