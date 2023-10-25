@@ -4,6 +4,8 @@ import Navbar from '../components/Navbar';
 import emailjs from '@emailjs/browser';
 import axios from 'axios';
 
+import { Ticket }  from '../Ticket.js'; // Import the Ticket class
+
 function TechSupportPage() {
     const formThing = useRef();
 
@@ -16,20 +18,22 @@ function TechSupportPage() {
             // do this if ok pressed
             console.log("Ok was pressed. Sending to admin user...");
 
-            // // Read the form data
-            // const form = e.target;
-            // const formData = new FormData(form);
+            // Read the form data
+            const form = e.target;
+            const formData = new FormData(form);
 
-            // // obtain all the data on the form & store in object to use when creating ticket
-            // const formJson = Object.fromEntries(formData.entries());
-            // console.log(formJson);
-            // console.log(" ");
-            // console.log(formJson["name_input"]);
-            // console.log(formJson["email_input"]);
-            // console.log(formJson["userID_input"].toString());
-            // console.log(formJson["issue_input"]);
+            // obtain all the data on the form & store in object to use when creating ticket
+            const formJson = Object.fromEntries(formData.entries());
+            console.log(formJson);
+            console.log(" ");
+            console.log(formJson["name_input"]);
+            console.log(formJson["email_input"]);
+            console.log(formJson["userID_input"].toString());
+            console.log(formJson["issue_input"]);
 
-            //const ticket = new Ticket(formJson["name_input"], formJson["email_input"], formJson["userID_input"].toString(), formJson["issue_input"]);
+            const ticket = new Ticket(formJson["name_input"], formJson["email_input"], formJson["userID_input"].toString(), formJson["issue_input"]);
+
+            console.log(ticket);
 
             // send email to admin user
 

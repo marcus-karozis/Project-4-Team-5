@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Long } from 'bson';
 
-class Ticket {
+export class Ticket {
     constructor(name, email, message, user_id) {
         this._id = this.generateRandomInt64();
         this.name = name;
@@ -41,4 +41,4 @@ class Ticket {
     }
 }
 
-module.exports = Ticket;
+// module.exports = Ticket;
