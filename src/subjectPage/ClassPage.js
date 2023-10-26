@@ -29,24 +29,45 @@ function ClassPage() {
         }
         setCode(code);
 
-        
+
     }
 
     useEffect(() => {
         if (codeGen) {
-            // Only send the request if codeGen is not empty
+
+            // // Only send the request if codeGen is not empty
             const newCode = new ClassCode(codeGen, end_time);
             const saveToServer = async () => {
-                try {
-                    const response = await axios.post('/db/subjects', newCode.toJSON());
-                    console.log("Data saved to server: ", response.data);
-                    return response.data;
-                } catch (error) {
-                    console.error(error);
-                    throw new Error('Failed to save subject to the server.');
-                }
-            };
+                // try {
+                //     const response = await axios.post('/db/subjects', newCode.toJSON());
+                //     console.log("Data saved to server: ", response.data);
+                //     return response.data;
+                // } catch (error) {
+                //     console.error(error);
+                //     throw new Error('Failed to save subject to the server.');
+                // }
 
+                //Didnt work
+                    // try {
+                    //     const subject = await axios.get('/db/getSubjectById', {
+                    //         params: {
+                    //             id: subject_id // Pass the correct subject ID here
+                    //         }
+                    //     });
+                    //     const class_index = subject.data.classes.findIndex(classItem => classItem._id === class_id)
+
+                //         subject.data.classes[class_index].codes.push(newCode);
+                //         await subject.save()
+
+                //         console.log("Data saved to server: ", subject);
+                //         return subject; 
+                //     } catch (error) {
+                //         console.error(error);
+                //         throw new Error('Failed to save subject to the server.');
+                //     }
+                //Didnt work
+
+            };
             saveToServer();
         }
     }, [codeGen]);

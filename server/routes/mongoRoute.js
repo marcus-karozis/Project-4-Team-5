@@ -160,7 +160,8 @@ router.post('/subjects', async (req, res) => {
         res.status(500).send('Server Error');
     }
 });
-// Define the POST request for the users collection
+
+
 router.post('/users', async (req, res) => {
     try {
         const userData = req.body;
