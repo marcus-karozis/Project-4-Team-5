@@ -19,7 +19,7 @@ const BasicTable = (obj) => {
                 let response = await axios.get('/db/users');
                 let users = response.data.filter(user => user.enrolment.some(_class => _class.subject_id === subject_id && _class.class === class_id));
                 setUsers(users);
-                console.log(users);
+                //console.log(users);
             } catch (error) {
                 console.error(error);
             }

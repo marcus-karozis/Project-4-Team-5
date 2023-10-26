@@ -5,6 +5,7 @@ import BasicTable from '../table/BasicTable';
 import axios from 'axios';
 import { SClass } from '../SClass';
 import { useLocation } from 'react-router-dom';
+import { ClassCode } from '../ClassCode';
 
 
 function ClassPage() {
@@ -12,7 +13,7 @@ function ClassPage() {
     let location = useLocation();
     let { class_id, class_name, subject_id, time, end_time, codes } = location.state
 
-    const newClass = new SClass( class_id, class_name, time, end_time, codes);
+    const newClass = new SClass(class_id, class_name, time, end_time, codes);
 
     const [codeGen, setCode] = useState('');
 
@@ -27,10 +28,24 @@ function ClassPage() {
             code += charset.charAt(Math.floor(Math.random() * charset.length));
         }
         setCode(code);
-        // newClass.addCode(codeGen, end_time) //adds newly generated code to
 
         
     }
+
+    // useEffect(() => {
+    //     const newCode = new ClassCode(codeGen, end_time)  
+    //     const saveToServer = async () => {
+    //         try {
+    //             const response = await axios.post('/db/subjects', newCode.toJSON());
+    //             console.log("Data saved to server: ", response.data);
+    //             return response.data;
+    //         } catch (error) {
+    //             console.error(error);
+    //             throw new Error('Failed to save subject to the server.');
+    //         }
+    //     }; 
+    //     saveToServer(); 
+    // }, []);
 
     function disableCode() {
         let code = "";

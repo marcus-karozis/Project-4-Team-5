@@ -148,8 +148,10 @@ router.get('/getSubjectsByUserId', async (req, res) => {
 
 // Define the POST request for the subjects collection
 router.post('/subjects', async (req, res) => {
+
     try {
         const subjectData = req.body;
+        console.log(subjectData)
         const subject = new Subject(subjectData);
         await subject.save();
         res.json(subject);

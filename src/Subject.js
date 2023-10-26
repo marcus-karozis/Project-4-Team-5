@@ -9,16 +9,20 @@ export class Subject {
     this._id = subject_id;
     this.subject_name = subject_name;
     this.classes = subject_classes;
+   
   }
 
+  //for students enrolment
   addClass(_id, class_name, class_start_timestamps=[], class_end_timestamps=[], codes=[]) {
     this.enrolment.push(new SClass(_id, class_name, class_start_timestamps, class_end_timestamps, codes ));
   }
 
   // Function to convert the Subject object to JSON and submit it to the server
   async saveToServer() {
+
     try {
       const response = await axios.post('/db/subjects', this.toJSON());
+      // console.log("response.data: " + response.data)
       return response.data;
     } catch (error) {
       console.error(error);
