@@ -42,8 +42,9 @@
 
 /* *********************************** */
 /* background color to light or dark */
+
 body {
-  background: var(--color-bg-primary);
+  background: #553D67;
   color: var(--color-text-primary);
   transition: background 0.25s ease-in-out;
 }
