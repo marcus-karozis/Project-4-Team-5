@@ -32,20 +32,24 @@ function ClassPage() {
         
     }
 
-    // useEffect(() => {
-    //     const newCode = new ClassCode(codeGen, end_time)  
-    //     const saveToServer = async () => {
-    //         try {
-    //             const response = await axios.post('/db/subjects', newCode.toJSON());
-    //             console.log("Data saved to server: ", response.data);
-    //             return response.data;
-    //         } catch (error) {
-    //             console.error(error);
-    //             throw new Error('Failed to save subject to the server.');
-    //         }
-    //     }; 
-    //     saveToServer(); 
-    // }, []);
+    useEffect(() => {
+        if (codeGen) {
+            // Only send the request if codeGen is not empty
+            const newCode = new ClassCode(codeGen, end_time);
+            const saveToServer = async () => {
+                try {
+                    const response = await axios.post('/db/subjects', newCode.toJSON());
+                    console.log("Data saved to server: ", response.data);
+                    return response.data;
+                } catch (error) {
+                    console.error(error);
+                    throw new Error('Failed to save subject to the server.');
+                }
+            };
+
+            saveToServer();
+        }
+    }, [codeGen]);
 
     function disableCode() {
         let code = "";

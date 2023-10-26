@@ -20,6 +20,7 @@ function App() {
       try {
         const response = await axios.get('/db/subjects');
         const subjects = response.data;
+        console.log(subjects)
         setSubjects(subjects);
       } catch (error) {
         console.error(error);

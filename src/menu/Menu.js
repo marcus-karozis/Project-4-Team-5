@@ -6,7 +6,7 @@ import { Subject } from '../Subject';// Import the Subject class
 import { SClass } from '../SClass';// Import the Subject class
 
 export function SubjectCard(subject) {
-    const newSubject = new Subject(subject.subject_id, subject.subject_name, subject.subject_classes)
+    // const newSubject = new Subject(subject.subject_id, subject.subject_name, subject.subject_classes)
    
     return (
         <div key={subject._id} className="subjectCard">

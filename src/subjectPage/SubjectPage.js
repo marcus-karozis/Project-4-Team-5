@@ -17,7 +17,7 @@ function SubjectPage() {
             try {
                 let response = await axios.get('/db/subjects');
                 let classes = response.data.find(s => s._id === subject_id).classes;
-                // setClasses(classes);
+                setClasses(classes);
             } catch (error) {
                 console.error(error);
             }
