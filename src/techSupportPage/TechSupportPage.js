@@ -43,7 +43,7 @@ function TechSupportPage() {
             console.log("saving to server...");
             ticket.saveToServer();
 
-            // send email to admin user
+            // send email to user
 
             /*
                 note: the service to send emails has a limit each month so the code to send

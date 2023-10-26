@@ -3,14 +3,37 @@
 }
 
 .ticket_card {
+    border-radius: 2px;
+    border-bottom-color: rgb(61, 53, 125);
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    padding: 10px;
+    /* margin-bottom: 2px; */
+    /* box-shadow: 0px 0px 3px rgb(105, 105, 154); */
+    width: 80%;
+    font-size: 18px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.inner_ticket_card {
     border-radius: 5px;
-    border-color: rgb(61, 53, 125);
+    border-color: rgb(141, 166, 230);
+    background-color: rgb(194, 208, 241);
     border-width: 1px;
     border-style: solid;
     padding: 10px;
-    box-shadow: 0px 0px 3px rgb(105, 105, 154);
-    width: 50%;
+    margin-bottom: 10px;
+    width: 80%;
     font-size: 18px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .textarea_admin_section {
@@ -52,4 +75,40 @@ button:hover {
 
 button:active {
     background-color: #4d50ad;
+}
+
+.completeTicket {
+    background-color: #7ec078;
+    border-radius: 20px;
+    padding: 10px;
+    margin: auto;
+    width: 100%;
+}
+
+.notCompleteTicket {
+    background-color: #c07878;
+    border-radius: 20px;
+    padding: 10px;
+    margin: auto;
+    width: 100%;
+}
+
+.successful_submission_admin {
+    background-color: rgb(133, 191, 133);
+    border: 2px solid rgb(102, 159, 102);
+    border-radius: 3px;
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.invalid_submission_admin {
+    background-color: rgb(240, 158, 158);
+    border: 2px solid rgb(214, 115, 115);
+    border-radius: 3px;
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+    font-size: 16px;
 }
