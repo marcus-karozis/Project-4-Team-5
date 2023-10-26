@@ -8,6 +8,8 @@ import axios from 'axios';
 
 import { Ticket }  from '../Ticket.js'; // Import the Ticket class
 
+import LoadingSpinner from "../components/LoadingSpinner";
+
 
 function NotCompleteTicket(props) {
 
@@ -21,12 +23,12 @@ function NotCompleteTicket(props) {
         if (window.confirm("Are you sure you are ready to set this to complete?")) {
             // do this if ok pressed
             console.log("Ok was pressed...");
-            // something will happen here
+
+            var spinner = document.getElementById('adminTicketsSpinnerDiv');
+            spinner.style.display = "block"; // show loading spinner
 
             // get the ticket this is happening for
             // update the tick_complete column to true
-                // maybe make the ticket fields as some hidden fields on the form
-                // that way they're passed through for updating :)
             
             // Read the form data
             const form = e.target;
@@ -35,24 +37,24 @@ function NotCompleteTicket(props) {
             // obtain all the data on the form & store in object to use when creating ticket
             const formJson = Object.fromEntries(formData.entries());
 
-            // ticket database update request goes here !!!!!!!!!!!!!!!
-            // (id, name, email, message, user_id, tick_complete)
-            //const updatedTicket = new Ticket(formJson["ticket_id"], formJson["name_input"], formJson["email_input"], formJson["issue_input"], formJson["userID_input"].toString(), true);
+            // create ticket object
             const updatedTicket = new Ticket(formJson["name_input"], formJson["email_input"], formJson["issue_input"], formJson["userID_input"].toString());
             console.log(updatedTicket);
-
+            
+            // set the ticket object's id to the exiting ticket id (since we want to update it)
             updatedTicket.setExistingTicketID(formJson["ticket_id"]);
             console.log(updatedTicket);
-
+            
+            // set the ticket object's completed status to true
             updatedTicket.setTickCompleteStatus(true);
             console.log(updatedTicket);
-
+            
+            // ticket database update request goes here
             console.log("updating in server...");
             updatedTicket.updateAndSaveToServer();
 
             // get the email the ticket has stored
             // send "Ticket Confirmation Email" to that email
-
             // send email to user
 
             /*
@@ -76,13 +78,13 @@ function NotCompleteTicket(props) {
                     var idOfDiv = formJson["ticket_id"] + "_compete_ticket_form_successful_response";
                     var responseBox = document.getElementById(idOfDiv);
                     responseBox.style.display='block';
-                    // setIsLoading(false)   // Hide loading spinner 
+                    spinner.style.display = "none"; // Hide loading spinner 
                 }, (error) => {
                     console.log(error.text + " | Could Not Send Email To User");
                     var idOfDiv = formJson["ticket_id"] + "_compete_ticket_form_failed_response";
                     var responseBox = document.getElementById(idOfDiv);
                     responseBox.style.display='block';
-                    // setIsLoading(false)   // Hide loading spinner 
+                    spinner.style.display = "none";   // Hide loading spinner 
                 });
             
             // // comment above back in if you want to send a test email for ticket completion
@@ -135,7 +137,7 @@ function NotCompleteTicket(props) {
     return (
 
         <div>
-            <div className="ticket_card">
+            <div className="ticket_card"> {/*  */}
                 <div className="" style={{ order: 1, marginRight: '20px', padding: '20px', maxWidth: '500px' }}>
                     <b>Ticket ID:</b> {props.id} <br></br>
                     <b>Issue:</b> {props.issue}
@@ -265,7 +267,7 @@ function CompletedTicket(props) {
                 </div>
             </div>
 
-            <div id={info_box_id} className="inner_ticket_card" style={{ display: 'none' }}> {/* display: flex */}
+            <div id={info_box_id} className="inner_ticket_card" style={{ display: 'none' }}> 
                 <div style={{ flex: 1, marginRight: '20px', padding: '20px' }}>
                     <b>Ticket ID:</b> {props.id} <br></br>
                     <b>Name:</b> {props.name} <br></br>
@@ -316,6 +318,7 @@ function AdminTicketsPage() {
     // ticket query
 
     const [ticketData, setTickets] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         // all tickets query
@@ -359,8 +362,6 @@ function AdminTicketsPage() {
 
                 <div>
 
-                    {/* {isLoading ? <LoadingSpinner /> : ""} */}
-
                     <div className="ticketList">
                         {ticketData.map(ticket => (
                             <TicketChecker 
@@ -376,6 +377,13 @@ function AdminTicketsPage() {
                     </div>
 
                 </div>
+
+                <div id="adminTicketsSpinnerDiv" className="overlay_admin" style={{display: 'none'}}>
+                    <div>
+                        <LoadingSpinner />
+                    </div>
+                </div>
+
             </div>
         </div>
     );

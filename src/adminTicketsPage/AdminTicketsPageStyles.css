@@ -2,7 +2,7 @@
     padding: 10px;
 }
 
-.ticket_card {
+.ticket_card { /* Row that has ticket._id, issue, status & 'Ticket Info' button */
     border-radius: 2px;
     border-bottom-color: rgb(61, 53, 125);
     border-bottom-width: 1px;
@@ -17,7 +17,7 @@
     justify-content: space-between;
 }
 
-.inner_ticket_card {
+.inner_ticket_card { /* box that appears when "Ticket Info" button is pressed */
     border-radius: 5px;
     border-color: rgb(141, 166, 230);
     background-color: rgb(194, 208, 241);
@@ -75,7 +75,7 @@ button:active {
     background-color: #4d50ad;
 }
 
-.completeTicket {
+.completeTicket { /* badge that says "Complete" */
     background-color: #7ec078;
     border-radius: 20px;
     padding: 10px;
@@ -84,7 +84,7 @@ button:active {
     text-align: center;
 }
 
-.notCompleteTicket {
+.notCompleteTicket { /* badge that says "Not Complete" */
     background-color: #c07878;
     border-radius: 20px;
     padding: 10px;
@@ -93,7 +93,7 @@ button:active {
     text-align: center;
 }
 
-.successful_submission_admin {
+.successful_submission_admin { /* successful submission response div */
     background-color: rgb(133, 191, 133);
     border: 2px solid rgb(102, 159, 102);
     border-radius: 3px;
@@ -103,7 +103,7 @@ button:active {
     font-size: 16px;
 }
 
-.invalid_submission_admin {
+.invalid_submission_admin { /* failed submission response div */
     background-color: rgb(240, 158, 158);
     border: 2px solid rgb(214, 115, 115);
     border-radius: 3px;
@@ -112,3 +112,18 @@ button:active {
     padding: 10px;
     font-size: 16px;
 }
+
+/* spinner */
+
+.overlay_admin {
+    position: absolute;
+    padding-top: 100px;
+    padding-bottom: 55%;
+    z-index: 2;
+    /* this will stretch overlay to fill width and height of form */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
