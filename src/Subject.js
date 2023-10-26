@@ -1,7 +1,7 @@
 import axios from 'axios';
-import SClass from './SClass.js';
+import { SClass }  from './SClass.js';
 
-class Subject {
+export class Subject {
   constructor(subject_name, subject_classes = []) {
     this._id = this.generateID(subject_name);
     this.subject_name = subject_name;
