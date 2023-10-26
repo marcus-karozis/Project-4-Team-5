@@ -11,7 +11,7 @@ export class SClass {
   }
 
   addCode(expiry, users_selected = []) {
-    this.enrolment.push(new ClassCode(expiry, users_selected));
+    this.codes.push(new ClassCode(expiry, users_selected));
   }
 
   // Function to convert the User object to JSON
