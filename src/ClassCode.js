@@ -25,7 +25,7 @@ export class ClassCode {
   generateRandomInt64() {
     const lowBits = Math.floor(Math.random() * 0xFFFFFFFF);
     const highBits = Math.floor(Math.random() * 0xFFFFFFFF);
-    return new Long(lowBits, highBits);
+    return new Long(lowBits, highBits).toString();
   }
 
   generateCode() {
