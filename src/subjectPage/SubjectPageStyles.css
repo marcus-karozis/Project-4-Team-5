@@ -16,7 +16,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #8184da;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -42,7 +42,7 @@
 /* student dashboard things */
 
 .dashboard-header {
-  background-color: darkblue;
+  background-color: blue;
   background-image: linear-gradient(to right, rgb(9, 20, 105) , rgb(181, 203, 226));
   text-align: center;
   padding: 0.5%;
@@ -88,7 +88,7 @@
 .header-button {
   padding-top: 5px;
   padding-bottom: 5px;
-  border-radius: 5px;
+  border-radius: 0;
   border-color: #8184da;
   font-size: 16px;
 }
@@ -142,8 +142,8 @@
   font-size: 16px;
   /* margin: 5px; */
   border: none;
-  background-color: rgba(255, 255, 255, 0);
-  border-bottom: rgba(255, 255, 255, 0) solid 3px;
+  background-color: rgba(129, 132, 218);
+  border-bottom: rgba(129, 132, 218) solid 3px;
   transition-duration: 0.3s;
   width: 100%;
   padding-top: 5px;
@@ -162,7 +162,7 @@
 /* for class pages */
 
 .dashboard-class-header {
-  background-color: rgb(35, 181, 186);
+  background-color: rgba(129, 132, 218);
   /* background-image: linear-gradient(to right, rgb(9, 20, 105) , rgb(181, 203, 226)); */
   text-align: center;
   padding: 0.5%;
@@ -181,7 +181,7 @@
   background-color: rgb(250, 194, 194);
   font-size: 22px;
   padding: 20px;
-  border-radius: 2px;
+  border-radius: 0;
   padding-left: 40px;
   padding-right: 40px;
 }

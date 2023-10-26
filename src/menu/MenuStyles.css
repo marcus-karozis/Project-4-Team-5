@@ -36,8 +36,8 @@
   /* justify-content: space-evenly; */
   margin-top: 1rem;
   margin-left: 1rem;
-  border-radius: 0.5rem;
-  background-color: lightgrey;
+  border-radius: 0;
+  background-color: #99738E;
 }
   
 /* .small-image-sizer {
