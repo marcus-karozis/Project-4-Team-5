@@ -42,8 +42,23 @@
 
 /* *********************************** */
 /* background color to light or dark */
-body{
-  background-color: #553D67;
+
+body {
+  background: #553D67;
+  color: var(--color-text-primary);
+  transition: background 0.25s ease-in-out;
+}
+
+/* light mode */
+body[data-theme="true"] {
+  --color-text-primary: #black;
+  --color-bg-primary: #fff;
+}
+
+/* dark mode */
+body[data-theme="false"] {
+  --color-text-primary: #fff;
+  --color-bg-primary: #2B2A33;
 }
 /* *************************************** */
 /* student dashboard things */

@@ -18,13 +18,20 @@ nav{
     z-index: 1;
 }
 
-.fa-react{
-    font-size: 2rem;
-    color: #fff;
-    justify-self: start;
-    cursor: pointer;
-    padding: 0 20px;
+/* light and dark mode */
+.theme-icons{
+    padding-left: 30px;
+    font-size: 1.5rem;
 }
+
+.fa-moon{
+    color: #fff;
+}
+
+.fa-sun{
+    color: #fff;
+}
+/* *************************** */
 
 .navbar{
     display: grid;
@@ -88,13 +95,14 @@ nav{
     display: none;
 }
 
-@media screen and (max-width:1000px){
-    nav{
+
+@media screen and (max-width:1000px) {
+    nav {
         width: 100%;
-       /* border-radius: 1rem; */
+        border-radius: 1rem;
     }
 
-    .navbar{
+    .navbar {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -104,7 +112,7 @@ nav{
         left: -110%;
         width: 100%;
         height: auto;
-        background:  rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.25);
         box-shadow: 0 8px 32px rgba(31, 38, 135, .37);
         backdrop-filter: blur(4px);
         /* border-radius: 13px; */
@@ -114,29 +122,31 @@ nav{
         transition: all 0.2s ease-in-out;
     }
 
-    .navbar.active{
+    .navbar.active {
         left: 0%;
     }
-    /*
+  
+    
 
     #navbar li{
         /* display: block;
         widows: 100%; */
         /* padding: 2rem 0; */
         /* color: #fff; */
-    
+    }
 
 
     .navbar li a{
+
         color: black;
     }
 
-    #navbar li:hover{
+    #navbar li:hover {
         background: rgba(255, 255, 255, 0.2);
         backdrop-filter: blur(20px);
     }
-    
-    .menu-icons{
+
+    .menu-icons {
         display: block;
     }
 
@@ -150,4 +160,4 @@ nav{
     .navbar li a.active::after {
         display: none;
     }
-    }
+}

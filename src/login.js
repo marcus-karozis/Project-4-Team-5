@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import Webcam from 'react-webcam';
 import { useNavigate } from 'react-router-dom'
 import './login.css'
+import Navbar from './components/Navbar';
 
 const AuthenticationPage = ({ onFail }) => {
   const webcamRef = useRef(null);
@@ -35,6 +36,8 @@ const AuthenticationPage = ({ onFail }) => {
   }, []);
 
   return (
+    <>
+    <Navbar></Navbar>
     <div className="authentication-container">
       <h2 className="text">Login Page</h2>
       {authStatus === "showLoginForm" ? (
@@ -70,6 +73,7 @@ const AuthenticationPage = ({ onFail }) => {
       {authStatus === "success" && <p className="text">Login Successful as {enteredUsername}</p>}
       {authStatus === "fail" && <p className="text">Authentication Unsuccessful</p>}
     </div>
+    </>
   );
 };
 
