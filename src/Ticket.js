@@ -2,6 +2,7 @@ import axios from 'axios';
 import { Long } from 'bson';
 
 export class Ticket {
+    // this constructor is used when initially creating the ticket
     constructor(name, email, message, user_id) {
         this._id = this.generateRandomInt64();
         this.name = name;
@@ -27,6 +28,25 @@ export class Ticket {
             console.error(error);
             throw new Error('Failed to save ticket to the server.');
         }
+    }
+
+    // Function to update the ticket
+    async updateAndSaveToServer() {
+        try {
+            const response = await axios.post('/db/ticket_update', this.toJSON());
+            return response.data;
+        } catch (error) {
+            console.error(error);
+            throw new Error('Failed to update and save ticket to the server.');
+        }
+    }
+
+    setExistingTicketID(ticket_id) {
+        this._id = ticket_id;
+    }
+
+    setTickCompleteStatus(tick_complete) {
+        this.tick_complete = tick_complete;
     }
 
     // Function to convert the Ticket object to JSON

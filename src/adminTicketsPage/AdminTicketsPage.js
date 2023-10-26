@@ -6,6 +6,8 @@ import adminStyles from './AdminTicketsPageStyles.css';
 import emailjs from '@emailjs/browser';
 import axios from 'axios';
 
+import { Ticket }  from '../Ticket.js'; // Import the Ticket class
+
 
 function NotCompleteTicket(props) {
 
@@ -34,7 +36,19 @@ function NotCompleteTicket(props) {
             const formJson = Object.fromEntries(formData.entries());
 
             // ticket database update request goes here !!!!!!!!!!!!!!!
+            // (id, name, email, message, user_id, tick_complete)
+            //const updatedTicket = new Ticket(formJson["ticket_id"], formJson["name_input"], formJson["email_input"], formJson["issue_input"], formJson["userID_input"].toString(), true);
+            const updatedTicket = new Ticket(formJson["name_input"], formJson["email_input"], formJson["issue_input"], formJson["userID_input"].toString());
+            console.log(updatedTicket);
 
+            updatedTicket.setExistingTicketID(formJson["ticket_id"]);
+            console.log(updatedTicket);
+
+            updatedTicket.setTickCompleteStatus(true);
+            console.log(updatedTicket);
+
+            console.log("updating in server...");
+            updatedTicket.updateAndSaveToServer();
 
             // get the email the ticket has stored
             // send "Ticket Confirmation Email" to that email
