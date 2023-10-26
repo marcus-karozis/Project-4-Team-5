@@ -41,10 +41,14 @@ export class Ticket {
         }
     }
 
+    // only used to update the status of the ticket 
+    // (since the ID needs to match an existing ticket in the db)
     setExistingTicketID(ticket_id) {
         this._id = ticket_id;
     }
 
+    // only used to update the status of the ticket
+    // so it goes from "not complete" to "complete"
     setTickCompleteStatus(tick_complete) {
         this.tick_complete = tick_complete;
     }

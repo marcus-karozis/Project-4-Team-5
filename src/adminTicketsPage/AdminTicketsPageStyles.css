@@ -8,8 +8,6 @@
     border-bottom-width: 1px;
     border-bottom-style: solid;
     padding: 10px;
-    /* margin-bottom: 2px; */
-    /* box-shadow: 0px 0px 3px rgb(105, 105, 154); */
     width: 80%;
     font-size: 18px;
     margin-left: auto;
@@ -82,7 +80,8 @@ button:active {
     border-radius: 20px;
     padding: 10px;
     margin: auto;
-    width: 100%;
+    width: 120%;
+    text-align: center;
 }
 
 .notCompleteTicket {
@@ -91,6 +90,7 @@ button:active {
     padding: 10px;
     margin: auto;
     width: 100%;
+    text-align: center;
 }
 
 .successful_submission_admin {

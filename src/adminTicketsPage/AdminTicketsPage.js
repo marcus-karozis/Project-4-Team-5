@@ -136,16 +136,16 @@ function NotCompleteTicket(props) {
 
         <div>
             <div className="ticket_card">
-                <div style={{ order: 1, marginRight: '20px', padding: '20px' }}>
+                <div className="" style={{ order: 1, marginRight: '20px', padding: '20px', maxWidth: '500px' }}>
                     <b>Ticket ID:</b> {props.id} <br></br>
                     <b>Issue:</b> {props.issue}
                 </div>
-                <div style={{ order: 2, marginRight: '0px', padding: '20px' }}>
+                <div className="" style={{ order: 2, marginRight: '0px', padding: '20px' }}>
                     <div className="notCompleteTicket">
                         <b>Not Complete</b>
                     </div>
                 </div>
-                <div style={{ order: 3, padding: '20px' }}>
+                <div className="" style={{ order: 3, padding: '20px' }}>
                     <form method="post" onSubmit={showExtraInfo}>
                         <input name="ticket_id" type="hidden" value={props.id} />
                         <button id={props.id}>
@@ -246,7 +246,7 @@ function CompletedTicket(props) {
     return (
         <div>
             <div className="ticket_card">
-                <div style={{ order: 1, marginRight: '20px', padding: '20px' }}>
+                <div style={{ order: 1, marginRight: '20px', padding: '20px', maxWidth: '500px' }}>
                     <b>Ticket ID:</b> {props.id} <br></br>
                     <b>Issue:</b> {props.issue}
                 </div>
