@@ -8,7 +8,7 @@
 /* picture */
 .subjectImage{
   display:flex;
-  background-image: url(../white_paper.jpg);
+  /*background-image: url(../white_paper.jpg); */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   object-fit: cover;

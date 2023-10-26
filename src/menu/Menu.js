@@ -1,7 +1,7 @@
 import "./MenuStyles.css";
 import { BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
 
-import subjectImage from '../white_paper.jpg'
+/* import subjectImage from '../white_paper.jpg' */
 
 export function Subject(subjects) {
     return(

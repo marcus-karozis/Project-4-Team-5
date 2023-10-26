@@ -52,7 +52,8 @@ body {
 /* light mode */
 body[data-theme="true"] {
   --color-text-primary: #black;
-  --color-bg-primary: #fff;
+  --color-bg-primary: #553D67;
+  
 }
 
 /* dark mode */
