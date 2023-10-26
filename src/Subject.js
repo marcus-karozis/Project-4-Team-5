@@ -2,8 +2,9 @@ import axios from 'axios';
 import { SClass }  from './SClass.js';
 
 export class Subject {
-  constructor(subject_name, subject_classes = []) {
-    this._id = this.generateID(subject_name);
+  constructor(_id, subject_name, subject_classes = []) {
+    this._id = _id;
+    //this._id = this.generateID(subject_name);
     this.subject_name = subject_name;
     this.classes = subject_classes;
   }
