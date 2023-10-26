@@ -12,10 +12,30 @@ function SubjectPage() {
     let location = useLocation();
     let { subject_id } = location.state;
     useEffect(() => {
+        const sortfn = (a,b) => {
+            let now = new Date();
+            let time1, time2;
+            for (let time of a.class_start_timestamps){
+                let difference = now.getTime() - new Date(time).getTime();
+                if (difference < 0) {
+                    time1 = difference;
+                }
+            }
+            for (let time of b.class_start_timestamps){
+                let difference = now.getTime() - new Date(time).getTime();
+                if (difference < 0) {
+                    time2 = difference;
+                }
+            }
+            return time2 - time1;
+        }
+
         const fetchClass = async () => {
             try {
                 let response = await axios.get('/db/subjects');
                 let classes = response.data.find(s => s._id === subject_id).classes;
+                // classes.sort(sortfn());
+                sortfn(classes, classes);
                 setClasses(classes);
             } catch (error) {
                 console.error(error);

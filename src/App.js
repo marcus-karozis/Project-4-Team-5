@@ -32,7 +32,7 @@ function App() {
   return (
     <>
       <div className="App">
-        <Navbar/>
+        <Navbar />
       </div>
       <div className="SubjectList">
         {subjectData.map(subject => (
