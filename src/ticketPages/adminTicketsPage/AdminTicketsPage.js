@@ -1,14 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-import Navbar from '../components/Navbar';
+import Navbar from '../../components/Navbar';
 import adminStyles from './AdminTicketsPageStyles.css';
 
 import emailjs from '@emailjs/browser';
 import axios from 'axios';
 
-import { Ticket }  from '../Ticket.js'; // Import the Ticket class
+import { Ticket }  from '../../Ticket.js'; // Import the Ticket class
 
-import LoadingSpinner from "../components/LoadingSpinner";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 
 function NotCompleteTicket(props) {

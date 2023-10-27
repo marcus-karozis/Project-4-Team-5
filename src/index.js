@@ -9,7 +9,8 @@ import TechSupportPage from './techSupportPage/TechSupportPage';
 import ClassPage from './subjectPage/ClassPage';
 import StudentCode from './studentCode/StudentCode';
 import LoginPage from './login.js';
-import AdminTicketsPage from './adminTicketsPage/AdminTicketsPage'
+// import AdminTicketsPage from './adminTicketsPage/AdminTicketsPage'
+import TicketPage from './ticketPages/ticketPage';
 
 const router = createBrowserRouter([
   {
@@ -37,8 +38,8 @@ const router = createBrowserRouter([
     element: <StudentCode/>
   },
   {
-    path: "adminTickets", // this path will go once the combined all user ticket page is created
-    element: <AdminTicketsPage/>
+    path: "tickets", // this path will go once the combined all user ticket page is created
+    element: <TicketPage/>
   }
 ])
 
