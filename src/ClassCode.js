@@ -1,9 +1,10 @@
 import { Long } from 'bson';
 
 
-class ClassCode {
-  constructor(expiry, users_selected = []) {
-    this._id = this.generateRandomInt64();
+export class ClassCode {
+  constructor(_id, expiry, users_selected = []) {
+    this._id = _id;
+    //this._id = this.generateRandomInt64();
     this.value = this.generateCode();
     this.expiry = expiry;
     this.users_selected = users_selected;
@@ -24,7 +25,7 @@ class ClassCode {
   generateRandomInt64() {
     const lowBits = Math.floor(Math.random() * 0xFFFFFFFF);
     const highBits = Math.floor(Math.random() * 0xFFFFFFFF);
-    return new Long(lowBits, highBits);
+    return new Long(lowBits, highBits).toString();
   }
 
   generateCode() {
