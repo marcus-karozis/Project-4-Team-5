@@ -13,12 +13,6 @@ export class Ticket {
     }
 
     generateRandomInt64() {
-        // var crypto = require("crypto");
-        // var generatedID = crypto.randomBytes(20).toString('hex');
-
-        // return generatedID.toString();
-        // ^^ this doesn't work anymore :c
-
         var charSet = 'abcdefghijklmnopqrstuvwxyz0123456789';
         var randomString = '';
         for (var i = 0; i < 40; i++) {
