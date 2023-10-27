@@ -13,10 +13,20 @@ export class Ticket {
     }
 
     generateRandomInt64() {
-        var crypto = require("crypto");
-        var generatedID = crypto.randomBytes(20).toString('hex');
+        // var crypto = require("crypto");
+        // var generatedID = crypto.randomBytes(20).toString('hex');
 
-        return generatedID.toString();
+        // return generatedID.toString();
+        // ^^ this doesn't work anymore :c
+
+        var charSet = 'abcdefghijklmnopqrstuvwxyz0123456789';
+        var randomString = '';
+        for (var i = 0; i < 40; i++) {
+            var randomPoz = Math.floor(Math.random() * charSet.length);
+            randomString += charSet.substring(randomPoz,randomPoz+1);
+        }
+        
+        return randomString;
     }
 
     // Function to convert the Ticket object to JSON and submit it to the server
