@@ -69,7 +69,7 @@ const ticketSchema = new mongoose.Schema({
     name: String,
     email: String,
     message: String,
-    user_id: String, 
+    user_id: String,
     tick_complete: Boolean,
 });
 
@@ -191,6 +191,35 @@ router.post('/tickets', async (req, res) => {
         const ticket = new Ticket(ticketData);
         await ticket.save();
         res.json(ticket);
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
+});
+
+// POST request to update ticket
+router.post('/ticket_update', async (req, res) => {
+    try {
+        console.log(req.body);
+
+        // Create a filter for ticket with the passed in id
+        const filter = { _id: req.body._id };
+
+        /* Set the upsert option to insert a document if no documents match
+        the filter */
+        const options = { upsert: true };
+
+        // Specify the update to set a new value for the tick_complete field
+        const updateDoc = {
+        $set: {
+            tick_complete: req.body.tick_complete
+        },
+        };
+
+        // Update the first document that matches the filter
+        const result = await Ticket.updateOne(filter, updateDoc, options);
+        res.json(result);
     }
     catch (err) {
         console.error(err);

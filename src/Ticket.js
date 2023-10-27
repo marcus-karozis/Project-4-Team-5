@@ -2,6 +2,7 @@ import axios from 'axios';
 import { Long } from 'bson';
 
 export class Ticket {
+    // this constructor is used when initially creating the ticket
     constructor(name, email, message, user_id) {
         this._id = this.generateRandomInt64();
         this.name = name;
@@ -12,10 +13,14 @@ export class Ticket {
     }
 
     generateRandomInt64() {
-        var crypto = require("crypto");
-        var generatedID = crypto.randomBytes(20).toString('hex');
-
-        return generatedID.toString();
+        var charSet = 'abcdefghijklmnopqrstuvwxyz0123456789';
+        var randomString = '';
+        for (var i = 0; i < 40; i++) {
+            var randomPoz = Math.floor(Math.random() * charSet.length);
+            randomString += charSet.substring(randomPoz,randomPoz+1);
+        }
+        
+        return randomString;
     }
 
     // Function to convert the Ticket object to JSON and submit it to the server
@@ -27,6 +32,29 @@ export class Ticket {
             console.error(error);
             throw new Error('Failed to save ticket to the server.');
         }
+    }
+
+    // Function to update the ticket
+    async updateAndSaveToServer() {
+        try {
+            const response = await axios.post('/db/ticket_update', this.toJSON());
+            return response.data;
+        } catch (error) {
+            console.error(error);
+            throw new Error('Failed to update and save ticket to the server.');
+        }
+    }
+
+    // only used to update the status of the ticket 
+    // (since the ID needs to match an existing ticket in the db)
+    setExistingTicketID(ticket_id) {
+        this._id = ticket_id;
+    }
+
+    // only used to update the status of the ticket
+    // so it goes from "not complete" to "complete"
+    setTickCompleteStatus(tick_complete) {
+        this.tick_complete = tick_complete;
     }
 
     // Function to convert the Ticket object to JSON
