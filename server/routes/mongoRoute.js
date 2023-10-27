@@ -70,6 +70,7 @@ const ticketSchema = new mongoose.Schema({
     email: String,
     message: String,
     user_id: String, 
+    tick_complete: Boolean,
 });
 
 // Define the models for the collections
@@ -144,6 +145,18 @@ router.get('/getSubjectsByUserId', async (req, res) => {
     }
 });
 
+// get tickets by user_id
+router.get('/getTicketsByUserId', async (req, res) => {
+    try {
+        let tickets = await Ticket.find({ user_id: req.query.userID });
+        res.json(tickets);
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
+});
+
 // POST Requests
 
 // Define the POST request for the subjects collection
@@ -169,6 +182,20 @@ router.post('/users', async (req, res) => {
         await user.save();
         res.json(user);
     } catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
+});
+
+// POST Request for tickets collection
+router.post('/tickets', async (req, res) => {
+    try {
+        const ticketData = req.body;
+        const ticket = new Ticket(ticketData);
+        await ticket.save();
+        res.json(ticket);
+    }
+    catch (err) {
         console.error(err);
         res.status(500).send('Server Error');
     }

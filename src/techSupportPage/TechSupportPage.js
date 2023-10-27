@@ -1,7 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './TechSupportPageStyles.css';
 import Navbar from '../components/Navbar';
 import emailjs from '@emailjs/browser';
+import axios from 'axios';
+
+import { Ticket }  from '../Ticket.js'; // Import the Ticket class
 
 function TechSupportPage() {
     const formThing = useRef();
@@ -14,6 +17,26 @@ function TechSupportPage() {
         if (window.confirm("Are you ready to submit this issue/enquiry to the sytsem admin?")) {
             // do this if ok pressed
             console.log("Ok was pressed. Sending to admin user...");
+
+            // // Read the form data
+            // const form = e.target;
+            // const formData = new FormData(form);
+
+            // // obtain all the data on the form & store in object to use when creating ticket
+            // const formJson = Object.fromEntries(formData.entries());
+            // console.log(formJson);
+            // console.log(" ");
+            // console.log(formJson["name_input"]);
+            // console.log(formJson["email_input"]);
+            // console.log(formJson["userID_input"].toString());
+            // console.log(formJson["issue_input"]);
+
+            // const ticket = new Ticket(formJson["name_input"], formJson["email_input"], formJson["issue_input"], formJson["userID_input"].toString());
+
+            // console.log(ticket);
+
+            // console.log("saving to server...");
+            // ticket.saveToServer();
 
             // send email to admin user
 
@@ -32,16 +55,16 @@ function TechSupportPage() {
 
             // // comment below back in if you want to send a test email for support page
 
-            emailjs.sendForm('service_gs0av92', 'template_2y5bxxs', formThing.current, 'KNHae1w2H-IMWhEI7')
-                .then((result) => {
-                    console.log(result.text + " | Email Sent to Admin!");
-                    var responseBox = document.getElementById("tech_support_form_successful_response");
-                    responseBox.style.display='block';
-                }, (error) => {
-                    console.log(error.text + " | Could Not Send Email To Admin");
-                    var responseBox = document.getElementById("tech_support_form_failed_response");
-                    responseBox.style.display='block';
-                });
+            // emailjs.sendForm('service_gs0av92', 'template_2y5bxxs', formThing.current, 'KNHae1w2H-IMWhEI7')
+            //     .then((result) => {
+            //         console.log(result.text + " | Email Sent to Admin!");
+            //         var responseBox = document.getElementById("tech_support_form_successful_response");
+            //         responseBox.style.display='block';
+            //     }, (error) => {
+            //         console.log(error.text + " | Could Not Send Email To Admin");
+            //         var responseBox = document.getElementById("tech_support_form_failed_response");
+            //         responseBox.style.display='block';
+            //     });
             
             // // comment above back in if you want to send a test email for support page
 
@@ -53,6 +76,39 @@ function TechSupportPage() {
         }
 
     }
+
+    // const [ticketData, setTickets] = useState([]);
+
+    // useEffect(() => {
+    //     // // test for all tickets
+    //     // const fetchTickets = async () => {
+    //     // try {
+    //     //     const response = await axios.get('/db/tickets');
+    //     //     const tickets = response.data;
+    //     //     setTickets(tickets);
+    //     //     console.log(tickets);
+    //     // } catch (error) {
+    //     //     console.error(error);
+    //     // }
+    //     // };
+
+    //     // test for tickets of specific ID (user_id: "1234567") - test ticket
+    //     const fetchTickets = async () => {
+    //         try {
+    //             const response = await axios.get('/db/getTicketsByUserId', { params: { userID: "1234567" }});
+    //             const tickets = response.data;
+    //             setTickets(tickets);
+    //             console.log(tickets);
+    //         } catch (error) {
+    //             console.error(error);
+    //         }
+    //     };
+
+    //     fetchTickets();
+
+    // }, []);
+
+    
 
     return (
         <div>
@@ -79,6 +135,15 @@ function TechSupportPage() {
                         </div> */}
                         <div>
                             <input type="email" name="email_input" className="" required placeholder='Email' />
+                        </div>
+                    </div>
+
+                    <div id="userID_box">
+                        {/* <div className="label_div" style={{}}>
+                            <label > User ID </label>
+                        </div> */}
+                        <div>
+                            <input type="" name="userID_input" className="" required placeholder='User ID' />
                         </div>
                     </div>
 
@@ -110,6 +175,20 @@ function TechSupportPage() {
                     </div>
                 </div>
             </div>
+
+            {/* <div className="ticketTest">
+                {ticketData.map(ticket => (
+                    <p>{ticket._id}</p>
+                    // <Subject
+                    //     key={subject._id}
+                    //     id={subject._id}
+                    //     subjectName={subject.subject_name}
+                    // />
+                    ))
+                }
+            </div> */}
+
+
         </div>
     );
 }
