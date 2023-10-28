@@ -10,6 +10,8 @@ import ClassPage from './subjectPage/ClassPage';
 import StudentCode from './studentCode/StudentCode';
 import LoginPage from './login.js';
 import UserContext from './usercontext';
+// import AdminTicketsPage from './adminTicketsPage/AdminTicketsPage'
+import TicketPage from './ticketPages/ticketPage';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +37,10 @@ const router = createBrowserRouter([
   {
     path: "studentCode",
     element: <StudentCode/>
+  },
+  {
+    path: "tickets", // this path will go once the combined all user ticket page is created
+    element: <TicketPage/>
   }
 ])
 

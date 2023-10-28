@@ -1,15 +1,16 @@
 import axios from 'axios';
-import SClass from './SClass.js';
+import { SClass }  from './SClass.js';
 
-class Subject {
-  constructor(subject_name, subject_classes = []) {
-    this._id = this.generateID(subject_name);
+export class Subject {
+  constructor(_id, subject_name, subject_classes = []) {
+    this._id = _id;
+    //this._id = this.generateID(subject_name);
     this.subject_name = subject_name;
     this.classes = subject_classes;
   }
 
-  addClass(class_name, class_start_timestamps=[], class_end_timestamps=[], codes=[]) {
-    this.enrolment.push(new SClass(class_name, class_start_timestamps, class_end_timestamps, codes ));
+  addClass(class_id, class_name, class_start_timestamps=[], class_end_timestamps=[], codes=[]) {
+    this.classes.push(new SClass(class_id, class_name, class_start_timestamps, class_end_timestamps, codes ));
   }
 
   // Function to convert the Subject object to JSON and submit it to the server

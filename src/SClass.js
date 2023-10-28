@@ -1,17 +1,18 @@
-import ClassCode from './ClassCode';
+import { ClassCode } from './ClassCode';
 import { Long } from 'bson';
 
-class SClass {
-  constructor(class_name, class_start_timestamps=[], class_end_timestamps=[], codes=[]) {
-    this._id = this.generateRandomInt64();
+export class SClass {
+  constructor(_id, class_name, class_start_timestamps=[], class_end_timestamps=[], codes=[]) {
+    this._id = _id;
+    //this._id = this.generateRandomInt64();
     this.class_name = class_name;
     this.class_start_timestamps = class_start_timestamps;
     this.class_end_timestamps = class_end_timestamps;
     this.codes = codes;
   }
 
-  addCode(expiry, users_selected = []) {
-    this.enrolment.push(new ClassCode(expiry, users_selected));
+  addCode(code_id, expiry, users_selected = []) {
+    this.codes.push(new ClassCode(code_id, expiry, users_selected));
   }
 
   // Function to convert the User object to JSON
