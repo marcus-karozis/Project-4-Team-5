@@ -9,9 +9,9 @@ export class Subject {
     this.classes = subject_classes;
   }
 
-  addClass(class_id, class_name, class_start_timestamps=[], class_end_timestamps=[], codes=[]) {
-    this.classes.push(new SClass(class_id, class_name, class_start_timestamps, class_end_timestamps, codes ));
-  }
+  // addClass(class_id, class_name, class_start_timestamps=[], class_end_timestamps=[], codes=[]) {
+  //   this.classes.push(new SClass(class_id, class_name, class_start_timestamps, class_end_timestamps, codes ));
+  // }
 
   // Function to convert the Subject object to JSON and submit it to the server
   async saveToServer(newSubject) {

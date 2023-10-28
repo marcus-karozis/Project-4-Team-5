@@ -20,9 +20,9 @@ export class SClass {
 //   }
   
   // PREVIOUS 
-  addCode(code_id,expiry, users_selected = []) {
-    this.codes.push(new ClassCode(code_id, expiry, users_selected));
-  }
+  // addCode(code_id,expiry, users_selected = []) {
+  //   this.codes.push(new ClassCode(code_id, expiry, users_selected));
+  // }
 
 
   // Function to convert the User object to JSON

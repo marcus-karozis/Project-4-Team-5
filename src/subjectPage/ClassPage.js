@@ -14,7 +14,7 @@ function ClassPage() {
 
 
     let location = useLocation();
-    let { class_id, class_name, subject_id, subject_name, start_time, end_time, classes, codes } = location.state
+    let { class_id, class_name, subject_id, subject_name, start_time, end_time, classes, codes, subjectData } = location.state
 
 
 
@@ -39,27 +39,43 @@ function ClassPage() {
 
 
         
-        const newCode = new ClassCode(end_time)
-        const newClass = new SClass(class_id, class_name, start_time, end_time, codes )
-        const newSubject = new Subject(subject_id, subject_name, classes)
-       
-        
-        setCode(newCode.value)
+        //const newCode = new ClassCode(end_time)
+        //const newClass = new SClass(class_id, class_name, start_time, end_time, codes )
+        //const newSubject = new Subject(subject_id, subject_name, classes)
+        const newSubject = new Subject(subjectData._id, subjectData.subject_name, []);
 
-        const existingClassIndex = this.classes.findIndex(existingClass => existingClass.class_id === class_id);
-
-        if (existingClassIndex !== -1) {
-            // If the class_id already exists, push the test object to the existing class's array
-            this.classes[existingClassIndex] = newClass;
-            return "Class added to existing class successfully!";
-        } else {
-            // If the class_id doesn't exist, push the test object into the classes array
-            this.classes.push(newClass);
-            return "New class added successfully!";
+        for (let i = 0; i < subjectData.classes.length; i++) {
+            const classData = subjectData.classes[i];
+            const newClass = new SClass(classData._id, classData.class_name, [], []);
+            
+            for (let j = 0; j < classData.class_start_timestamps.length; j++) {
+                const newCode = new ClassCode(classData.codes[j]._id, classData.codes[j].value, classData.codes[j].expiry, classData.codes[j].users_selected, classData.codes[j].users_passed);
+                
+                newClass.codes.push(newCode);
+            }
+            
+            newSubject.classes.push(newClass);
         }
-        newSubject.classes.push(newClass) //ADD if statement !
-        newClass.codes.push(newCode)
-        newSubject.saveToServer(newSubject)
+        
+        //setCode(newCode.value)
+
+        // const existingClassIndex = this.classes.findIndex(existingClass => existingClass.class_id === class_id);
+
+        // if (existingClassIndex !== -1) {
+        //     // If the class_id already exists, push the test object to the existing class's array
+        //     this.classes[existingClassIndex] = newClass;
+        //     return "Class added to existing class successfully!";
+        // } else {
+        //     // If the class_id doesn't exist, push the test object into the classes array
+        //     this.classes.push(newClass);
+        //     return "New class added successfully!";
+        // }
+
+        
+
+        //newSubject.classes.push(newClass) //ADD if statement !
+        //newClass.codes.push(newCode)
+        //newSubject.saveToServer(newSubject)
         // console.log("test: " + JSON.stringify(newSubject))
 
         // const newSubject = new Subject(subject_id, subject_name, classes)
