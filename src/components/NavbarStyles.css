@@ -1,8 +1,24 @@
+/* *********************************** */
+/* background color to light or dark */
+
+body {
+    background: #553D67;
+    color: black;
+    transition: background 0.25s ease-in-out;
+  }
+  
+  /* dark mode */
+  body[data-theme="false"] {
+    background: #2B2A33 !important;
+    color: #fff !important;
+    transition: background 0.25s ease-in-out;
+  }
+
 nav{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background:  #553D67;
+    /* background:  #553D67; */
     padding: 0 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
     /* background-color: darkblue; */

@@ -24,6 +24,20 @@ function sortfn (a,b) {
     return time2 - time1;
 }
 
+function isTimeInAnHour (a) {
+    let nextClass = new Date(getNextClass(a.class_start_timestamps));
+    let time = Math.round((nextClass.getTime() - new Date().getTime())/(1000*60));
+    //if class is today
+    if(time < 1440){
+        if (time < 60){
+            return "Class starts in " + time + "minutes";
+        }
+        else{
+            return "Class starts at " + nextClass.toLocaleTimeString('default', { hour: '2-digit', minute: '2-digit' });
+        }
+    }
+}
+
 function SubjectPage() {
     
     let [classData, setClasses] = useState([]);
@@ -35,7 +49,7 @@ function SubjectPage() {
             try {
                 let response = await axios.get('/db/subjects');
                 let classes = response.data.find(s => s._id === subject_id).classes;
-                classes.sort(sortfn());
+                classes.sort(sortfn);
                 // sortfn(classes, classes);
                 setClasses(classes);
             } catch (error) {
@@ -58,7 +72,11 @@ function SubjectPage() {
                         className={_class.class_name}
                         subject_id={subject_id}
                         class_id={classData.indexOf(_class)}
+                        //gets Date
                         time={new Date(getNextClass(_class.class_start_timestamps)).toDateString() ?? ""}
+                        //gets Time Remaining in minutes
+                        // timeRemaining={Math.round((new Date(getNextClass(_class.class_start_timestamps)).getTime() - new Date().getTime())/(1000*60)) ?? ""}
+                        timeRemaining={isTimeInAnHour(_class)}
                     />))
                 }
             </div>

@@ -23,7 +23,7 @@ function Navbar() {
             <nav>
                 {/* logo */}
                 <div className="theme-icons">
-                    <i id="logo" onClick={handleToggle} className={theme ? "fas fa-moon" : "fas fa-sun"}></i>
+                    <i onClick={handleToggle} className={theme ? "fas fa-moon" : "fas fa-sun"}></i>
                 </div>
                 
                 <div className="menu-icons">
