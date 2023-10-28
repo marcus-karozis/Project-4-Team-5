@@ -8,7 +8,6 @@ import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom/client';
 
 import axios from 'axios';
-
 const subjectPage = ReactDOM.createRoot(document.getElementById('root'));
 
 //main function
