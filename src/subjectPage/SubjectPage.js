@@ -11,13 +11,12 @@ function SubjectPage() {
     
     let [classData, setClasses] = useState([]);
     let location = useLocation();
-    let { subject_id, subject_name } = location.state;
+    let { subject_id, subject_name, subjectData } = location.state;
 
 
     useEffect(() => {
         const fetchClass = async () => {
             try {
-                console.log("current test: " + subject_id)
                 let response = await axios.get('/db/subjects');
                 let classes = response.data.find(s => s._id === subject_id).classes;
                 setClasses(classes);
@@ -49,6 +48,7 @@ function SubjectPage() {
                         start_time={_class.class_start_timestamps}
                         end_time={_class.class_end_timestamps}
                         codes={_class.codes}
+                        
                     />))
                 }
             </div>

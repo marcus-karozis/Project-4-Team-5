@@ -42,6 +42,7 @@ function App() {
             key={subject._id}
             id={subject._id}
             subject_name={subject.subject_name}
+            
           />))
         }
       </div>

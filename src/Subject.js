@@ -30,7 +30,7 @@ export class Subject {
     return {
       _id: this._id,
       subject_name: this.subject_name,
-      classes: this.classes.toJSON(),
+      classes: this.classes,
     };
   }
 
