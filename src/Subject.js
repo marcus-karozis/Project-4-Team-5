@@ -14,10 +14,11 @@ export class Subject {
   }
 
   // Function to convert the Subject object to JSON and submit it to the server
-  async saveToServer() {
+  async saveToServer(newSubject) {
     try {
-      const response = await axios.post('/db/subjects', this.toJSON());
-      return response.data;
+      console.log(newSubject)
+      // const response = await axios.post('/db/subjects', this.toJSON());
+      // return response.data;
     } catch (error) {
       console.error(error);
       throw new Error('Failed to save subject to the server.');
@@ -52,5 +53,3 @@ export class Subject {
   }
 
 }
-
-module.exports = Subject;

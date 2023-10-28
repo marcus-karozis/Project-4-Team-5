@@ -171,6 +171,27 @@ router.post('/subjects', async (req, res) => {
         res.status(500).send('Server Error');
     }
 });
+
+// // Define the POST request for the subjects collection
+// router.post('/subjects', async (req, res) => {
+//     try {
+//         const subjectData = req.body;
+//         console.log(subjectData)
+//         // Find the existing subject by ID and update it with the new data
+//         const updatedSubject = await Subject.findByIdAndUpdate(subjectData._id, subjectData);
+
+//         if (!updatedSubject) {
+//             // If no existing subject found with the given ID, send a 404 error response
+//             return res.status(404).json({ error: 'Subject not found.' });
+//         }
+
+//         res.json(updatedSubject);
+//     } catch (err) {
+//         console.error(err);
+//         res.status(500).send('Server Error');
+//     }
+// });
+
 // Define the POST request for the users collection
 router.post('/users', async (req, res) => {
     try {

@@ -41,7 +41,7 @@ function App() {
           <Subject
             key={subject._id}
             id={subject._id}
-            subjectName={subject.subject_name}
+            subject_name={subject.subject_name}
           />))
         }
       </div>
