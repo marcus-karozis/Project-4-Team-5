@@ -11,7 +11,6 @@ const BasicTable = (obj) => {
     let subject_id = obj.subject_id;
     let class_id = obj.class_id;
     let startTime = obj.startTime;
-    console.log(subject_id, class_id);
     let [userData, setUsers] = useState([]);
     useEffect(() => {
         const fetchUsers = async () => {
@@ -19,7 +18,7 @@ const BasicTable = (obj) => {
                 let response = await axios.get('/db/users');
                 let users = response.data.filter(user => user.enrolment.some(_class => _class.subject_id === subject_id && _class.class === class_id));
                 setUsers(users);
-                console.log(users);
+                // console.log(users);
             } catch (error) {
                 console.error(error);
             }

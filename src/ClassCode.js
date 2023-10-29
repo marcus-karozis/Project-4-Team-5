@@ -2,9 +2,9 @@ import { Long } from 'bson';
 
 
 export class ClassCode {
-  constructor( expiry, users_selected = []) {
-    // this._id = _id;
-    this._id = this.generateRandomInt64();
+  constructor(_id, expiry, users_selected = []) {
+    this._id = _id;
+    //this._id = this.generateRandomInt64();
     this.value = this.generateCode();
     this.expiry = expiry;
     this.users_selected = users_selected;
@@ -41,3 +41,4 @@ export class ClassCode {
   }
 
 }
+

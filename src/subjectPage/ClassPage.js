@@ -15,28 +15,15 @@ function ClassPage() {
 
     let location = useLocation();
     let { class_id, class_name, subject_id, subject_name, start_time, end_time, classes, codes, subjectData } = location.state
+    // const [code, setCode] = useState(""); // Initialize state for the code
 
     
     const newClass = new SClass(class_id, class_name, start_time, end_time, codes)
     const newSubject = new Subject(subject_id, subject_name, classes)
     newSubject.classes.push(newClass);
 
-    const [codeGen, setCode] = useState('');
-
     function generateCode() {
 
-     
-         //const newSubject = new Subject(subject_id, subject_name, classes)
-        // const newClass =  newSubject.addClass(class_id, class_name, start_time, end_time, codes)
-        // newClass.addCode(end_time)
-        // newSubject.saveToServer()
-
-
-        
-       
-        //const newClass = new SClass(class_id, class_name, start_time, end_time, codes )
-        //const newSubject = new Subject(subject_id, subject_name, classes)
-       
         //MARCUS
         //const newSubject = new Subject(subjectData._id, subjectData.subject_name, []);
         
@@ -55,16 +42,16 @@ function ClassPage() {
 
 
         //LIV 
+        
         const newCode = new ClassCode(end_time)
-        
-        
-        
-        // console.log("BEFORE: " + JSON.stringify(newSubject, null, 2))
         newClass.codes.push(newCode)
 
-        //29/10/2023 - saves the code to the right classs 
+        // work around - was having issues with setCode(newCode)
+        const codeElement = document.querySelector('.codeText');
+        if (codeElement) {
+            codeElement.innerText = newCode.value;
+        }
         
-
         // const existingClassIndex = classes.findIndex(existingClass => existingClass.class_id === class_id);
 
         // if (existingClassIndex !== -1) {
@@ -84,42 +71,19 @@ function ClassPage() {
         // console.log(JSON.stringify(newClass.codes, null, 2));
         
         console.log("AFTER: " + JSON.stringify(newSubject, null, 2))
-        // console.log(JSON.stringify(newSubject.classes, null, 2));
-        
-
-
-
-        // console.log(JSON.stringify(newSubject))
-        // newSubject.saveToServer(newSubject)
-        
-        //setCode(newCode.value)
-
-      
-
-        
-
-        //newSubject.classes.push(newClass) //ADD if statement !
-        //newClass.codes.push(newCode)
-        //newSubject.saveToServer(newSubject)
-        // console.log("test: " + JSON.stringify(newSubject))
-
-        // const newSubject = new Subject(subject_id, subject_name, classes)
-        // newSubject.addClass(class_id, class_name, start_time, end_time, codes)
-
-
 
     }
 
     function disableCode() {
-        let code = "";
-        setCode(code);
+        // let code = "";
+        // setCode(code);
     }
 
 
     return (
         <>
             <Navbar></Navbar>
-            <h className='codeText'>{codeGen}</h>
+            <h className='codeText'></h>
             <div className="code dashboard-row">
                 <button onClick={generateCode}><i className='fa fa-refresh'></i> Regenerate code</button>
                 <button onClick={disableCode}><i className='fa fa-remove'></i> Disable code</button>
