@@ -69,8 +69,10 @@ function ClassPage() {
     }
 
     function disableCode() {
-        // let code = "";
-        // setCode(code);
+        const codeElement = document.querySelector('.codeText');
+        if (codeElement) {
+            codeElement.innerText = "";
+        }
     }
 
 
