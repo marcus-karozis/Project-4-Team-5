@@ -17,7 +17,7 @@ function SubjectPage() {
         const fetchClass = async () => {
             try {
                 let response = await axios.get('/db/getSubjectById', {params: {id: subject_id}});
-                let classes = response.data.classes.filter((_class) => user.enrolment.some((c) => c.class == _class._id));
+                let classes = response.data.classes.filter((_class) => user.user_type == 0 || user.enrolment.some((c) => c.class == _class._id));
                 setClasses(classes);
             } catch (error) {
                 console.error(error);

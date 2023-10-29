@@ -137,7 +137,12 @@ router.get('/getSubjectsByUserId', async (req, res) => {
     try {
         let user = await User.findById(req.query.id);
         let subjectIds = user.enrolment.map(_class => _class.subject_id.toString());
-        let subjects = await Subject.find().where('_id').in(subjectIds).exec();
+        let subjects;
+        if (user.user_type == 0) {
+            subjects = await Subject.find();
+        } else {
+            subjects = await Subject.find().where('_id').in(subjectIds).exec();
+        }
         res.json(subjects);
     } catch (err) {
         console.error(err);
