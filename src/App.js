@@ -12,9 +12,8 @@ import axios from 'axios';
 const subjectPage = ReactDOM.createRoot(document.getElementById('root'));
 
 function getNextClass (arr) {
-  let now = new Date();
-  for (let time of arr){
-      let difference = now.getTime() - new Date(time).getTime();
+  for (let time of arr.class_start_timestamps){
+      let difference = new Date().getTime() - new Date(time).getTime();
       if (difference < 0) {
           return time;
       }
@@ -22,18 +21,14 @@ function getNextClass (arr) {
 }
 
 //compares tut and lec time
-function getEarliestTime (a, b) {
-  let timeLec, timeTut;
-  timeLec = new Date(getNextClass(a));
-  let time1 = Math.round((timeLec.getTime() - new Date().getTime())/(1000*60));
-  timeTut = new Date(getNextClass(b));
-  let time2 = Math.round((timeTut.getTime() - new Date().getTime())/(1000*60));
-  if(time1 > time2){
-    return time1;
+function getEarliestTime (subject) {
+  let earliest = new Date();
+  for(let _class of subject.classes){
+    let newEarly = new Date(getNextClass(_class));
+    if (newEarly < earliest) earliest = newEarly;
+
   }
-  else{
-    return time2;
-  }
+  return earliest;
 }
 
 //main function
@@ -65,7 +60,7 @@ function App() {
             key={subject._id}
             id={subject._id}
             subjectName={subject.subject_name}
-            // subjectTimeRemaining={getEarliestTime(subject.classes[0], subject.classes[1])}
+            subjectTimeRemaining={getEarliestTime(subject)}
           />))
         }
       </div>
