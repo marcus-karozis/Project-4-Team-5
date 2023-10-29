@@ -17,32 +17,44 @@ function ClassPage() {
     let { class_id, class_name, subject_id, subject_name, start_time, end_time, classes, codes, subjectData } = location.state
     // const [code, setCode] = useState(""); // Initialize state for the code
 
-    
+
     const newClass = new SClass(class_id, class_name, start_time, end_time, codes)
     const newSubject = new Subject(subject_id, subject_name, classes)
-    newSubject.classes.push(newClass);
+
+    const existingClassIndex = newSubject.classes.findIndex(existingClass => existingClass._id === class_id);
+    // console.log(classes)
+    // console.log(existingClassIndex)
+    if (existingClassIndex !== -1) {
+        // If the class_id already exists, push the test object to the existing class's array
+        newSubject.classes[existingClassIndex] = newClass;
+    } else {
+        // If the class_id doesn't exist, push the test object into the classes array
+        newSubject.classes.push(newClass);
+
+    }
+
 
     function generateCode() {
 
         //MARCUS
         //const newSubject = new Subject(subjectData._id, subjectData.subject_name, []);
-        
+
         // for (let i = 0; i < subjectData.classes.length; i++) {
         //     const classData = subjectData.classes[i];
         //     const newClass = new SClass(classData._id, classData.class_name, [], []);
-            
+
         //     for (let j = 0; j < classData.class_start_timestamps.length; j++) {
         //         const newCode = new ClassCode(classData.codes[j]._id, classData.codes[j].value, classData.codes[j].expiry, classData.codes[j].users_selected, classData.codes[j].users_passed);
-                
+
         //         newClass.codes.push(newCode);
         //     }
-            
+
         //     newSubject.classes.push(newClass);
         // }
 
 
         //LIV 
-        
+
         const newCode = new ClassCode(end_time)
         newClass.codes.push(newCode)
 
@@ -51,27 +63,9 @@ function ClassPage() {
         if (codeElement) {
             codeElement.innerText = newCode.value;
         }
-        
-        // const existingClassIndex = classes.findIndex(existingClass => existingClass.class_id === class_id);
+        // console.log("AFTER: " + JSON.stringify(newSubject, null, 2))
 
-        // if (existingClassIndex !== -1) {
-        //     // If the class_id already exists, push the test object to the existing class's array
-        //     newSubject.classes[existingClassIndex] = newClass;
-        //     return "Class added to existing class successfully!";
-        // } else {
-        //     // If the class_id doesn't exist, push the test object into the classes array
-        //     
-        //     return "New class added successfully!";
-        // }
-        // newSubject.classes.push(newClass)
-        
-        // newSubject.classes.push(newClass)
-
-        // console.log(JSON.stringify(newClass, null, 2))
-        // console.log(JSON.stringify(newClass.codes, null, 2));
-        
-        console.log("AFTER: " + JSON.stringify(newSubject, null, 2))
-
+        newSubject.saveToServer(newSubject.toJSON())
     }
 
     function disableCode() {

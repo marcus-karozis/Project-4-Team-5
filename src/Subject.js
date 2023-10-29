@@ -17,8 +17,8 @@ export class Subject {
   async saveToServer(newSubject) {
     try {
       console.log(newSubject)
-      // const response = await axios.post('/db/subjects', this.toJSON());
-      // return response.data;
+      const response = await axios.post('/db/subjects', newSubject);
+      return response.data;
     } catch (error) {
       console.error(error);
       throw new Error('Failed to save subject to the server.');
