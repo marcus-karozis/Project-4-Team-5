@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './SubjectPageStyles.css';
 import Navbar from '../components/Navbar';
 import BasicTable from '../table/BasicTable'
 import { Class } from '../menu/Menu';
 import axios from 'axios'; 
 import { useLocation } from 'react-router-dom'
+import UserContext from '../usercontext';
 
 function SubjectPage() {
     
     let [classData, setClasses] = useState([]);
     let location = useLocation();
+    const { user } = useContext(UserContext);
     let { subject_id } = location.state;
     useEffect(() => {
         const fetchClass = async () => {
             try {
-                let response = await axios.get('/db/subjects');
-                let classes = response.data.find(s => s._id === subject_id).classes;
+                let response = await axios.get('/db/getSubjectById', {params: {id: subject_id}});
+                let classes = response.data.classes.filter((_class) => user.enrolment.some((c) => c.class == _class._id));
                 setClasses(classes);
             } catch (error) {
                 console.error(error);
