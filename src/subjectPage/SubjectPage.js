@@ -43,7 +43,6 @@ function SubjectPage() {
                         class_name={_class.class_name}
                         subject_id={subject_id}
                         subject_name={subject_name}
-                        // class_id={classData.indexOf(_class)}
                         class_id={_class._id}
                         start_time={_class.class_start_timestamps}
                         end_time={_class.class_end_timestamps}

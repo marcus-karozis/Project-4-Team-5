@@ -10,14 +10,6 @@ export class SClass {
     this.class_end_timestamps = class_end_timestamps;
     this.codes = codes;
   }
-
-  // addCode(expiry, users_selected = []) {
-  //   this.codes.push(new ClassCode(expiry, users_selected));
-  // }
-  
-//  addCode(newCode) {
-//     this.codes.push(newCode);
-//   }
   
   // PREVIOUS 
   // addCode(code_id,expiry, users_selected = []) {
@@ -33,6 +25,7 @@ export class SClass {
       class_start_timestamps: this.class_start_timestamps,
       class_end_timestamps: this.class_end_timestamps,
       codes: this.codes,
+      
     };
   }
 

@@ -17,9 +17,8 @@ function ClassPage() {
     let { class_id, class_name, subject_id, subject_name, start_time, end_time, classes, codes, subjectData } = location.state
     // const [code, setCode] = useState(""); // Initialize state for the code
 
-
-    const newClass = new SClass(class_id, class_name, start_time, end_time, codes)
-    const newSubject = new Subject(subject_id, subject_name, classes)
+    const newClass = new SClass(class_id, class_name, start_time, end_time, codes) //create one class instance
+    const newSubject = new Subject(subject_id, subject_name, classes) //create one subject instance 
 
     const existingClassIndex = newSubject.classes.findIndex(existingClass => existingClass._id === class_id);
     // console.log(classes)
@@ -55,7 +54,7 @@ function ClassPage() {
 
         //LIV 
 
-        const newCode = new ClassCode(end_time)
+        const newCode = new ClassCode(end_time[0])
         newClass.codes.push(newCode)
 
         // work around - was having issues with setCode(newCode)
