@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -9,6 +9,9 @@ import TechSupportPage from './techSupportPage/TechSupportPage';
 import ClassPage from './subjectPage/ClassPage';
 import StudentCode from './studentCode/StudentCode';
 import LoginPage from './login.js';
+import UserContext from './usercontext';
+// import AdminTicketsPage from './adminTicketsPage/AdminTicketsPage'
+import TicketPage from './ticketPages/ticketPage';
 
 const router = createBrowserRouter([
   {
@@ -34,14 +37,28 @@ const router = createBrowserRouter([
   {
     path: "studentCode",
     element: <StudentCode/>
+  },
+  {
+    path: "tickets", // this path will go once the combined all user ticket page is created
+    element: <TicketPage/>
   }
 ])
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <RouterProvider router={router} />
+function RootComponent() {
+  const [user, setUser] = useState(null);
 
-);
+  return (
+    <UserContext.Provider value={{ user, setUser }}>
+      <RouterProvider router={router}>
+        {/* Rest of your app components */}
+      </RouterProvider>
+    </UserContext.Provider>
+  );
+}
+
+// Render the RootComponent
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<RootComponent />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

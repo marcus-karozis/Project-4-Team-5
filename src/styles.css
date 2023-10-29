@@ -8,3 +8,28 @@
     font-family: sans-serif;
     text-align: center;
 }
+
+/* A generic dark button  */
+.dark-button {
+    width: 100%;  
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px -4px inset;
+    background: rgb(51, 51, 51);
+    color: rgb(255, 255, 255);
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.dark-button:hover { 
+    box-shadow: none;
+    background-color:  rgb(51, 51, 51);
+    transform: translateY(2px);
+    
+}
+
+/* ---- */

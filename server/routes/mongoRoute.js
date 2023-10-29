@@ -26,15 +26,17 @@ db.once('open', () => {
 
 // Define the schemas for the collections
 const subjectSchema = new mongoose.Schema({
+    _id: String,
     subject_name: String,
-    subject_code: String,
     classes: [
         {
+            _id: String,
             class_name: String,
             class_start_timestamps: [Date],
             class_end_timestamps: [Date],
             codes: [
                 {
+                    _id: String,
                     value: String,
                     expiry: Date,
                     users_selected:[String],    // user_name stored here
@@ -46,23 +48,35 @@ const subjectSchema = new mongoose.Schema({
 });
 
 const userSchema = new mongoose.Schema({
-    user_type: Number,              // 0: student, 1: lecturer
-    user_name: String,              //first_name.last_name
+    _id: String,
+    user_type: Number,              // 0: admin, 1: lecturer 2: student
+    password_cleartext: String,     // NEED TO HASH AT LATER DATE
     first_name: String,
     last_name: String,
-    photo_string: String,           // encoded string of the user's photo for facial recognition
+    photo_string: [Number],  // encoded string of the user's photo for facial recognition
     enrolment: [
         {
-            class: Number,              //classes object index stored here
-            checkin_timestamps:[Date],
-            subject_id: mongoose.Schema.ObjectId
+            subject_id: String,
+            class: String,              //classes object index stored here
+            checkin_timestamps:[Date]
+
         }
     ]
+});
+
+const ticketSchema = new mongoose.Schema({
+    _id: String,
+    name: String,
+    email: String,
+    message: String,
+    user_id: String,
+    tick_complete: Boolean,
 });
 
 // Define the models for the collections
 const Subject = mongoose.model('Subject', subjectSchema);
 const User = mongoose.model('User', userSchema);
+const Ticket = mongoose.model('Ticket', ticketSchema);
 
 // GET Requests
 
@@ -88,27 +102,11 @@ router.get('/users', async (req, res) => {
     }
 });
 
-// POST Requests
-
-// Define the POST request for the subjects collection
-router.post('/subjects', async (req, res) => {
+// Define the GET request for the tickets collection
+router.get('/tickets', async (req, res) => {
     try {
-        const { subject_name, classes } = req.body;
-        const subject = new Subject({ subject_name, classes });
-        await subject.save();
-        res.json(subject);
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Server Error');
-    }
-});
-// Define the POST request for the users collection
-router.post('/users', async (req, res) => {
-    try {
-        const { user_type, user_name, enrolment } = req.body;
-        const user = new User({ user_type, user_name, enrolment });
-        await user.save();
-        res.json(user);
+        const tickets = await Ticket.find();
+        res.json(tickets);
     } catch (err) {
         console.error(err);
         res.status(500).send('Server Error');
@@ -139,9 +137,96 @@ router.get('/getSubjectsByUserId', async (req, res) => {
     try {
         let user = await User.findById(req.query.id);
         let subjectIds = user.enrolment.map(_class => _class.subject_id.toString());
-        let subjects = await Subject.find().where('_id').in(subjectIds).exec();
+        let subjects;
+        if (user.user_type == 0) {
+            subjects = await Subject.find();
+        } else {
+            subjects = await Subject.find().where('_id').in(subjectIds).exec();
+        }
         res.json(subjects);
     } catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
+});
+
+// get tickets by user_id
+router.get('/getTicketsByUserId', async (req, res) => {
+    try {
+        let tickets = await Ticket.find({ user_id: req.query.userID });
+        res.json(tickets);
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
+});
+
+// POST Requests
+
+// Define the POST request for the subjects collection
+router.post('/subjects', async (req, res) => {
+    try {
+        const subjectData = req.body;
+        const subject = new Subject(subjectData);
+        await subject.save();
+        res.json(subject);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
+});
+// Define the POST request for the users collection
+router.post('/users', async (req, res) => {
+    try {
+        const userData = req.body;
+        const user = new User(userData);
+        await user.save();
+        res.json(user);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
+});
+
+// POST Request for tickets collection
+router.post('/tickets', async (req, res) => {
+    try {
+        const ticketData = req.body;
+        const ticket = new Ticket(ticketData);
+        await ticket.save();
+        res.json(ticket);
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
+});
+
+// POST request to update ticket
+router.post('/ticket_update', async (req, res) => {
+    try {
+        console.log(req.body);
+
+        // Create a filter for ticket with the passed in id
+        const filter = { _id: req.body._id };
+
+        /* Set the upsert option to insert a document if no documents match
+        the filter */
+        const options = { upsert: true };
+
+        // Specify the update to set a new value for the tick_complete field
+        const updateDoc = {
+        $set: {
+            tick_complete: req.body.tick_complete
+        },
+        };
+
+        // Update the first document that matches the filter
+        const result = await Ticket.updateOne(filter, updateDoc, options);
+        res.json(result);
+    }
+    catch (err) {
         console.error(err);
         res.status(500).send('Server Error');
     }
