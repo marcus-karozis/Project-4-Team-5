@@ -1,0 +1,30 @@
+@keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .loading-spinner {
+    width: 120px;
+    height: 120px;
+    border: 20px solid #f3f3f3; /* grey circle of spinner */
+    border-top: 20px solid #676ac2; /* blue part of spinner */
+    border-radius: 50%;
+    animation: spinner 1.5s linear infinite;
+  }
+
+  .spinner-container {
+    /* display: grid; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 350px; */
+
+    position: absolute;
+  /* // this will place spinner in center of form */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
