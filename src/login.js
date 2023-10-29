@@ -39,7 +39,8 @@ const AuthenticationPage = ({ onFail }) => {
     <>
     <Navbar></Navbar>
     <div className="authentication-container">
-      <h2 className="text">Login Page</h2>
+      <h2 className="text">Login</h2>
+      <h3> Sign into your account </h3>
       {authStatus === "showLoginForm" ? (
         <div style={loginFormStyle}>
           <div className="input-group" style={inputGroupStyle}>
@@ -77,16 +78,6 @@ const AuthenticationPage = ({ onFail }) => {
   );
 };
 
-// const containerStyle = {
-//   display: 'flex',
-//   flexDirection: 'column',
-//   alignItems: 'center',
-//   justifyContent: 'center',
-//   height: '100vh', // Fill the viewport vertically
-//   textAlign: 'center',
-//   backgroundColor: cornflowerblue // Setting background to light blue
-// };
-
 const loginFormStyle = {
   display: 'flex',
   flexDirection: 'column',
@@ -106,11 +97,5 @@ const inputGroupStyle = {
 const webcamStyle = {
   boxShadow: '0px 0px 10px 3px rgba(0,0,0,0.2)' // Adding a soft shadow for some depth
 };
-
-// const messageStyle = {
-//   marginTop: '20px',
-//   fontSize: '18px',
-//   fontWeight: 'bold'
-// };
 
 export default AuthenticationPage;

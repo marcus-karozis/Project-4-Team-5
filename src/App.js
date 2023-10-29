@@ -60,7 +60,7 @@ function App() {
             key={subject._id}
             id={subject._id}
             subjectName={subject.subject_name}
-            subjectTimeRemaining={getEarliestTime(subject)}
+            // subjectTimeRemaining={getEarliestTime(subject)}
           />))
         }
       </div>

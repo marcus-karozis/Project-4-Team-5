@@ -62,7 +62,7 @@ function TechSupportPage() {
 
             <div className="page_padding" style={{textAlign: 'center'}}>
                 <div className="whitespace"></div>
-                <h1>Tech Support Page</h1>
+                <h1>Tech Support</h1>
                 <form method="post" ref={formThing} onSubmit={handleSubmitSupportForm}>
                     <div id="name_box">
                         {/* <div className="label_div" style={{}}>

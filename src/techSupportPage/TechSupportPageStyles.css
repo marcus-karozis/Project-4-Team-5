@@ -49,12 +49,12 @@ textarea {
 }
 
 textarea:focus {
-    border: 3px solid #8184da;
+    border: 3px solid #99738E;
     border-radius: 3px;
 }
 
 button {
-    background-color: #8184da;
+    background-color: #99738E;
     border: none;
     color: white;
     padding: 16px 32px;
