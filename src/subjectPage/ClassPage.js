@@ -20,6 +20,7 @@ function ClassPage() {
     const newClass = new SClass(class_id, class_name, start_time, end_time, codes) //create one class instance
     const newSubject = new Subject(subject_id, subject_name, classes) //create one subject instance 
 
+    //removes duplicates
     const existingClassIndex = newSubject.classes.findIndex(existingClass => existingClass._id === class_id);
     // console.log(classes)
     // console.log(existingClassIndex)
@@ -29,7 +30,6 @@ function ClassPage() {
     } else {
         // If the class_id doesn't exist, push the test object into the classes array
         newSubject.classes.push(newClass);
-
     }
 
 
@@ -56,7 +56,7 @@ function ClassPage() {
 
         const newCode = new ClassCode(end_time[0])
         newClass.codes.push(newCode)
-
+        
         // work around - was having issues with setCode(newCode)
         const codeElement = document.querySelector('.codeText');
         if (codeElement) {
@@ -64,7 +64,7 @@ function ClassPage() {
         }
         // console.log("AFTER: " + JSON.stringify(newSubject, null, 2))
 
-        newSubject.saveToServer(newSubject.toJSON())
+        newSubject.updateServer()
     }
 
     function disableCode() {

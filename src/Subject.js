@@ -14,17 +14,30 @@ export class Subject {
   // }
 
   // Function to convert the Subject object to JSON and submit it to the server
-  async saveToServer(newSubject) {
+  async saveToServer() {
     try {
       //console.log("newSubject: " + JSON.stringify(newSubject, null, 2))
-      const response = await axios.post('/db/subjects', newSubject);
-      
-      //return response.data;
+      const response = await axios.post('/db/subjects', this);
+      return response.data;
     } catch (error) {
       console.error(error);
       throw new Error('Failed to save subject to the server.');
     }
   }
+
+  async updateServer() {
+    try {
+      //console.log("newSubject: " + JSON.stringify(newSubject, null, 2))
+      const response = await axios.post('/db/updateSubjectById', this);
+      console.log(`${response.status}: Successfully updated server`)
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw new Error('Failed to save subject to the server.');
+    }
+  }
+
+ 
 
   // Function to convert the Subject object to JSON
   toJSON() {
