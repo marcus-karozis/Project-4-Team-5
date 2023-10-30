@@ -14,7 +14,7 @@ function ClassPage() {
 
 
     let location = useLocation();
-    let { class_id, class_name, subject_id, subject_name, start_time, end_time, classes, codes, subjectData } = location.state
+    let { class_id, class_name, subject_id, subject_name, start_time, end_time, classes, codes } = location.state
     // const [code, setCode] = useState(""); // Initialize state for the code
 
     const newClass = new SClass(class_id, class_name, start_time, end_time, codes) //create one class instance
@@ -57,6 +57,8 @@ function ClassPage() {
         const newCode = new ClassCode(end_time[0])
         newClass.codes.push(newCode)
         
+        //const codeId = newCode._id
+
         // work around - was having issues with setCode(newCode)
         const codeElement = document.querySelector('.codeText');
         if (codeElement) {
