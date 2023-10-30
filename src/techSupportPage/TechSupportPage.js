@@ -118,77 +118,63 @@ function TechSupportPage() {
     
 
     return (
-        <div>
-            <div className="" style={{marginBottom: '80px'}}>
-                <Navbar/>
-            </div>
-
-            <div className="page_padding" style={{textAlign: 'center'}}>
-                    <h1>Tech Support Page</h1>
-                    <form method="post" ref={formThing} onSubmit={handleSubmitSupportForm}>
-                        <div id="name_box">
-                            {/* <div className="label_div" style={{}}>
+        <>
+            <Navbar />
+            <div className="page_padding">
+                <h1>Submit an Issue Ticket</h1>
+                <h3>Having any trouble with the website? Let us know</h3>
+                <form method="post" ref={formThing} onSubmit={handleSubmitSupportForm}>
+                    <div id="name_box">
+                        {/* <div className="label_div" style={{}}>
                                 <label > Name </label>
                             </div> */}
-                            <div>
-                                <input name="name_input" className="" required placeholder='Full Name' />
-                            </div>
-                        </div>
+                        <input name="name_input" className="" required placeholder='Full Name' />
+                    </div>
 
-                        <div id="email_box">
-                            <Tooltip text="Please use a valid email. A copy of your ticket submission as well as the response to your issue/enquiry will be sent to this email.">
-                                {/* <div className="label_div" style={{}}>
-                                    <label > Email </label>
-                                </div> */}
-                                <div>
-                                    <input type="email" name="email_input" className="" required placeholder='Email' />
-                                </div>
-                            </Tooltip>
-                        </div>
-
-                        <div id="userID_box">
-                            {/* <div className="label_div" style={{}}>
+                    <div id="userID_box">
+                        {/* <div className="label_div" style={{}}>
                                 <label > User ID </label>
                             </div> */}
-                            <div>
-                                <input type="" name="userID_input" className="" required placeholder='User ID' />
-                            </div>
-                        </div>
+                        <input type="" name="userID_input" className="" required placeholder='User ID' />
+                    </div>
 
-                        <div id="issue_box">
+                    <div id="email_box">
+                        <Tooltip text="Please use a valid email. A copy of your ticket submission as well as the response to your issue/enquiry will be sent to this email.">
                             {/* <div className="label_div" style={{}}>
+                                    <label > Email </label>
+                                </div> */}
+                            <input type="email" name="email_input" className="" required placeholder='Email' />
+                        </Tooltip>
+                    </div>
+
+                    <div id="issue_box">
+                        {/* <div className="label_div" style={{}}>
                                 <label > Issue </label>
                             </div> */}
-                            <div>
-                                <textarea name="issue_input" rows={8} cols={40} required placeholder='Issue/Enquiry' />
-                            </div>
-                        </div>
+                        <textarea name="issue_input" rows={8} cols={40} required placeholder='Issue/Enquiry' />
+                    </div>
 
-                        <div id="submit_button_box">
-                            <div>
-                                <button disabled={isLoading}>Send To Support</button>
-                            </div>
-                        </div>
+                    <div id="submit_button_box">
+                        <button disabled={isLoading}>Send To Support</button>
+                    </div>
 
-                    </form>
+                </form>
 
-                    <div style={{textAlign: 'center'}}>
-                        <div id="tech_support_form_successful_response" style={{display: 'none'}}>
-                            <div className='successful_submission'>
-                                Your Issue Ticket has been received. Please keep an eye on your emails for a reply.
-                            </div>
-                        </div>
-                        <div id="tech_support_form_failed_response" style={{display: 'none'}}>
-                            <div className='invalid_submission'>
-                                There was an issue submitting your issue or enquiry. Please reload the page and try again.
-                            </div>
+                <div style={{ textAlign: 'center' }}>
+                    <div id="tech_support_form_successful_response" style={{ display: 'none' }}>
+                        <div className='successful_submission'>
+                            Your issue ticket has been received. Please keep an eye on your emails for a reply.
                         </div>
                     </div>
+                    <div id="tech_support_form_failed_response" style={{ display: 'none' }}>
+                        <div className='invalid_submission'>
+                            There was an issue submitting your issue/enquiry. Please reload the page and try again.
+                        </div>
+                    </div>
+                </div>
 
                 <div className={isLoading ? "overlay" : ""}>
-                    <div>
-                        {isLoading ? <LoadingSpinner /> : ""}
-                    </div>
+                    {isLoading ? <LoadingSpinner /> : ""}
                 </div>
 
             </div>
@@ -206,7 +192,7 @@ function TechSupportPage() {
             </div> */}
 
 
-        </div>
+        </>
     );
 }
 

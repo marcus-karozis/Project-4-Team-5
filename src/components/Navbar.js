@@ -1,4 +1,4 @@
-import { Component, useState } from "react";
+import { Component, useState, useEffect } from "react";
 import "./NavbarStyles.css";
 import { BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
 
@@ -17,6 +17,16 @@ function Navbar() {
     settheme(!theme);
     document.body.dataset.theme = theme;
     };
+
+    useEffect(() => {
+        const data = window.localStorage.getItem('THEME_STATE');
+        if ( data !== null ) settheme(JSON.parse(data));
+    }, []);
+
+    useEffect(() => {
+        window.localStorage.setItem('THEME_STATE', JSON.stringify(theme));
+    }, [theme]);
+
 
     return(
         <>

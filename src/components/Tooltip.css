@@ -14,10 +14,9 @@
     padding: 5px;
     position: absolute;
     z-index: 1;
-    top: 80%;
-    left: 40%;
-    margin-top: 5px;
-    margin-left: -60px;
+    top: -5px;
+    margin-left: 5px;
+    margin-top: 3px;
     opacity: 0;
     transition: opacity 0.3s;
   }
@@ -25,4 +24,15 @@
   .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    right: 100%; /* To the left of the tooltip */
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
   }
