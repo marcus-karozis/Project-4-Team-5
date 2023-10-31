@@ -24,8 +24,8 @@ collection = db['users']
 
 # Load face detector and recognizer
 face_detector = dlib.get_frontal_face_detector()
-shape_predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
-face_recognizer = dlib.face_recognition_model_v1("dlib_face_recognition_resnet_model_v1.dat")
+shape_predictor = dlib.shape_predictor("src/Authentication/shape_predictor_68_face_landmarks.dat")
+face_recognizer = dlib.face_recognition_model_v1("src/Authentication/dlib_face_recognition_resnet_model_v1.dat")
 
 def compute_embedding_from_image(image):
     image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)

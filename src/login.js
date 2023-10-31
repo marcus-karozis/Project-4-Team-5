@@ -1,6 +1,9 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useContext } from 'react';
 import Webcam from 'react-webcam';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom'; // Update this import path as necessary
+import axios from 'axios';
+import User from './User.js'
+import UserContext from './usercontext.js';
 
 const AuthenticationPage = ({ onFail }) => {
   const webcamRef = useRef(null);
@@ -11,9 +14,10 @@ const AuthenticationPage = ({ onFail }) => {
   const [errorMessage, setErrorMessage] = useState(null);
 
   // Use the navigate method to perform redirection
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
-
   const handleLogin = async () => {
+
     try {
       const response = await fetch('http://localhost:5000/login', {
         method: 'POST',
@@ -31,7 +35,10 @@ const AuthenticationPage = ({ onFail }) => {
       if (result.status === "success") {
         setAuthStatus("success");
         setUsername(result.username);
-        navigate('/dashboard', { state: { user: result } });
+        let user1 = await axios.get('/db/getUserById', {params: {id: result.username}});
+        let userInstance =  new User(user1.data._id,user1.data.user_type, user1.data.password_cleartext, user1.data.first_name, user1.data.last_name,  user1.data.enrolment, user1.data.photo_string);
+        setUser(userInstance);
+        navigate('/dashboard');
       } else {
         setAuthStatus("showLoginForm");
         setErrorMessage("Invalid username or password");
@@ -41,6 +48,7 @@ const AuthenticationPage = ({ onFail }) => {
       console.error("Error during login:", error);
     }
   };
+  
 
   const handleFaceRecognition = async () => {
     if (!webcamRef.current) {
@@ -62,8 +70,11 @@ const AuthenticationPage = ({ onFail }) => {
 
       if (result.status === "success") {
         setAuthStatus("success");
-        setUsername(result.username);
-        navigate('/dashboard', { state: { user: result } });
+        // setUsername(result.username);
+        let user1 = await axios.get('/db/getUserById', {params: {id: result.username}});
+        let userInstance =  new User(user1.data._id,user1.data.user_type, user1.data.password_cleartext, user1.data.first_name, user1.data.last_name,  user1.data.enrolment, user1.data.photo_string);
+        setUser(userInstance);
+        navigate('/dashboard');
       } else {
         setAuthStatus("showLoginForm");
       }

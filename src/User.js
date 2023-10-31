@@ -1,9 +1,8 @@
 import axios from 'axios';
 
 class User {
-  constructor(_id, user_type, password_cleartext, first_name, last_name, photo_string, enrolment = []) {
+  constructor(_id, user_type, password_cleartext, first_name, last_name,  enrolment = [], photo_string) {
     this._id = _id;
-    //this._id = this.generateID(user_type);
     this.user_type = user_type;
     this.password_cleartext = password_cleartext;
     this.first_name = first_name;
@@ -59,4 +58,4 @@ class User {
 
 }
 
-module.exports = User;
+export default User;

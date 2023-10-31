@@ -4,10 +4,11 @@ import AuthenticationPage from './login.js';
 import Navbar from './components/Navbar';
 import { Subject } from './menu/Menu';
 
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import ReactDOM from 'react-dom/client';
 
 import axios from 'axios';
+import UserContext from './usercontext';
 // import { Subject }  from './Subject';// Import the Subject class
 
 
@@ -17,10 +18,12 @@ const subjectPage = ReactDOM.createRoot(document.getElementById('root'));
 function App() {
   const [subjectData, setSubjects] = useState([]);
 
+  const { user } = useContext(UserContext);
+
   useEffect(() => {
     const fetchSubjects = async () => {
       try {
-        const response = await axios.get('/db/subjects');
+        const response = await axios.get('/db/getSubjectsByUserId', {params: {id: user._id}});
         const subjects = response.data;
         setSubjects(subjects);
       } catch (error) {
