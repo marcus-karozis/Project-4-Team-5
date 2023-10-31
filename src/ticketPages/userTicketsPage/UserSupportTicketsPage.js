@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 import Navbar from '../../components/Navbar';
-import './AdminTicketsPage.css';
-
+import './UserSupportTicketsPage.css';
+import '../adminTicketsPage/AdminTicketsPageStyles.css'
 import emailjs from '@emailjs/browser';
 import axios from 'axios';
 
