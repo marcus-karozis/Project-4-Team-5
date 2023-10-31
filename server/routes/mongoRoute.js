@@ -219,8 +219,9 @@ router.post('/updateSubjectById', async (req, res) => {
 router.post('/users', async (req, res) => {
     try {
         const userData = req.body;
+        //
         const user = new User(userData);
-        await user.save();
+        await user.save({upset: true });
         res.json(user);
     } catch (err) {
         console.error(err);

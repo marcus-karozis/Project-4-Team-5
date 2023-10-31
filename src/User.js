@@ -1,4 +1,5 @@
 import axios from 'axios';
+const mongoose = require('mongoose');
 
 class User {
   constructor(_id, user_type, password_cleartext, first_name, last_name,  enrolment = [], photo_string) {
@@ -11,8 +12,34 @@ class User {
     this.enrolment = enrolment;
   }
 
-  addEnrolment(subject_id, _class, checkin_timestamps) {
-    this.enrolment.push({ _id: subject_id, class: _class, checkin_timestamps });
+  addEnrolment(subject_id, class_id, checkin_timestamps) {
+    // console.log("sid: " + subject_id)
+    // console.log("_class: " + class_id)
+    const ObjectId = mongoose.Types.ObjectId;
+    this._id = new ObjectId().toString()
+    //this.enrolment.push({ _id: this._id, subject_id: subject_id, class: class_id, checkin_timestamps: checkin_timestamps });
+
+
+    //removes duplicates
+    const existingIndex = this.enrolment.findIndex(existing => {
+      return existing.subject_id === subject_id && existing.class === class_id;
+  });
+  
+    if (existingIndex !== -1) {
+        // If the class_id already exists, push the test object to the existing class's array
+        this.enrolment[existingIndex] = {
+          _id: this._id,
+          subject_id: subject_id,
+          class: class_id,
+          checkin_timestamps: checkin_timestamps
+      };
+      console.log("replace: " + this.enrolment)
+    } else {
+        // If the class_id doesn't exist, push the test object into the classes array
+        this.enrolment.push({ _id: this._id, subject_id: subject_id, class: class_id, checkin_timestamps: checkin_timestamps });
+        console.log("push: " +  this.enrolment)
+    }
+   
   }
 
   // Function to convert the User object to JSON and submit it to the server
@@ -29,7 +56,7 @@ class User {
   // Function to convert the User object to JSON
   toJSON() {
     return {
-      _id: this._id,
+       _id: this._id,
       user_type: this.user_type,
       password_cleartext: this.password_cleartext,
       first_name: this.first_name,

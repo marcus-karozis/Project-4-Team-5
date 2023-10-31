@@ -6,6 +6,10 @@ import { useLocation, useNavigate, useHistory } from 'react-router-dom'
 import axios from 'axios';
 import Modal from './Modal';
 import './Modal.css';
+import User from '../User'
+
+
+
 
 function StudentCode() {
 
@@ -13,7 +17,7 @@ function StudentCode() {
     const [showErrorMessage, setShowErrorMessage] = useState(false);
     const [openModal, setOpenModal] = useState(false);
     let location = useLocation();
-    let { subject_name, class_name } = location.state
+    let { subject_name, subject_id, class_id, class_name, user } = location.state
     //console.log(`subject_name: ${subject_name}, class_name: ${class_name}`)
 
     const fetchCode = async () => {
@@ -26,14 +30,13 @@ function StudentCode() {
             //let firstCode = codesArray = codesArray ? codesArray[0]?.value : undefined;
             let code = codesArray ? codesArray[codesArray.length - 1]?.value : undefined;
             console.log(code)
-            
+
             return code
         } catch (error) {
             console.log(error)
             throw error
         }
     }
-
 
 
     //need to get the subject code from database
@@ -47,7 +50,9 @@ function StudentCode() {
 
             if (codeGen === inputCode) {
                 setOpenModal(true);
-                //navigate('/dashboard?success=true');
+                const timestamp = new Date()
+                checkIn(user, timestamp)
+
             } else {
                 // Handle incorrect code
                 setShowErrorMessage(true);
@@ -62,6 +67,15 @@ function StudentCode() {
             alert("Error occurred while verifying code. Please try again later.");
         }
     }
+
+
+    function checkIn(_id, timestamp) {
+    
+        const newUser = new User(user._id, user.user_type, user.password_cleartext, user.first_name, user.last_name, user.enrolment, user.photo_string)
+        newUser.addEnrolment(subject_id, class_id, timestamp)
+        newUser.saveToServer()
+    }
+
     return (
         <>
 
