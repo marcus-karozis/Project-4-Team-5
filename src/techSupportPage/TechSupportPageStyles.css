@@ -121,3 +121,33 @@ textarea:focus {
   font-weight: 400;
   color: #fff;
 }
+
+@media screen and (max-width: 1000px){
+    h1{
+        font-size: 35px;
+    }
+    
+    h3{
+        font-size: 12px;
+    }
+
+    input{
+        width: 92%;
+    }
+
+    textarea{
+        width: 92%;
+    }
+
+    #submit_button_box button{
+        width: 92%;
+    }
+
+    .successful_submission {
+        width: 92%;
+    }
+    
+    .invalid_submission {
+        width: 92%;
+    }
+}

@@ -121,8 +121,8 @@ function TechSupportPage() {
         <>
             <Navbar />
             <div className="page_padding">
-                <h1>Submit an Issue Ticket</h1>
-                <h3>Having any trouble with the website? Let us know</h3>
+                    <h1>Submit an Issue Ticket</h1>
+                    <h3>Having any trouble with the website? Let us know</h3>
                 <form method="post" ref={formThing} onSubmit={handleSubmitSupportForm}>
                     <div id="name_box">
                         {/* <div className="label_div" style={{}}>

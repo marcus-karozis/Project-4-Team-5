@@ -34,7 +34,7 @@
     border-radius: 5px;
   } */
 
-.login {
+.input button {
   width: 150%;
   padding: 10px;
   background-color: #99738E;
@@ -44,7 +44,7 @@
   cursor: pointer;
 }
 
-.login :active {
+.input button:active {
   background-color: #493844;
 }
 
@@ -60,6 +60,7 @@
   height: 100vh;
   text-align: center;
   position: relative;
+  
 }
 
 .text {
@@ -68,13 +69,13 @@
   color: #fff;
 }
 
-.loginForm {
+/* .loginForm {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 5px;
   width: 100%;
-}
+} */
 
 .input {
   display: flex;
@@ -82,10 +83,6 @@
   margin-top: 55px;
   gap: 25px;
   margin-right: 105px;
-  /* align-items: center; */
-  /* justify-content: space-between; */
-  /* width: 350px; */
-  /* margin-bottom: 5px; */
 }
 
 .labelStyle {
@@ -94,11 +91,12 @@
 
 .inputStyle {
   width: 150%;
-  /* padding: 5px 10px; */
 }
 
 .webcamStyle {
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
+  justify-content: space-evenly;
+  display: flex;
 }
 
 .messageStyle {
@@ -111,4 +109,23 @@ h2 {
   font-weight: 400;
   font-size: 48px;
   color: #fff;
+  position: relative;
+  top: 5px;
+}
+
+@media screen and (max-width: 1000px){
+  .inputStyle{
+    position: relative;
+    left: 13px;
+    width: 134%;
+  }
+
+  .webcamStyle {
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
+    justify-content: space-evenly;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+  }
 }

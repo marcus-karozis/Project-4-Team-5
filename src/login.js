@@ -118,7 +118,7 @@ const AuthenticationPage = ({ onFail }) => {
               className="inputStyle"
             />
           {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-          <button onClick={handleLogin} className="login">LOGIN</button>
+          <button onClick={handleLogin}>LOGIN</button>
         </div>
       ) : (
         <>

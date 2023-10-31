@@ -36,3 +36,21 @@
     border-style: solid;
     border-color: transparent black transparent transparent;
   }
+
+  @media screen and (max-width:1000px){
+    .tooltip .tooltiptext::after {
+      margin-top: 0%;
+      bottom: 100%;  /* At the top of the tooltip */
+      left: 50%;
+      margin-left: -5px;
+      top: 0%;
+    }
+
+    .tooltip .tooltiptext {
+      width: 120px;
+      left: 50%;
+      margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+      top: 100%;
+    }
+    
+  }
