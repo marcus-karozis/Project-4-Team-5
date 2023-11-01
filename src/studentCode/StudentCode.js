@@ -7,6 +7,7 @@ import axios from 'axios';
 import Modal from './Modal';
 import './Modal.css';
 import User from '../User'
+import { time } from 'console';
 
 
 
@@ -17,7 +18,7 @@ function StudentCode() {
     const [showErrorMessage, setShowErrorMessage] = useState(false);
     const [openModal, setOpenModal] = useState(false);
     let location = useLocation();
-    let { subject_name, subject_id, class_id, class_name, user } = location.state
+    let { subject_name, subject_id, class_id, class_name, user, start_time } = location.state
     //console.log(`subject_name: ${subject_name}, class_name: ${class_name}`)
 
     const fetchCode = async () => {
@@ -51,7 +52,9 @@ function StudentCode() {
             if (codeGen === inputCode) {
                 setOpenModal(true);
                 const timestamp = new Date()
-                //console.log(timestamp)
+                //const dummy_timestamp = '2023-11-01T04:00:00.000+00:00' 
+                //For the presentaion
+                //const dummy_timestamp_2 = start_time[0]
                 checkIn(user, timestamp)
 
             } else {
