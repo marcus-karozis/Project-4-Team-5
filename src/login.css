@@ -128,4 +128,8 @@ h2 {
     margin-right: auto;
     width: 70%;
   }
+
+  .input button {
+    width: 134%;
+  }
 }
