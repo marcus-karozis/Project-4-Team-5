@@ -12,13 +12,14 @@ function SubjectPage() {
     let [classData, setClasses] = useState([]);
     let location = useLocation();
     const { user } = useContext(UserContext);
-    let { subject_id } = location.state;
+    let { subject_id, subject_name } = location.state;
     useEffect(() => {
         const fetchClass = async () => {
             try {
                 let response = await axios.get('/db/getSubjectById', {params: {id: subject_id}});
                 let classes = response.data.classes.filter((_class) => user.user_type == 0 || user.enrolment.some((c) => c.class == _class._id));
                 setClasses(classes);
+
             } catch (error) {
                 console.error(error);
             }
@@ -26,6 +27,7 @@ function SubjectPage() {
 
         fetchClass();
     }, [subject_id]);
+
 
     return (
         <>
@@ -36,10 +38,15 @@ function SubjectPage() {
                 {classData.map(_class => (
                     <Class
                         key={_class._id}
-                        className={_class.class_name}
+                        classes={classData}
+                        class_name={_class.class_name}
                         subject_id={subject_id}
-                        class_id={classData.indexOf(_class)}
-                        time={new Date(_class.class_start_timestamps[0]).toDateString() ?? ""}
+                        subject_name={subject_name}
+                        class_id={_class._id}
+                        start_time={_class.class_start_timestamps}
+                        end_time={_class.class_end_timestamps}
+                        codes={_class.codes}
+                        
                     />))
                 }
             </div>

@@ -10,10 +10,12 @@ export class SClass {
     this.class_end_timestamps = class_end_timestamps;
     this.codes = codes;
   }
+  
+  // PREVIOUS 
+  // addCode(code_id,expiry, users_selected = []) {
+  //   this.codes.push(new ClassCode(code_id, expiry, users_selected));
+  // }
 
-  addCode(code_id, expiry, users_selected = []) {
-    this.codes.push(new ClassCode(code_id, expiry, users_selected));
-  }
 
   // Function to convert the User object to JSON
   toJSON() {
@@ -22,7 +24,8 @@ export class SClass {
       class_name: this.class_name,
       class_start_timestamps: this.class_start_timestamps,
       class_end_timestamps: this.class_end_timestamps,
-      codes: this.codes.toJSON(),
+      codes: this.codes,
+      
     };
   }
 
@@ -34,4 +37,3 @@ export class SClass {
 
 }
 
-module.exports = SClass;

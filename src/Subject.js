@@ -9,14 +9,15 @@ export class Subject {
     this.classes = subject_classes;
   }
 
-  addClass(class_id, class_name, class_start_timestamps=[], class_end_timestamps=[], codes=[]) {
-    this.classes.push(new SClass(class_id, class_name, class_start_timestamps, class_end_timestamps, codes ));
-  }
+  // addClass(class_id, class_name, class_start_timestamps=[], class_end_timestamps=[], codes=[]) {
+  //   this.classes.push(new SClass(class_id, class_name, class_start_timestamps, class_end_timestamps, codes ));
+  // }
 
   // Function to convert the Subject object to JSON and submit it to the server
   async saveToServer() {
     try {
-      const response = await axios.post('/db/subjects', this.toJSON());
+      //console.log("newSubject: " + JSON.stringify(newSubject, null, 2))
+      const response = await axios.post('/db/subjects', this);
       return response.data;
     } catch (error) {
       console.error(error);
@@ -24,12 +25,26 @@ export class Subject {
     }
   }
 
+  async updateServer() {
+    try {
+      //console.log("newSubject: " + JSON.stringify(newSubject, null, 2))
+      const response = await axios.post('/db/updateSubjectById', this);
+      console.log(`${response.status}: Successfully updated server`)
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw new Error('Failed to save subject to the server.');
+    }
+  }
+
+ 
+
   // Function to convert the Subject object to JSON
   toJSON() {
     return {
       _id: this._id,
       subject_name: this.subject_name,
-      classes: this.classes.toJSON(),
+     classes: this.classes
     };
   }
 
@@ -52,5 +67,3 @@ export class Subject {
   }
 
 }
-
-module.exports = Subject;
