@@ -86,7 +86,7 @@ function ClassPage() {
                 <button onClick={disableCode}><i className='fa fa-remove'></i> Disable code</button>
             </div>
             <div className='table'>
-                <BasicTable class_id={class_id} subject_id={subject_id} startTime={start_time} />
+                <BasicTable class_id={class_id} subject_id={subject_id} startTime={start_time[0]} />
             </div>
             <div className="whitespace" />
         </>

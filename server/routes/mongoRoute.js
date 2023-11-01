@@ -5,11 +5,11 @@ const router = express.Router();
 const mongoose = require('mongoose');
 
 // Connect to MongoDB server using environment variables
-const mogoURI = "mongodb://"+
-                process.env.MONGODB_USER+":"+
-                process.env.MONGODB_PASS+"@"+
-                process.env.MONGODB_HOST+":"+
-                process.env.MONGODB_PORT;
+const mogoURI = "mongodb://" +
+    process.env.MONGODB_USER + ":" +
+    process.env.MONGODB_PASS + "@" +
+    process.env.MONGODB_HOST + ":" +
+    process.env.MONGODB_PORT;
 //console.log(mogoURI);
 mongoose.connect(mogoURI, {
     useNewUrlParser: true,
@@ -39,8 +39,8 @@ const subjectSchema = new mongoose.Schema({
                     _id: String,
                     value: String,
                     expiry: Date,
-                    users_selected:[String],    // user_name stored here
-                    users_passed:[String]       // user_name stored here
+                    users_selected: [String],    // user_name stored here
+                    users_passed: [String]       // user_name stored here
                 }
             ]
         }
@@ -56,9 +56,10 @@ const userSchema = new mongoose.Schema({
     photo_string: [Number],  // encoded string of the user's photo for facial recognition
     enrolment: [
         {
+            _id: String,
             subject_id: String,
             class: String,              //classes object index stored here
-            checkin_timestamps:[Date]
+            checkin_timestamps: [Date]
 
         }
     ]
@@ -219,10 +220,27 @@ router.post('/updateSubjectById', async (req, res) => {
 router.post('/users', async (req, res) => {
     try {
         const userData = req.body;
-        //
         const user = new User(userData);
-        await user.save({upset: true });
+        await user.save({ upset: true });
         res.json(user);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
+});
+
+//Update the user enrolment through post request
+router.post('/updateUserById', async (req, res) => {
+    try {
+        const userData = req.body;
+        //const user = new User(userData);
+        const updatedUser = await User.findOneAndUpdate(
+            { _id: userData._id }, userData,
+            { new: true, upsert: true }
+        );
+        //await user.save();
+        console.log(`${res.statusCode}: ${res.statusMessage}`);
+
     } catch (err) {
         console.error(err);
         res.status(500).send('Server Error');
@@ -257,9 +275,9 @@ router.post('/ticket_update', async (req, res) => {
 
         // Specify the update to set a new value for the tick_complete field
         const updateDoc = {
-        $set: {
-            tick_complete: req.body.tick_complete
-        },
+            $set: {
+                tick_complete: req.body.tick_complete
+            },
         };
 
         // Update the first document that matches the filter

@@ -9,6 +9,7 @@ import UserContext from "../usercontext";
 
 export function Subject(subject) {
 
+
     return (
         <div key={"subject.id"} className="subjectCard">
             <Link to="/subjectPage/SubjectPage" state={{ subject_id: subject.id, subject_name: subject.subject_name }}>
@@ -21,6 +22,7 @@ export function Subject(subject) {
 
 export function Class(_class) {
     const { user } = useContext(UserContext);
+
     return (
         <div key={_class.id} className="subjectCard">
             {user.user_type !== 2 ? (
@@ -29,7 +31,12 @@ export function Class(_class) {
                     end_time: _class.end_time
                 }}>
                     <h3 className="subjectName"> {_class.class_name} </h3>
-                    <h3 className="subjectTime"> {_class.time} </h3>
+                    <h3 className="subjectTime"> {new Date(_class.start_time[0]).toDateString() ?? ""} </h3>
+                    <h3 className="subjectTime">
+                        {new Date(_class.start_time[0]).toLocaleTimeString('en-AU')}
+                    </h3>
+
+                    <h3 className="subjectTime"> {new Date(_class.end_time[0]).toLocaleTimeString() ?? ""} </h3>
                 </Link>
             ) : (
                 <Link to="/subjectPage/studentCode" state={{
@@ -37,7 +44,7 @@ export function Class(_class) {
                     end_time: _class.end_time, user: user
                 }}>
                     <h3 className="subjectName"> {_class.class_name} </h3>
-                    <h3 className="subjectTime"> {new Date(_class.start_time[0]).toDateString() ?? ""} </h3>
+                    <h3 className="subjectTime"> {new Date(_class.start_time[0]).toDateString('en-AU') ?? ""} </h3>
                 </Link>
             )}
         </div>

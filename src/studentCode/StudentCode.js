@@ -74,6 +74,7 @@ function StudentCode() {
         const newUser = new User(user._id, user.user_type, user.password_cleartext, user.first_name, user.last_name, user.enrolment, user.photo_string)
         newUser.addEnrolment(subject_id, class_id, timestamp)
         newUser.saveToServer()
+        
     }
 
     return (
