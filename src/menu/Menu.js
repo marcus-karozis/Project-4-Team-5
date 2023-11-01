@@ -31,12 +31,9 @@ export function Class(_class) {
                     end_time: _class.end_time
                 }}>
                     <h3 className="subjectName"> {_class.class_name} </h3>
-                    <h3 className="subjectTime"> {new Date(_class.start_time[0]).toDateString() ?? ""} </h3>
-                    <h3 className="subjectTime">
-                        {new Date(_class.start_time[0]).toLocaleTimeString('en-AU')}
-                    </h3>
-
-                    <h3 className="subjectTime"> {new Date(_class.end_time[0]).toLocaleTimeString() ?? ""} </h3>
+                    <h3 className="subjectTime">{new Date(_class.start_time[0]).toLocaleDateString("en-AU")}</h3>
+                    <h3 className="subjectTime">{new Date(_class.start_time[0]).toLocaleTimeString('en-AU')}</h3>
+                    {/* <h3 className="subjectTime"> End Time: {new Date(_class.end_time[0]).toLocaleTimeString('en-AU') ?? ""} </h3> */}
                 </Link>
             ) : (
                 <Link to="/subjectPage/studentCode" state={{

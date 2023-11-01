@@ -51,6 +51,7 @@ function StudentCode() {
             if (codeGen === inputCode) {
                 setOpenModal(true);
                 const timestamp = new Date()
+                //console.log(timestamp)
                 checkIn(user, timestamp)
 
             } else {
