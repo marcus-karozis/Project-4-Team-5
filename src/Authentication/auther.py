@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import cv2
 import base64
-# import dlib
+import dlib
 import numpy as np
 from pymongo import MongoClient
 from time import sleep
@@ -23,19 +23,19 @@ db = client[MONGODB_DB]
 collection = db['users']
 
 # Load face detector and recognizer
-# face_detector = dlib.get_frontal_face_detector()
-# shape_predictor = dlib.shape_predictor("src/Authentication/shape_predictor_68_face_landmarks.dat")
-# face_recognizer = dlib.face_recognition_model_v1("src/Authentication/dlib_face_recognition_resnet_model_v1.dat")
+face_detector = dlib.get_frontal_face_detector()
+shape_predictor = dlib.shape_predictor("src/Authentication/shape_predictor_68_face_landmarks.dat")
+face_recognizer = dlib.face_recognition_model_v1("src/Authentication/dlib_face_recognition_resnet_model_v1.dat")
 
-# def compute_embedding_from_image(image):
-#     image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-#     detected_faces = face_detector(image_rgb)
-#     if not detected_faces:
-#         return None
+def compute_embedding_from_image(image):
+    image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    detected_faces = face_detector(image_rgb)
+    if not detected_faces:
+        return None
 
-#     shape = shape_predictor(image_rgb, detected_faces[0])
-#     embedding = face_recognizer.compute_face_descriptor(image_rgb, shape)
-#     return np.array(embedding)
+    shape = shape_predictor(image_rgb, detected_faces[0])
+    embedding = face_recognizer.compute_face_descriptor(image_rgb, shape)
+    return np.array(embedding)
 
 @app.route('/login_with_face', methods=['POST'])
 def login_with_face():
@@ -46,7 +46,7 @@ def login_with_face():
         image_np = np.frombuffer(image_data, dtype=np.uint8)
         image = cv2.imdecode(image_np, flags=1)
 
-        # embedding = compute_embedding_from_image(image)
+         embedding = compute_embedding_from_image(image)
         
     except Exception as e:
         print(f"Error encountered: {e}")
@@ -114,7 +114,6 @@ def login():
             # Return enrolment data only for students (user_type: 2)
             if user['user_type'] == 2:
                 response_data['enrolment'] = user['enrolment']
-                # print(f"response_data['enrolment'] {response_data['enrolment']}")
 
             return jsonify(response_data)
         else:
