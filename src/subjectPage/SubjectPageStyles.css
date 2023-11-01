@@ -96,31 +96,27 @@
 /* ************************************* */
 /* teacher dashboard */
 .ClassList {
+  font-size: 1rem;
+  font-family:Arial, Helvetica, sans-serif;
   display: flex;
+  flex-direction: row ;
+  justify-content: center;
+  top: 5rem;
   flex-wrap: wrap;
   position: relative;
-  top: 5rem;
-  margin-right: 2rem;
-  height: 100px;
-  width: 300px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: normal;
-  justify-content: center;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
 .ClassList a{
+  color: #000;
+  height: 170px;
+  text-align: left;
   text-decoration: none;
-  color: black;
-  /* text-align: center;
+  display: flex;
+  flex-direction: column;
   position: relative;
-  justify-content: space-evenly;
-  display: flex; */
-  text-decoration: none;
-  display: inline-block;
-  margin-top: 1rem;
-  margin-left: 1rem;
-  border-radius: 0.5rem;
-  background-color: lightgrey;
+  width: 300px;
 }
 
 .small-image-sizer {

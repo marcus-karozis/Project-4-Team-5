@@ -27,7 +27,8 @@ table tr td:first-child {
   border-left: 1px solid #bbb;
 } */
 table tr th {
-  background-color: #222;;
+  /* background-color: #222;; */
+  background-color: #99738e;
   text-align: center;
 }
 

@@ -1,14 +1,14 @@
 /* when component is hovered (not clicked) */
 .subjectCard:hover{
   transform: translateY(-0.3rem);
-  box-shadow: 0.2rem 0.2rem 1.5rem #bbb;
+  box-shadow: 0.3rem 0.3rem 0.3rem #bbb;
   transition: 0.2s;
 }
 
 /* picture */
 .subjectImage{
   display:flex;
-  background-image: url(../white_paper.jpg);
+  /* background-image: url(../white_paper.jpg); */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   object-fit: cover;
@@ -23,9 +23,9 @@
   position: relative;
   /* top: 120px; */
   width: 300px;
-  height: 36px;
   left: 10px;
-  font-weight: normal;
+  margin-left: -10px;
+  font-weight: 400;
 }
 
 /* main component */
