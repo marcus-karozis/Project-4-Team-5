@@ -1,20 +1,23 @@
 
 import AdminTicketPage from './adminTicketsPage/AdminTicketsPage';
+// import TechSupportPage from '../techSupportPage/TechSupportPage'; // tech support page is only used for the "support" link in navbar
+import UserTicketPage from './userTicketsPage/UserSupportTicketsPage';
 
-import User from '../User.js'
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import User from '../User.js';
 import UserContext from "../usercontext";
 
 
-    function TicketPage() {
-        const { user } = useContext(UserContext);
-        const typeOfUser = user.user_type; // 0: admin, 1: lecturer, 2: student
 
-        return (
-            <div>
-                {typeOfUser === 0 ? <AdminTicketPage/> : "insert teacher/student page here"}
-            </div>
-        );
-    }
+function TicketPage() {
+    const { user } = useContext(UserContext);
+    const typeOfUser = user?.user_type; // 0: admin, 1: lecturer, 2: student
+    
+    return (
+        <div>
+            {typeOfUser === 0 ? <AdminTicketPage /> : <UserTicketPage />}
+        </div>
+    );
+}
 
-    export default TicketPage;
+export default TicketPage;
