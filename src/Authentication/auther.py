@@ -45,8 +45,8 @@ def login_with_face():
         image_data = base64.b64decode(encoded_data)
         image_np = np.frombuffer(image_data, dtype=np.uint8)
         image = cv2.imdecode(image_np, flags=1)
-
-         embedding = compute_embedding_from_image(image)
+        
+        embedding = compute_embedding_from_image(image)
         
     except Exception as e:
         print(f"Error encountered: {e}")
