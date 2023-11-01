@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 
 import Navbar from '../../components/Navbar';
 import './UserSupportTicketsPage.css';
@@ -7,6 +7,9 @@ import emailjs from '@emailjs/browser';
 import axios from 'axios';
 
 import { Ticket } from '../../Ticket.js'; // Import the Ticket class
+
+import User from '../../User.js'
+import UserContext from "../../usercontext";
 
 //import LoadingSpinner from "../../components/LoadingSpinner";
 
@@ -27,6 +30,11 @@ function NotCompleteTicket(props) {
                 <div className="" style={{ order: 1, marginRight: '20px', padding: '20px', maxWidth: '500px' }}>
                     <b>Ticket ID:</b> {props.id} <br></br>
                     <b>Issue:</b> {props.issue}
+                </div>
+                <div style={{ order: 2, marginRight: '0px', padding: '20px' }}>
+                    <div className="notCompleteTicket">
+                        <b>Not Completed</b>
+                    </div>
                 </div>
             </div>
 
@@ -86,16 +94,21 @@ function TicketChecker(props) {
 
 function UserSupportTicketsPage() {
 
+    const { user } = useContext(UserContext);
+    const current_user_id = user?._id;
+
+    // const current_user_id = "1320874848"; // "1320874848" is a test (since its a user_id for tickets in the db) // this line was for testing purposes only :)
+
     // ticket query
 
     const [ticketData, setTickets] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    // const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        // all tickets query
+        // all tickets query - for specific user
         const fetchTickets = async () => {
             try {
-                const response = await axios.get('/db/getTicketsByUserId');
+                const response = await axios.get('/db/getTicketsByUserId', { params: { userID: current_user_id }});
                 const tickets = response.data;
                 setTickets(tickets);
                 console.log(tickets);
