@@ -117,6 +117,7 @@
   flex-direction: column;
   position: relative;
   width: 300px;
+  margin-top: -130px;
 }
 
 .small-image-sizer {
@@ -193,6 +194,5 @@
   .ClassList a{
     text-align: center;
     font-size: 20px;
-    bottom: 22px;
   }
 }

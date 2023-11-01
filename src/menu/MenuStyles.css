@@ -8,7 +8,7 @@
 /* picture */
 .subjectImage{
   display:flex;
-  /* background-image: url(../white_paper.jpg); */
+  background-image: url(../white_paper.jpg);
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   object-fit: cover;
@@ -16,17 +16,46 @@
   width: 300px;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
+  transform: translateY(-0.3rem);
 }
 
 /* name */
 .subjectName{
   position: relative;
-  /* top: 120px; */
   width: 300px;
-  left: 10px;
+  left: 25px;
   margin-left: -10px;
-  font-weight: 400;
+  font-weight: 500;
+  font-size: 40px;
+  top: 5px;
 }
+
+.subjectTime {
+  font-size: 20px;
+  font-weight: 500;
+  left: 25px;
+  margin-left: -10px;
+  position: relative;
+  top: 90px;
+  width: 300px;
+}
+
+.subjectTimeRemaining{
+  font-size: 22px;
+  font-weight: 500;
+  left: 22px;
+  margin-left: -10px;
+  position: relative;
+  top: 20px;
+}
+
+/* .subjectTimeRemaining[isTime="yellow"]{
+  box-shadow: 0.5rem 0.5rem 0.5rem rgb(204, 198, 89);
+}
+
+.subjectTimeRemaining[isTime="green"]{
+  box-shadow: 0.5rem 0.5rem 0.5rem rgb(62, 223, 62);
+} */
 
 /* main component */
 .subjectCard{
@@ -36,8 +65,17 @@
   /* justify-content: space-evenly; */
   margin-top: 1rem;
   margin-left: 1rem;
-  border-radius: 0;
+  border-radius: 0.5rem;
   background-color: #99738E;
+  transition: background 0.25s ease-in-out;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+/* dark mode */
+.subjectCard[data-theme="false"] {
+  background: #42414d !important;
+  transition: background 0.25s ease-in-out;
 }
   
 /* .small-image-sizer {
@@ -81,14 +119,25 @@
     box-shadow: none;
   }
 
-  /* .small-image-sizer {
-    position: absolute;
-    border-top-left-radius: 1.5rem;
-    border-top-right-radius: 1.5rem;
-    height:100px;
-    width:150px;
-    object-fit: fill;
-    padding-left: 100px;
-    padding-right: 100px;
-  }*/  
+  .subjectName{
+    top: 35px;
+    justify-content: left;
+    display: flex;
+  }
+
+  .subjectTime{
+    top: 90px;
+    justify-content: left;
+    display: flex;
+  }
+
+  .subjectTimeRemaining{
+    left: -8px;
+  }
+
+  .subjectImage{
+    height: 100px;
+    justify-content: left;
+    display: flex;
+  }
 }

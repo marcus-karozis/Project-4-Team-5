@@ -45,14 +45,13 @@
 
 body {
   background: #553D67;
-  color: black;
+  color: #fff;
   transition: background 0.25s ease-in-out;
 }
 
 /* dark mode */
 body[data-theme="false"] {
   background: #2B2A33 !important;
-  color: #fff !important;
   transition: background 0.25s ease-in-out;
 }
 /* *************************************** */
@@ -206,6 +205,5 @@ body[data-theme="false"] {
   .SubjectList a{
     text-align: center;
     font-size: 20px;
-    bottom: 22px;
   }
 }

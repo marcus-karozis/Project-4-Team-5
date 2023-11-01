@@ -7,6 +7,7 @@
   border-radius: 0.5rem;
   box-shadow: 0 2px 2px #99738E;
   margin-top: 1rem;
+  transition: background 0.25s ease-in-out;
 }
 
 /* displays code */
@@ -25,7 +26,18 @@ h {
   left: 10%;
   border-radius: 0.5rem;
   box-shadow: 0 2px 2px #99738E;
+  transition: background 0.25s ease-in-out;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.code.dashboard-row button[data-theme="false"] {
+  background: #42414d !important;
+  transition: background 0.25s ease-in-out;
+}
+
+h[data-theme="false"] {
+  background: #42414d !important;
+  transition: background 0.25s ease-in-out;
 }
 
 /* for the buttons */
@@ -68,13 +80,17 @@ h {
     width: 11%;
   }
 
-  .code.dashboard-row i{
+  .fa.fa-refresh{
+    bottom: 6px;
+    font-size: 32px;
+    left: -14px;
     position: relative;
-    font-size: 2rem;
-    bottom: 7px;
   }
 
-  .fa.fa-refresh{
-    font-size: 1.9rem;
+  .fa.fa-remove{
+    bottom: 8px;
+    font-size: 38px;
+    position: relative;
+    left: -14px;
   }
 }

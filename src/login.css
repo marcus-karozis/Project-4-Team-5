@@ -131,5 +131,7 @@ h2 {
 
   .input button {
     width: 134%;
+    left: 12px;
+    position: relative;
   }
 }

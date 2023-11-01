@@ -39,6 +39,18 @@ function isTimeInAnHour (a) {
     }
 }
 
+// function whenIsTime (a) {
+//     let whenTime = isTimeInAnHour(a);
+//     if(whenTime < 1440){
+//         if(whenTime < 60){
+//             return "green";
+//         }
+//         else{
+//             return "yellow";
+//         }
+//     }
+// }
+
 function SubjectPage() {
     
     let [classData, setClasses] = useState([]);
@@ -78,6 +90,7 @@ function SubjectPage() {
                         //gets Time Remaining in minutes
                         // timeRemaining={Math.round((new Date(getNextClass(_class.class_start_timestamps)).getTime() - new Date().getTime())/(1000*60)) ?? ""}
                         timeRemaining={isTimeInAnHour(_class)}
+                        // isTime={whenIsTime(_class)}
                     />))
                 }
             </div>
