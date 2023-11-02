@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+    color: #fff;
 }
 
 .class-title { 
@@ -73,6 +74,18 @@
 }
 
 .code-container { 
-    background-color: rgb(191, 233, 255);
+    color: #fff;
+    /* background-color: rgb(191, 233, 255); */
+    /* background-color: #2B2A33; */
     height: 100vh;
+}
+
+@media screen and (max-width: 1000px){
+    .form-container{
+        width: 92%;
+    }
+
+    .codeInput{
+        width: 300px;
+    }
 }

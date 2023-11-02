@@ -1,4 +1,4 @@
-import { Component, useState } from "react";
+import { Component, useState, useEffect } from "react";
 import "./NavbarStyles.css";
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 
@@ -9,27 +9,39 @@ function Navbar() {
         setClicked(!clicked);
     };
 
-    // state={clicked: false};
-    // handleClick = () =>{
-    //     this.setState({clicked: !this.state.clicked})
-    // }
-    // render(){
-    return (
+
+    //light or dark mode
+    const [theme, settheme] = useState(false)
+ 
+    const handleToggle = () => {
+    settheme(!theme);
+    document.body.dataset.theme = theme;
+    };
+
+    useEffect(() => {
+        const data = window.localStorage.getItem('THEME_STATE');
+        if ( data !== null ) settheme(JSON.parse(data));
+    }, []);
+
+    useEffect(() => {
+        window.localStorage.setItem('THEME_STATE', JSON.stringify(theme));
+    }, [theme]);
+
+
+    return(
         <>
             <nav>
-
-                <i id="logo" className="fab fa-react"></i>
-
+                {/* logo */}
+                <div className="theme-icons">
+                    <i onClick={handleToggle} className={theme ? "fas fa-moon" : "fas fa-sun"}></i>
+                </div>
+                
                 <div className="menu-icons">
                     <i onClick={handleClick} className={clicked ? "fas fa-times" : "fas fa-bars"}></i>
                 </div>
 
                 <ul className={clicked ? "navbar active" : "navbar"}>
                     <li>
-                        {/* <a className="active" href="index.html">
-                        <i className="fa-solid fa-house-user"></i>
-                        Home
-                    </a> */}
                         <Link to="/dashboard" >
                             <i className="fa-solid fa-house-user"></i> Home
                         </Link>
@@ -47,11 +59,15 @@ function Navbar() {
                             <i className="fa-solid fa-envelope"></i> Support
                         </Link>
                     </li>
+                    <li>
+                        <Link to="/tickets" style={{ textAlign: 'center'}}>
+                            <i className="fa-solid fa-ticket"></i> Tickets
+                        </Link>
+                    </li>
                 </ul>
             </nav>
         </>
     )
 }
-// }
 
 export default Navbar;
