@@ -316,7 +316,7 @@ function TicketChecker(props) {
     )
 }
 
-const tickets_data = [{ "_id": "653616b43cc56a206d0a1958", "user_id": "1234567", "email": "test@test.com", "message": "hi", "name": "Test", "tick_complete": true }, { "_id": "ac53541bde48a9965d6f5918f178bfa83a0988aa", "name": "Test Person", "email": "testytest@test.com", "message": "This is my problem (test 3)", "user_id": "22345", "tick_complete": false, "__v": 0 }, { "_id": "d49517671fe13f6cc031c193880c1d2f13918792", "name": "Test Person 3", "email": "chantel.mills@student.uts.edu.au", "message": "I have a problem with logging in please help...", "user_id": "29873", "tick_complete": true, "__v": 0 }, { "_id": "34cb3b3b9b5aa10bcb0b138a322474331384cdd1", "name": "Alice J", "email": "chantel.mills@student.uts.edu.au", "message": "I have this particular doing this thing. Can someone give me some help please?", "user_id": "2345678", "tick_complete": true, "__v": 0 }, { "_id": "b8361abb5e1eabad6680247c1c5394d20f41e353", "name": "Chantel-Test", "email": "chantel.mills@student.uts.edu.au", "message": "Please help me with my question. Insert question here.", "user_id": "12345678999", "tick_complete": true, "__v": 0 }, { "_id": "lms7pzchq4n0cejd81j805b020vq3py7wr9j8ewj", "name": "C", "email": "chantel.mills@student.uts.edu.au", "message": "test to see if tickets create again...", "user_id": "2345678", "tick_complete": true, "__v": 0 }, { "_id": "75affbb2qmseqnoftxtg8i68nguzulgw386shpvo", "name": "asdas", "email": "a@gmail.com", "message": "QWE", "user_id": "1235", "tick_complete": false, "__v": 0 }, { "_id": "o9rxd3pqssstwxk745nh3phqfx0x8zlsvxbg5av2", "name": "sdf", "email": "d@gmail.com", "message": "asdjkndkj", "user_id": "sdf", "tick_complete": false, "__v": 0 }, { "_id": "38f91eb7hkepuzpqsmcmbsq83wtz62pn0yu6c3s1", "name": "asd", "email": "d@gmail.com", "message": "asd", "user_id": "1235", "tick_complete": false, "__v": 0 }, { "_id": "gsoxiwhk9gx1vrv0mo3bwb6wd4fx37myjja56zho", "name": "Olivia Test", "email": "oktest@hotmail.com", "message": "I have an issue logging in. ", "user_id": "1320874848", "tick_complete": false, "__v": 0 }, { "_id": "81j6iv5uk99522e2khnua69jxn3p75nu3k9iluf9", "name": "Olivia Test", "email": "oktest@hotmail.com", "message": "Another issue.", "user_id": "1320874848", "tick_complete": false, "__v": 0 }, { "_id": "2vbfbg0123zci8j8jf0hptiu51zbc9l1618zinzd", "name": "Maxwell", "email": "maxkwest99@gmail.com", "message": "I am strugling to log in", "user_id": "5757", "tick_complete": false, "__v": 0 }]
+// const tickets_data = [{ "_id": "653616b43cc56a206d0a1958", "user_id": "1234567", "email": "test@test.com", "message": "hi", "name": "Test", "tick_complete": true }, { "_id": "ac53541bde48a9965d6f5918f178bfa83a0988aa", "name": "Test Person", "email": "testytest@test.com", "message": "This is my problem (test 3)", "user_id": "22345", "tick_complete": false, "__v": 0 }, { "_id": "d49517671fe13f6cc031c193880c1d2f13918792", "name": "Test Person 3", "email": "chantel.mills@student.uts.edu.au", "message": "I have a problem with logging in please help...", "user_id": "29873", "tick_complete": true, "__v": 0 }, { "_id": "34cb3b3b9b5aa10bcb0b138a322474331384cdd1", "name": "Alice J", "email": "chantel.mills@student.uts.edu.au", "message": "I have this particular doing this thing. Can someone give me some help please?", "user_id": "2345678", "tick_complete": true, "__v": 0 }, { "_id": "b8361abb5e1eabad6680247c1c5394d20f41e353", "name": "Chantel-Test", "email": "chantel.mills@student.uts.edu.au", "message": "Please help me with my question. Insert question here.", "user_id": "12345678999", "tick_complete": true, "__v": 0 }, { "_id": "lms7pzchq4n0cejd81j805b020vq3py7wr9j8ewj", "name": "C", "email": "chantel.mills@student.uts.edu.au", "message": "test to see if tickets create again...", "user_id": "2345678", "tick_complete": true, "__v": 0 }, { "_id": "75affbb2qmseqnoftxtg8i68nguzulgw386shpvo", "name": "asdas", "email": "a@gmail.com", "message": "QWE", "user_id": "1235", "tick_complete": false, "__v": 0 }, { "_id": "o9rxd3pqssstwxk745nh3phqfx0x8zlsvxbg5av2", "name": "sdf", "email": "d@gmail.com", "message": "asdjkndkj", "user_id": "sdf", "tick_complete": false, "__v": 0 }, { "_id": "38f91eb7hkepuzpqsmcmbsq83wtz62pn0yu6c3s1", "name": "asd", "email": "d@gmail.com", "message": "asd", "user_id": "1235", "tick_complete": false, "__v": 0 }, { "_id": "gsoxiwhk9gx1vrv0mo3bwb6wd4fx37myjja56zho", "name": "Olivia Test", "email": "oktest@hotmail.com", "message": "I have an issue logging in. ", "user_id": "1320874848", "tick_complete": false, "__v": 0 }, { "_id": "81j6iv5uk99522e2khnua69jxn3p75nu3k9iluf9", "name": "Olivia Test", "email": "oktest@hotmail.com", "message": "Another issue.", "user_id": "1320874848", "tick_complete": false, "__v": 0 }, { "_id": "2vbfbg0123zci8j8jf0hptiu51zbc9l1618zinzd", "name": "Maxwell", "email": "maxkwest99@gmail.com", "message": "I am strugling to log in", "user_id": "5757", "tick_complete": false, "__v": 0 }]
 
 
 function AdminTicketsPage() {
@@ -327,41 +327,36 @@ function AdminTicketsPage() {
     const [isLoading, setIsLoading] = useState(false);
 
 
-    //     useEffect(() => {
-    //         // all tickets query
-    //         const fetchTickets = async () => {
-    //             try {
-    //                 const response = await axios.get('/db/tickets');
-    //                 const tickets = response.data;
-    //                 setTickets(tickets);
-    //             } catch (error) {
-    //                 console.error(error);
-    //             }
-    //         };
+        useEffect(() => {
+            // all tickets query
+            const fetchTickets = async () => {
+                try {
+                    const response = await axios.get('/db/tickets');
+                    const tickets = response.data;
+                    setTickets(tickets);
+                } catch (error) {
+                    console.error(error);
+                }
+            };
 
 
-    //         // // test for tickets of specific ID (user_id: "1234567") - test ticket
-    //         // const fetchTickets = async () => {
-    //         //     try {
-    //         //         const response = await axios.get('/db/getTicketsByUserId', { params: { userID: "1234567" }});
-    //         //         const tickets = response.data;
-    //         //         setTickets(tickets);
-    //         //         console.log(tickets);
-    //         //     } catch (error) {
-    //         //         console.error(error);
-    //         //     }
-    //         // };
+            // // test for tickets of specific ID (user_id: "1234567") - test ticket
+            // const fetchTickets = async () => {
+            //     try {
+            //         const response = await axios.get('/db/getTicketsByUserId', { params: { userID: "1234567" }});
+            //         const tickets = response.data;
+            //         setTickets(tickets);
+            //         console.log(tickets);
+            //     } catch (error) {
+            //         console.error(error);
+            //     }
+            // };
 
-    //         ///fetchTickets();
+            fetchTickets();
 
-    //    }, []);
+       }, []);
 
-    useEffect(() => {
-        setTickets(tickets_data);
-    }, []); // Empty dependency array ensures this effect runs once after the initial render
-
-
-
+  
     return (
         <div>
             <div className="" style={{ marginBottom: '80px' }}>

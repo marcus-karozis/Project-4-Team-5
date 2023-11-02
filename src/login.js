@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom'; // Update this import path as ne
 import axios from 'axios';
 import User from './User.js'
 import UserContext from './usercontext.js';
+import Navbar from './components/Navbar.js';
+import './login.css';
 
 const AuthenticationPage = ({ onFail }) => {
   const webcamRef = useRef(null);
@@ -90,35 +92,33 @@ const AuthenticationPage = ({ onFail }) => {
   }, []);
 
   return (
-    <div className="authentication-container" style={containerStyle}>
-      <h2>Login Page</h2>
+    <>
+    <Navbar/>
+    <div className="authentication">
+      <h2>Log in</h2>
       {authStatus === "success" && (
-        <p style={messageStyle}>Login Successful as {username}</p>
+        <p className="messageStyle">Authentication successful! Logging in as {username}</p>
       )}
       {authStatus === "showLoginForm" ? (
-        <div style={loginFormStyle}>
-          <div className="input-group" style={inputGroupStyle}>
-            <label style={labelStyle}>Username:</label>
+          <div className="input">
+            {/* <label className="labelStyle">Username:</label> */}
             <input 
               type="text" 
-              placeholder="Enter username" 
+              placeholder="Username" 
               value={enteredUsername} 
               onChange={e => setEnteredUsername(e.target.value)} 
-              style={inputStyle}
+              className="inputStyle"
             />
-          </div>
-          <div className="input-group" style={inputGroupStyle}>
-            <label style={labelStyle}>Password:</label>
+            {/* <label className="labelStyle">Password:</label> */}
             <input 
               type="password" 
-              placeholder="Enter password" 
+              placeholder="Password" 
               value={enteredPassword} 
               onChange={e => setEnteredPassword(e.target.value)} 
-              style={inputStyle}
+              className="inputStyle"
             />
-          </div>
           {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-          <button onClick={handleLogin}>Login</button>
+          <button onClick={handleLogin}>LOGIN</button>
         </div>
       ) : (
         <>
@@ -126,60 +126,61 @@ const AuthenticationPage = ({ onFail }) => {
             audio={false}
             ref={webcamRef}
             screenshotFormat="image/jpeg"
-            style={webcamStyle}
+            className="webcamStyle"
           />
-          {!authStatus && <p style={messageStyle}>Authenticating...</p>}
+          {!authStatus && <p className="messageStyle">Authenticating...</p>}
         </>
       )}
     </div>
+    </>
   );
 };
 
-const containerStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  height: '100vh',
-  textAlign: 'center',
-  backgroundColor: 'lightblue',
-  position: 'relative'
-};
+// const containerStyle = {
+//   display: 'flex',
+//   flexDirection: 'column',
+//   alignItems: 'center',
+//   justifyContent: 'center',
+//   height: '100vh',
+//   textAlign: 'center',
+//   backgroundColor: 'lightblue',
+//   position: 'relative'
+// };
 
-const loginFormStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  gap: '10px',
-  width: '300px'
-};
+// const loginFormStyle = {
+//   display: 'flex',
+//   flexDirection: 'column',
+//   alignItems: 'center',
+//   gap: '10px',
+//   width: '300px'
+// };
 
-const inputGroupStyle = {
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  width: '350px',
-  marginBottom: '5px',
-};
+// const inputGroupStyle = {
+//   display: 'flex',
+//   flexDirection: 'row',
+//   alignItems: 'center',
+//   justifyContent: 'space-between',
+//   width: '350px',
+//   marginBottom: '5px',
+// };
 
-const labelStyle = {
-  marginRight: '20px',
-};
+// const labelStyle = {
+//   marginRight: '20px',
+// };
 
-const inputStyle = {
-  width: '80%',
-  padding: '5px 10px'
-};
+// const inputStyle = {
+//   width: '80%',
+//   padding: '5px 10px'
+// };
 
-const webcamStyle = {
-  boxShadow: '0px 0px 10px 3px rgba(0,0,0,0.2)'
-};
+// const webcamStyle = {
+//   boxShadow: '0px 0px 10px 3px rgba(0,0,0,0.2)'
+// };
 
-const messageStyle = {
-  marginTop: '20px',
-  fontSize: '18px',
-  fontWeight: 'bold'
-};
+// const messageStyle = {
+//   marginTop: '20px',
+//   fontSize: '18px',
+//   fontWeight: 'bold'
+// };
 
 export default AuthenticationPage;

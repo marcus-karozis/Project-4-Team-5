@@ -1,6 +1,19 @@
+h1{
+    color: #fff;
+    font-weight: 400;
+    font-size: 48px;
+}
+
+h3{
+    color: #fff;
+    font-weight: 400;
+    font-size: 16px;
+}
 
 .page_padding {
+    margin-top: 120px;
     padding: 10px;
+    text-align: center;
 }
 
 /* form components */
@@ -10,12 +23,12 @@
 }
 
 input {
-    width: 30%;
+    width: 40%;
     padding: 12px 20px;
     margin: 8px 0;
     /* box-sizing: border-box; */
     border: none;
-    border: 3px solid #ccc;
+    border: 1px solid #ccc;
     border-radius: 3px;
     -webkit-transition: 0.5s;
     transition: 0.5s;
@@ -30,28 +43,28 @@ input:focus {
 }
 
 textarea {
-    width: 30%;
+    width: 40%;
     padding: 12px 20px;
     margin: 8px 0;
     /* box-sizing: border-box; */
     border: none;
-    border: 3px solid #ccc;
+    border: 1px solid #ccc;
     border-radius: 3px;
     -webkit-transition: 0.5s;
     transition: 0.5s;
     outline: none;
-    resize: none;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
 }
 
 textarea:focus {
-    border: 3px solid #8184da;
+    border: 3px solid #99738E;
     border-radius: 3px;
 }
 
-button {
-    background-color: #8184da;
+#submit_button_box button {
+    width: 40%;
+    background-color: #99738E;
     border: none;
     color: white;
     padding: 16px 32px;
@@ -62,12 +75,8 @@ button {
     font-size: 16px;
 }
 
-button:hover {
-    background-color: #676ac2;
-}
-
-button:active {
-    background-color: #4d50ad;
+#submit_button_box button:active {
+    background-color: #493844;
 }
 
 .successful_submission {
@@ -90,6 +99,9 @@ button:active {
     font-size: 16px;
 }
 
+.whitespace{
+    height: 100px;
+}
 /* spinner */
 
 .overlay {
@@ -101,4 +113,41 @@ button:active {
     bottom: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.6);
-  }
+}
+
+.messageStyle{
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+}
+
+@media screen and (max-width: 1000px){
+    h1{
+        font-size: 35px;
+    }
+    
+    h3{
+        font-size: 12px;
+    }
+
+    input{
+        width: 92%;
+    }
+
+    textarea{
+        width: 92%;
+    }
+
+    #submit_button_box button{
+        width: 92%;
+    }
+
+    .successful_submission {
+        width: 92%;
+    }
+    
+    .invalid_submission {
+        width: 92%;
+    }
+}
