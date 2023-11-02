@@ -1,0 +1,29 @@
+
+
+.table { 
+    margin-top: 100px; 
+}
+
+/* Style for table header */
+.table th {
+    border: 1px solid white;
+    padding: 10px;
+    /* text-align: left; */
+    color: black; /* Add your desired text color for the header */
+}
+
+/* Style for table rows */
+.table td {
+    border: 1px solid white;
+    padding: 10px;
+    /* text-align: left; */
+    background-color: #f9f9f9; /* Add your desired background color for the rows */
+    color: black; /* Add your desired text color for the rows */
+}
+
+
+
+/* Style for alternate rows (optional) */
+.table tbody tr:nth-child(even) {
+    background-color: #99738E;  /* Add your desired background color for alternate rows */
+}

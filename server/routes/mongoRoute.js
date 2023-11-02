@@ -134,6 +134,33 @@ router.get('/getSubjectById', async (req, res) => {
     }
 });
 
+router.get('/getClassById', async (req, res) => {
+    const { subjectId, classId } = req.query;
+    console.log(subjectId)
+    console.log(classId)
+
+    try {
+        const subjectData = await Subject.findById(subjectId);
+        if (!subjectData) {
+            return res.status(404).json({ error: 'Subject not found' });
+        }
+
+        const classData = subjectData.classes.find(cls => cls._id === classId);
+        if (!classData) {
+            return res.status(404).json({ error: 'Class not found' });
+        }
+        const subjectName = subjectData.subject_name
+        const className = classData.class_name
+        res.status(200).json({subjectName, className});
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Server Error' });
+    }
+});
+
+
+
+
 router.get('/getSubjectsByUserId', async (req, res) => {
     try {
         let user = await User.findById(req.query.id);

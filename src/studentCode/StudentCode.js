@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useState } from 'react';
 import './StudentCode.css';
 import Navbar from '../components/Navbar';
 import BasicTable from '../table/BasicTable'
-import { useLocation, useNavigate, useHistory } from 'react-router-dom'
+import { useLocation, useNavigate,  } from 'react-router-dom'
 import axios from 'axios';
 import Modal from './Modal';
 import './Modal.css';
@@ -14,7 +14,7 @@ import { time } from 'console';
 
 function StudentCode() {
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const [showErrorMessage, setShowErrorMessage] = useState(false);
     const [openModal, setOpenModal] = useState(false);
     let location = useLocation();
@@ -56,6 +56,7 @@ function StudentCode() {
                 //For the presentaion
                 const dummy_timestamp_2 = start_time[0]
                 checkIn(user, dummy_timestamp_2)
+                
 
             } else {
                 // Handle incorrect code
