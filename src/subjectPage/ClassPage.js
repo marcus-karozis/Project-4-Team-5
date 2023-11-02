@@ -35,23 +35,6 @@ function ClassPage() {
 
     function generateCode() {
 
-        //MARCUS
-        //const newSubject = new Subject(subjectData._id, subjectData.subject_name, []);
-
-        // for (let i = 0; i < subjectData.classes.length; i++) {
-        //     const classData = subjectData.classes[i];
-        //     const newClass = new SClass(classData._id, classData.class_name, [], []);
-
-        //     for (let j = 0; j < classData.class_start_timestamps.length; j++) {
-        //         const newCode = new ClassCode(classData.codes[j]._id, classData.codes[j].value, classData.codes[j].expiry, classData.codes[j].users_selected, classData.codes[j].users_passed);
-
-        //         newClass.codes.push(newCode);
-        //     }
-
-        //     newSubject.classes.push(newClass);
-        // }
-
-
         //LIV 
 
         const newCode = new ClassCode(end_time[0])

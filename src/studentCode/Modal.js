@@ -15,10 +15,13 @@ const Modal = ({ openModal }) => {
                     <button onClick={() => { openModal(false); console.log("Modal closed"); }}> X </button>
                 </div> */}
                 <div className="modal-title">
-                    <h1>Success!</h1>
+                    <p>Success!</p>
                     <img className='success-img' src={Success} />
-                </div>
-                <div className="body">
+                </div> 
+                    
+              
+              
+                <div className="modal-body">
                     <p>You have successfully joined the class</p>
                 </div>
                 {/* <div className="footer">

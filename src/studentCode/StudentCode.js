@@ -54,8 +54,8 @@ function StudentCode() {
                 const timestamp = new Date()
                 //const dummy_timestamp = '2023-11-01T04:00:00.000+00:00' 
                 //For the presentaion
-                //const dummy_timestamp_2 = start_time[0]
-                checkIn(user, timestamp)
+                const dummy_timestamp_2 = start_time[0]
+                checkIn(user, dummy_timestamp_2)
 
             } else {
                 // Handle incorrect code
@@ -73,7 +73,7 @@ function StudentCode() {
     }
 
 
-    function checkIn(_id, timestamp) {
+    function checkIn(user, timestamp) {
     
         const newUser = new User(user._id, user.user_type, user.password_cleartext, user.first_name, user.last_name, user.enrolment, user.photo_string)
         newUser.addEnrolment(subject_id, class_id, timestamp)
