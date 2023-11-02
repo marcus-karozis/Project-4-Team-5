@@ -28,7 +28,7 @@ const Modal = ({ openModal }) => {
                     <button className="dark-button" onClick={() => { openModal(false); console.log("Modal closed"); }}>Continue</button>
                 </div> */}
                 <div className="footer">
-                    <button className="dark-button" onClick={() => { navigate('/dashboard?success=true'); openModal(false); console.log("Modal closed"); }}>Continue</button>
+                    <button className="dark-button" onClick={() => { navigate('/history'); openModal(false); console.log("Modal closed"); }}>Continue</button>
                 </div>
             </div>
         </div>
