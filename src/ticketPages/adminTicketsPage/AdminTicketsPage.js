@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 import Navbar from '../../components/Navbar';
-import adminStyles from './AdminTicketsPageStyles.css';
+import './AdminTicketsPageStyles.css';
 
 import emailjs from '@emailjs/browser';
 import axios from 'axios';
@@ -138,7 +138,7 @@ function NotCompleteTicket(props) {
 
         <div>
             <div className="ticket_card"> {/*  */}
-                <div className="" style={{ order: 1, marginRight: '20px', padding: '20px', maxWidth: '500px' }}>
+                <div className="" style={{ order: 1, marginRight: '20px', padding: '20px', maxWidth: '500px' , backgroundColor: '#99738E'}}>
                     <b>Ticket ID:</b> {props.id} <br></br>
                     <b>Issue:</b> {props.issue}
                 </div>
