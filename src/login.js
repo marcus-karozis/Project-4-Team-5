@@ -93,7 +93,7 @@ const AuthenticationPage = ({ onFail }) => {
 
   return (
     <>
-    <Navbar/>
+    {/* <Navbar/> */}
     <div className="authentication">
       <h2>Log in</h2>
       {authStatus === "success" && (

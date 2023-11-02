@@ -87,13 +87,11 @@ function SubjectPage() {
                         classes={classData}
                         class_name={_class.class_name}
                         subject_id={subject_id}
-                        // subject_name={subject_name}
-                        // class_id={_class._id}
-                        // start_time={_class.class_start_timestamps}
-                        // end_time={_class.class_end_timestamps}
-                        // codes={_class.codes}
-                        
-                        class_id={classData.indexOf(_class)}
+                        subject_name={subject_name}
+                        class_id={_class._id}
+                        start_time={_class.class_start_timestamps}
+                        end_time={_class.class_end_timestamps}
+                        codes={_class.codes}
                         //gets Date
                         time={new Date(getNextClass(_class.class_start_timestamps)).toDateString() ?? ""}
                         //gets Time Remaining in minutes

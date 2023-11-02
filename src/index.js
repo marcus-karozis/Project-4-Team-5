@@ -12,7 +12,7 @@ import LoginPage from './login.js';
 import UserContext from './usercontext';
 // import AdminTicketsPage from './adminTicketsPage/AdminTicketsPage'
 import TicketPage from './ticketPages/ticketPage';
-
+import HistoryPage from './components/HistoryPage';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -41,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: "tickets", // this path will go once the combined all user ticket page is created
     element: <TicketPage/>
+  },
+  {
+    path: "history",
+    element: <HistoryPage/>
   }
 ])
 

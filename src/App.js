@@ -9,8 +9,6 @@ import ReactDOM from 'react-dom/client';
 
 import axios from 'axios';
 import UserContext from './usercontext';
-// import { Subject }  from './Subject';// Import the Subject class
-
 
 const subjectPage = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -64,7 +62,7 @@ function App() {
           <Subject
             key={subject._id}
             id={subject._id}
-            subjectName={subject.subject_name}
+            subject_name={subject.subject_name}
             // subjectTimeRemaining={getEarliestTime(subject)}
           />))
         }

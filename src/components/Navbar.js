@@ -1,12 +1,12 @@
 import { Component, useState, useEffect } from "react";
 import "./NavbarStyles.css";
-import { BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 
 function Navbar() {
     const [clicked, setClicked] = useState(false);
 
     const handleClick = () => {
-    setClicked(!clicked);
+        setClicked(!clicked);
     };
 
 
@@ -42,24 +42,23 @@ function Navbar() {
 
                 <ul className={clicked ? "navbar active" : "navbar"}>
                     <li>
-                        {/* <a className="active" href="index.html">
-                        <i className="fa-solid fa-house-user"></i>
-                        Home
-                    </a> */}
-                        <Link to="/dashboard" style={{ textAlign: 'center'}}>
-                        <i className="fa-solid fa-house-user"></i> Home
+                        <Link to="/dashboard" >
+                            <i className="fa-solid fa-house-user"></i> Home
                         </Link>
                     </li>
-                    {/* <li><a href="index.html">
+                    <li><Link to="/history">
+                        <i className="fa-solid fa-clock-rotate-left"></i>
+                        History</Link>
+                    </li>
+                    <li><Link href="index.html">
                         <i className="fa-solid fa-gear"></i>
-                        Account</a></li> */}
-
+                        Account</Link>
+                    </li>
                     <li>
-                        <Link to="/techSupportPage" style={{ textAlign: 'center'}}>
+                        <Link to="/techSupportPage">
                             <i className="fa-solid fa-envelope"></i> Support
                         </Link>
                     </li>
-
                     <li>
                         <Link to="/tickets" style={{ textAlign: 'center'}}>
                             <i className="fa-solid fa-ticket"></i> Tickets

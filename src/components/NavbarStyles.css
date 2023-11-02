@@ -51,7 +51,7 @@ nav{
 
 .navbar{
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(5, auto);
     grid-gap: 20px;
     list-style: none;
     align-items: center;
