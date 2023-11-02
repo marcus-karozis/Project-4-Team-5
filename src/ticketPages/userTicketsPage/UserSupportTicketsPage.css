@@ -2,7 +2,8 @@
     padding: 10px;
 }
 
-.ticket_card { /* Row that has ticket._id, issue, status & 'Ticket Info' button */
+.ticket_card {
+    /* Row that has ticket._id, issue, status & 'Ticket Info' button */
     border-radius: 2px;
     border-bottom-color: rgb(61, 53, 125);
     border-bottom-width: 1px;
@@ -13,11 +14,13 @@
     margin-left: auto;
     margin-right: auto;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 }
 
-.inner_ticket_card { /* box that appears when "Ticket Info" button is pressed */
+.inner_ticket_card {
+    /* box that appears when "Ticket Info" button is pressed */
     border-radius: 5px;
     border-color: rgb(141, 166, 230);
     background-color: rgb(194, 208, 241);
@@ -32,6 +35,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    text-align: left;
 }
 
 .textarea_admin_section {
@@ -50,10 +54,10 @@
     font-size: 16px;
 }
 
-    .textarea_admin_section:focus {
-        border: 3px solid #8184da;
-        border-radius: 3px;
-    }
+.textarea_admin_section:focus {
+    border: 3px solid #8184da;
+    border-radius: 3px;
+}
 
 button {
     background-color: #8184da;
@@ -67,33 +71,38 @@ button {
     font-size: 16px;
 }
 
-    button:hover {
-        background-color: #676ac2;
-    }
+button:hover {
+    background-color: #676ac2;
+}
 
-    button:active {
-        background-color: #4d50ad;
-    }
+button:active {
+    background-color: #4d50ad;
+}
 
-.completeTicket { /* badge that says "Complete" */
+.completeTicket {
+    /* badge that says "Complete" */
     background-color: #7ec078;
     border-radius: 20px;
     padding: 10px;
     margin: auto;
-    width: 120%;
+    /* width: 120%; */
     text-align: center;
+    width: 150px; 
 }
 
-.notCompleteTicket { /* badge that says "Not Complete" */
+.notCompleteTicket {
+    /* badge that says "Not Complete" */
     background-color: #c07878;
     border-radius: 20px;
     padding: 10px;
     margin: auto;
-    width: 100%;
+    /* width: 100%; */
     text-align: center;
+    width: 150px; 
 }
 
-.successful_submission_admin { /* successful submission response div */
+.successful_submission_admin {
+    /* successful submission response div */
     background-color: rgb(133, 191, 133);
     border: 2px solid rgb(102, 159, 102);
     border-radius: 3px;
@@ -103,7 +112,8 @@ button {
     font-size: 16px;
 }
 
-.invalid_submission_admin { /* failed submission response div */
+.invalid_submission_admin {
+    /* failed submission response div */
     background-color: rgb(240, 158, 158);
     border: 2px solid rgb(214, 115, 115);
     border-radius: 3px;
@@ -126,4 +136,27 @@ button {
     bottom: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.6);
+}
+
+
+.ticket-text {
+    color: white;
+    /* order: 1; */
+    /* margin-right: 20px; */
+    padding: 20px;
+    min-width: 500px;
+    width:500px; 
+    text-align: left;
+}
+
+.ticket-status {
+    /* order: 2; */
+    /* margin-right: 0px; */
+    /* padding: 20px; */
+    
+}
+
+.ticket-info { 
+    /* order: 3; */
+    /* padding: 20px; */
 }
