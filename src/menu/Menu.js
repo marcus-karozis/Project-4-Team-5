@@ -6,9 +6,7 @@ import UserContext from "../usercontext";
 
 // import { Subject } from '../Subject'
 
-export function Subject(subject) {
-
-
+export function Subject(subjects) {
     return (
         <div key={"subject.id"} className="subjectCard">
             <i className="subjectImage"/>
