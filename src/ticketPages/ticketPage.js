@@ -1,7 +1,7 @@
 
 import AdminTicketPage from './adminTicketsPage/AdminTicketsPage';
 // import TechSupportPage from '../techSupportPage/TechSupportPage'; // tech support page is only used for the "support" link in navbar
-import UserTicketPage from './userTicketsPage/UserSupportTicketsPage';
+import './userTicketsPage/UserSupportTicketsPage';
 
 import React, { useContext, useState } from 'react';
 import User from '../User.js';
@@ -15,7 +15,7 @@ function TicketPage() {
     
     return (
         <div>
-            {typeOfUser === 0 ? <AdminTicketPage /> : <UserTicketPage />}
+            {typeOfUser === 0 ? <AdminTicketPage /> : <AdminTicketPage />}
         </div>
     );
 }

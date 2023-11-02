@@ -1,14 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 import Navbar from '../../components/Navbar';
-import './AdminTicketsPageStyles.css';
+// import  './AdminTicketsPageStyles.css';
 
 import emailjs from '@emailjs/browser';
 import axios from 'axios';
 
-import { Ticket }  from '../../Ticket.js'; // Import the Ticket class
+import { Ticket } from '../../Ticket.js'; // Import the Ticket class
+
 
 import LoadingSpinner from "../../components/LoadingSpinner";
+
+
+
 
 
 function NotCompleteTicket(props) {
@@ -29,7 +33,7 @@ function NotCompleteTicket(props) {
 
             // get the ticket this is happening for
             // update the tick_complete column to true
-            
+
             // Read the form data
             const form = e.target;
             const formData = new FormData(form);
@@ -40,15 +44,15 @@ function NotCompleteTicket(props) {
             // create ticket object
             const updatedTicket = new Ticket(formJson["name_input"], formJson["email_input"], formJson["issue_input"], formJson["userID_input"].toString());
             console.log(updatedTicket);
-            
+
             // set the ticket object's id to the exiting ticket id (since we want to update it)
             updatedTicket.setExistingTicketID(formJson["ticket_id"]);
             console.log(updatedTicket);
-            
+
             // set the ticket object's completed status to true
             updatedTicket.setTickCompleteStatus(true);
             console.log(updatedTicket);
-            
+
             // ticket database update request goes here
             console.log("updating in server...");
             updatedTicket.updateAndSaveToServer();
@@ -77,16 +81,16 @@ function NotCompleteTicket(props) {
                     console.log(result.text + " | Email Sent to User!");
                     var idOfDiv = formJson["ticket_id"] + "_compete_ticket_form_successful_response";
                     var responseBox = document.getElementById(idOfDiv);
-                    responseBox.style.display='block';
+                    responseBox.style.display = 'block';
                     spinner.style.display = "none"; // Hide loading spinner 
                 }, (error) => {
                     console.log(error.text + " | Could Not Send Email To User");
                     var idOfDiv = formJson["ticket_id"] + "_compete_ticket_form_failed_response";
                     var responseBox = document.getElementById(idOfDiv);
-                    responseBox.style.display='block';
+                    responseBox.style.display = 'block';
                     spinner.style.display = "none";   // Hide loading spinner 
                 });
-            
+
             // // comment above back in if you want to send a test email for ticket completion
 
         }
@@ -137,17 +141,17 @@ function NotCompleteTicket(props) {
     return (
 
         <div>
-            <div className="ticket_card"> {/*  */}
-                <div className="" style={{ order: 1, marginRight: '20px', padding: '20px', maxWidth: '500px' , backgroundColor: '#99738E'}}>
+            <div className="ticket_card">
+                <div className="ticket-text">
                     <b>Ticket ID:</b> {props.id} <br></br>
                     <b>Issue:</b> {props.issue}
                 </div>
-                <div className="" style={{ order: 2, marginRight: '0px', padding: '20px' }}>
+                <div className="ticket-status">
                     <div className="notCompleteTicket">
-                        <b>Not Complete</b>
+                        <p><b>Not Completed</b></p>
                     </div>
                 </div>
-                <div className="" style={{ order: 3, padding: '20px' }}>
+                <div className="ticket-info" >
                     <form method="post" onSubmit={showExtraInfo}>
                         <input name="ticket_id" type="hidden" value={props.id} />
                         <button id={props.id}>
@@ -169,10 +173,10 @@ function NotCompleteTicket(props) {
                     <form method="post" ref={adminTicketComplete} onSubmit={handleSubmitTicketCompleteForm}>
 
                         <div id="hidden_elements_box">
-                            <input name="ticket_id"    type="hidden" value={props.id} />
-                            <input name="issue_input"  type="hidden" value={props.issue} />
-                            <input name="name_input"   type="hidden" value={props.name} />
-                            <input name="email_input"  type="hidden" value={props.email} />
+                            <input name="ticket_id" type="hidden" value={props.id} />
+                            <input name="issue_input" type="hidden" value={props.issue} />
+                            <input name="name_input" type="hidden" value={props.name} />
+                            <input name="email_input" type="hidden" value={props.email} />
                             <input name="userID_input" type="hidden" value={props.userID} />
                         </div>
 
@@ -181,22 +185,22 @@ function NotCompleteTicket(props) {
                                 <label > Response </label>
                             </div> */}
                             <div>
-                                <textarea name="response_input" className="textarea_admin_section" rows={8} cols={40} required placeholder='Response'/>
+                                <textarea name="response_input" className="textarea_admin_section" rows={8} cols={40} required placeholder='Response' />
                             </div>
                         </div>
 
-                        <div id="submit_button_box" style={{textAlign: 'center'}}>
+                        <div id="submit_button_box" style={{ textAlign: 'center' }}>
                             <button>Mark As Complete</button>
                         </div>
                     </form>
 
-                    <div style={{textAlign: 'center'}}>
-                        <div id={success_box_id} style={{display: 'none'}}>
+                    <div style={{ textAlign: 'center' }}>
+                        <div id={success_box_id} style={{ display: 'none' }}>
                             <div className='successful_submission_admin'>
                                 Ticket has been set to complete. Email has been sent to the user's email.
                             </div>
                         </div>
-                        <div id={failed_box_id} style={{display: 'none'}}>
+                        <div id={failed_box_id} style={{ display: 'none' }}>
                             <div className='invalid_submission_admin'>
                                 There was an issue setting this ticket to complete & sending email to the user's email. Please try again.
                             </div>
@@ -248,16 +252,16 @@ function CompletedTicket(props) {
     return (
         <div>
             <div className="ticket_card">
-                <div style={{ order: 1, marginRight: '20px', padding: '20px', maxWidth: '500px' }}>
+                <div class="ticket-text">
                     <b>Ticket ID:</b> {props.id} <br></br>
                     <b>Issue:</b> {props.issue}
                 </div>
-                <div style={{ order: 2, marginRight: '0px', padding: '20px' }}>
+                <div className="ticket-status">
                     <div className="completeTicket">
-                        <b>Completed</b>
+                        <p><b>Completed</b></p>
                     </div>
                 </div>
-                <div style={{ order: 3, padding: '20px' }}>
+                <div class='ticket-info'>
                     <form method="post" onSubmit={showExtraInfo}>
                         <input name="ticket_id" type="hidden" value={props.id} />
                         <button id={props.id}>
@@ -267,7 +271,7 @@ function CompletedTicket(props) {
                 </div>
             </div>
 
-            <div id={info_box_id} className="inner_ticket_card" style={{ display: 'none' }}> 
+            <div id={info_box_id} className="inner_ticket_card" style={{ display: 'none' }}>
                 <div style={{ flex: 1, marginRight: '20px', padding: '20px' }}>
                     <b>Ticket ID:</b> {props.id} <br></br>
                     <b>Name:</b> {props.name} <br></br>
@@ -295,22 +299,24 @@ function TicketChecker(props) {
 
     return (
         <div className="">
-            {isComplete == true ? <CompletedTicket tick_complete={props.tick_complete} 
+            {isComplete == true ? <CompletedTicket tick_complete={props.tick_complete}
                 id={props.id}
                 name={props.name}
                 email={props.email}
                 userID={props.userID}
-                issue={props.issue}/> 
-            : 
-                <NotCompleteTicket tick_complete={props.tick_complete} 
-                id={props.id}
-                name={props.name}
-                email={props.email}
-                userID={props.userID}
-                issue={props.issue}/> }
+                issue={props.issue} />
+                :
+                <NotCompleteTicket tick_complete={props.tick_complete}
+                    id={props.id}
+                    name={props.name}
+                    email={props.email}
+                    userID={props.userID}
+                    issue={props.issue} />}
         </div>
     )
 }
+
+// const tickets_data = [{ "_id": "653616b43cc56a206d0a1958", "user_id": "1234567", "email": "test@test.com", "message": "hi", "name": "Test", "tick_complete": true }, { "_id": "ac53541bde48a9965d6f5918f178bfa83a0988aa", "name": "Test Person", "email": "testytest@test.com", "message": "This is my problem (test 3)", "user_id": "22345", "tick_complete": false, "__v": 0 }, { "_id": "d49517671fe13f6cc031c193880c1d2f13918792", "name": "Test Person 3", "email": "chantel.mills@student.uts.edu.au", "message": "I have a problem with logging in please help...", "user_id": "29873", "tick_complete": true, "__v": 0 }, { "_id": "34cb3b3b9b5aa10bcb0b138a322474331384cdd1", "name": "Alice J", "email": "chantel.mills@student.uts.edu.au", "message": "I have this particular doing this thing. Can someone give me some help please?", "user_id": "2345678", "tick_complete": true, "__v": 0 }, { "_id": "b8361abb5e1eabad6680247c1c5394d20f41e353", "name": "Chantel-Test", "email": "chantel.mills@student.uts.edu.au", "message": "Please help me with my question. Insert question here.", "user_id": "12345678999", "tick_complete": true, "__v": 0 }, { "_id": "lms7pzchq4n0cejd81j805b020vq3py7wr9j8ewj", "name": "C", "email": "chantel.mills@student.uts.edu.au", "message": "test to see if tickets create again...", "user_id": "2345678", "tick_complete": true, "__v": 0 }, { "_id": "75affbb2qmseqnoftxtg8i68nguzulgw386shpvo", "name": "asdas", "email": "a@gmail.com", "message": "QWE", "user_id": "1235", "tick_complete": false, "__v": 0 }, { "_id": "o9rxd3pqssstwxk745nh3phqfx0x8zlsvxbg5av2", "name": "sdf", "email": "d@gmail.com", "message": "asdjkndkj", "user_id": "sdf", "tick_complete": false, "__v": 0 }, { "_id": "38f91eb7hkepuzpqsmcmbsq83wtz62pn0yu6c3s1", "name": "asd", "email": "d@gmail.com", "message": "asd", "user_id": "1235", "tick_complete": false, "__v": 0 }, { "_id": "gsoxiwhk9gx1vrv0mo3bwb6wd4fx37myjja56zho", "name": "Olivia Test", "email": "oktest@hotmail.com", "message": "I have an issue logging in. ", "user_id": "1320874848", "tick_complete": false, "__v": 0 }, { "_id": "81j6iv5uk99522e2khnua69jxn3p75nu3k9iluf9", "name": "Olivia Test", "email": "oktest@hotmail.com", "message": "Another issue.", "user_id": "1320874848", "tick_complete": false, "__v": 0 }, { "_id": "2vbfbg0123zci8j8jf0hptiu51zbc9l1618zinzd", "name": "Maxwell", "email": "maxkwest99@gmail.com", "message": "I am strugling to log in", "user_id": "5757", "tick_complete": false, "__v": 0 }]
 
 
 function AdminTicketsPage() {
@@ -320,43 +326,45 @@ function AdminTicketsPage() {
     const [ticketData, setTickets] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
-    useEffect(() => {
-        // all tickets query
-        const fetchTickets = async () => {
-        try {
-            const response = await axios.get('/db/tickets');
-            const tickets = response.data;
-            setTickets(tickets);
-            console.log(tickets);
-        } catch (error) {
-            console.error(error);
-        }
-        };
 
-        // // test for tickets of specific ID (user_id: "1234567") - test ticket
-        // const fetchTickets = async () => {
-        //     try {
-        //         const response = await axios.get('/db/getTicketsByUserId', { params: { userID: "1234567" }});
-        //         const tickets = response.data;
-        //         setTickets(tickets);
-        //         console.log(tickets);
-        //     } catch (error) {
-        //         console.error(error);
-        //     }
-        // };
+        useEffect(() => {
+            // all tickets query
+            const fetchTickets = async () => {
+                try {
+                    const response = await axios.get('/db/tickets');
+                    const tickets = response.data;
+                    setTickets(tickets);
+                } catch (error) {
+                    console.error(error);
+                }
+            };
 
-        fetchTickets();
 
-    }, []);
+            // // test for tickets of specific ID (user_id: "1234567") - test ticket
+            // const fetchTickets = async () => {
+            //     try {
+            //         const response = await axios.get('/db/getTicketsByUserId', { params: { userID: "1234567" }});
+            //         const tickets = response.data;
+            //         setTickets(tickets);
+            //         console.log(tickets);
+            //     } catch (error) {
+            //         console.error(error);
+            //     }
+            // };
 
+            fetchTickets();
+
+       }, []);
+
+  
     return (
         <div>
             <div className="" style={{ marginBottom: '80px' }}>
-                <Navbar/>
+                <Navbar />
             </div>
 
             <div className="page_padding">
-                <div style={{textAlign: 'center', marginBottom: '20px'}}>
+                <div style={{ textAlign: 'center', marginBottom: '20px' }}>
                     <h1>Tickets</h1>
                 </div>
 
@@ -364,7 +372,7 @@ function AdminTicketsPage() {
 
                     <div className="ticketList">
                         {ticketData.map(ticket => (
-                            <TicketChecker 
+                            <TicketChecker
                                 tick_complete={ticket.tick_complete}
                                 id={ticket._id}
                                 name={ticket.name}
@@ -378,7 +386,7 @@ function AdminTicketsPage() {
 
                 </div>
 
-                <div id="adminTicketsSpinnerDiv" className="overlay_admin" style={{display: 'none'}}>
+                <div id="adminTicketsSpinnerDiv" className="overlay_admin" style={{ display: 'none' }}>
                     <div>
                         <LoadingSpinner />
                     </div>
