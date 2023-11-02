@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import cv2
 import base64
-# import dlib
+import dlib
 import numpy as np
 from pymongo import MongoClient
 from time import sleep
